@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import Nav from "./components/Nav";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import Register from "./pages/Register/Register";
@@ -14,6 +15,7 @@ const BrowserRoutes = () => {
 
   return (
     <Router>
+      {username && <Nav />}
       <Routes>
         <Route
           path="/login"

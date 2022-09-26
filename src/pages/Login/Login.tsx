@@ -1,8 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import Button from "../../components/Button";
-import FormOptions from "../../components/FormOptions/FormOptions";
 import useLogin from "../../hooks/useLogin";
+import FormOptions from "../../components/FormOptions/FormOptions";
 
 const loginSchema = Yup.object({
   username: Yup.string().required("Username is required."),
@@ -18,8 +18,8 @@ const Login = () => {
         initialValues={{ username: "", password: "" }}
         validateOnChange={true}
         validationSchema={loginSchema}
-        onSubmit={async (values) => {
-          await login(values);
+        onSubmit={(values) => {
+          login(values);
         }}
       >
         {() => (

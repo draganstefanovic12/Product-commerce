@@ -18,8 +18,8 @@ const Register = () => {
       <Formik
         initialValues={{ username: "", email: "", password: "" }}
         validationSchema={signUpSchema}
-        onSubmit={async (values) => {
-          await register(values);
+        onSubmit={(values) => {
+          register(values);
         }}
       >
         {() => (

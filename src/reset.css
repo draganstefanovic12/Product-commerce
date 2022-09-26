@@ -8,6 +8,11 @@
   outline: 0 none;
 }
 
+html,
+body {
+  overflow: hidden;
+}
+
 ul {
   list-style: none inside;
 }

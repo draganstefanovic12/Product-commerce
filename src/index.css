@@ -8,6 +8,6 @@
   }
 
   .form {
-    @apply w-1/5 h-1/2 bg-white rounded-lg grid gap-2 content-center justify-items-center shadow relative;
+    @apply w-96 h-128 bg-white rounded-lg grid gap-2 content-center justify-items-center shadow relative;
   }
 }
