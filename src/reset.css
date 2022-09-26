@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0 none;
+  outline: 0 none;
+}
+
+body {
+  padding: 3rem 0rem;
+}
+
+ul {
+  list-style: none inside;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
