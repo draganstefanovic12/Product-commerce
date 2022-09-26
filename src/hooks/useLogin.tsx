@@ -18,11 +18,9 @@ const useLogin = () => {
   const [error, setError] = useState<null | string>(null);
 
   const login = async (user: LoginProps) => {
+    const { username, password } = user;
     const response = (await backendApi
-      .post("/users/login", {
-        username: user.username,
-        password: user.password,
-      })
+      .post("/users/login", { username, password })
       .catch((e) => setError(e.response.data.message))) as AxiosResponse<res>;
 
     //If the response is ok saving the user to localstorage

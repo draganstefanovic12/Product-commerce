@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import Button from "../../components/Button";
+import FormOptions from "../../components/FormOptions/FormOptions";
 import useLogin from "../../hooks/useLogin";
 
 const loginSchema = Yup.object({
@@ -12,19 +13,17 @@ const Login = () => {
   const { login, error } = useLogin();
 
   return (
-    <div className="h-screen grid place-items-center">
+    <div className="h-screen grid place-items-center bg-pattern">
       <Formik
         initialValues={{ username: "", password: "" }}
+        validateOnChange={true}
         validationSchema={loginSchema}
         onSubmit={async (values) => {
-          await login({
-            username: values.username,
-            password: values.password,
-          });
+          await login(values);
         }}
       >
         {() => (
-          <Form className="w-1/5 h-1/2 rounded-lg grid gap-2 content-center justify-items-center shadow">
+          <Form className="form">
             <label>Username</label>
             <Field type="text" name="username" className="input-field" />
             <ErrorMessage name="username" component="div" />
@@ -35,6 +34,7 @@ const Login = () => {
             <Button type="submit" className="mt-5">
               Submit
             </Button>
+            <FormOptions navigateTo="register" />
           </Form>
         )}
       </Formik>

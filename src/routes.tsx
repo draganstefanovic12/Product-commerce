@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
+import Register from "./pages/Register/Register";
 
 const BrowserRoutes = () => {
   const { username } = useUser();
@@ -17,6 +18,10 @@ const BrowserRoutes = () => {
         <Route
           path="/login"
           element={!username ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/register"
+          element={!username ? <Register /> : <Navigate to="/" />}
         />
         <Route
           path="/"
