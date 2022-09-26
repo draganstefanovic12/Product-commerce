@@ -25,8 +25,8 @@ const HamburgerMenu = () => {
       <ul
         className={`${showMenu} flex-col absolute top-0 left-0 w-full bg-blue-500 p-10 space-y-5 text-white text-center`}
       >
-        <Link to="/">e</Link>
-        <Link to="/">eee</Link>
+        <Link to="/">placeholder</Link>
+        <Link to="/">placeholder</Link>
       </ul>
     </>
   );
