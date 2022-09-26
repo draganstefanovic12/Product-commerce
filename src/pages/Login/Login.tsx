@@ -1,8 +1,7 @@
-import { login } from "../../api/backendApi";
-import { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import Button from "../../components/Button";
+import useLogin from "../../hooks/useLogin";
 
 const loginSchema = Yup.object({
   username: Yup.string().required("Username is required."),
@@ -10,8 +9,7 @@ const loginSchema = Yup.object({
 });
 
 const Login = () => {
-  //Using state to handle server side errors
-  const [error, setError] = useState();
+  const { login, error } = useLogin();
 
   return (
     <div className="h-screen grid place-items-center">
@@ -22,10 +20,10 @@ const Login = () => {
           await login({
             username: values.username,
             password: values.password,
-          }).catch((e) => setError(e.response.data.message));
+          });
         }}
       >
-        {(err) => (
+        {() => (
           <Form className="w-1/5 h-1/2 rounded-lg grid gap-2 content-center justify-items-center shadow">
             <label>Username</label>
             <Field type="text" name="username" className="input-field" />

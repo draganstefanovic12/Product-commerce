@@ -8,7 +8,8 @@ import {
 
 //Using context to share user username and user token for authorization
 type UserContextProps = {
-  state: User;
+  username?: string | undefined;
+  token?: string | undefined;
   dispatch: React.Dispatch<Actions>;
 };
 
@@ -48,15 +49,16 @@ export const UserContextProvider = ({ children }: PropsProvider) => {
   const [state, dispatch] = useReducer(userReducer, initialState);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("appUser");
 
+    //Checking if there's a user in local storage
     if (user) {
       dispatch({ type: "LOGIN", payload: JSON.parse(user) });
     }
   }, []);
 
   return (
-    <UserContext.Provider value={{ state, dispatch }}>
+    <UserContext.Provider value={{ ...state, dispatch }}>
       {children}
     </UserContext.Provider>
   );
