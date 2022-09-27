@@ -27,6 +27,7 @@ export const useRegister = () => {
       .catch((e) => setError(e.response.data.message))) as AxiosResponse<res>;
 
     if (response.status === 200) {
+      localStorage.setItem("appUser", JSON.stringify(response.data));
       dispatch({ type: "LOGIN", payload: response.data });
     }
 

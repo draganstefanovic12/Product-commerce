@@ -22,6 +22,11 @@ const ChangePassword = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+  const handleChange = () => {
+    setError(null);
+    setSuccess(null);
+  };
+
   return (
     <div className="container shadow h-screen p-1">
       <h1>Change Password</h1>
@@ -32,11 +37,11 @@ const ChangePassword = () => {
           const res = await changePassword(values.oldpw, values.newpw).catch(
             (err) => setError(err.response.data)
           );
-          res.status === 200 && setSuccess("Successfully changed passwords.");
+          res.username && setSuccess("Successfully changed passwords.");
         }}
       >
         {() => (
-          <Form className="flex flex-col w-1/4 gap-2">
+          <Form onChange={handleChange} className="flex flex-col w-1/4 gap-2">
             {passwordFields.map((field, i) => (
               <Field
                 key={i}
