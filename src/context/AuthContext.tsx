@@ -28,7 +28,7 @@ type Actions =
 
 const initialState = null as User;
 
-const userReducer = (user: typeof initialState, action: Actions) => {
+const authReducer = (user: typeof initialState, action: Actions) => {
   switch (action.type) {
     case "LOGIN":
       return (user = action.payload);
@@ -39,14 +39,14 @@ const userReducer = (user: typeof initialState, action: Actions) => {
   }
 };
 
-const UserContext = createContext({} as UserContextProps);
+const AuthContext = createContext({} as UserContextProps);
 
-export const useUser = () => {
-  return useContext(UserContext);
+export const useAuth = () => {
+  return useContext(AuthContext);
 };
 
-export const UserContextProvider = ({ children }: PropsProvider) => {
-  const [state, dispatch] = useReducer(userReducer, initialState);
+export const AuthContextProvider = ({ children }: PropsProvider) => {
+  const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
     const user = localStorage.getItem("appUser");
@@ -58,8 +58,8 @@ export const UserContextProvider = ({ children }: PropsProvider) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 };

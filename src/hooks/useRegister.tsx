@@ -1,4 +1,4 @@
-import { useUser } from "../context/UserContext";
+import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import axios, { AxiosResponse } from "axios";
 
@@ -14,7 +14,7 @@ type res = {
 };
 
 export const useRegister = () => {
-  const { dispatch } = useUser();
+  const { dispatch } = useAuth();
   const [error, setError] = useState();
 
   const register = async (user: RegisterProps) => {

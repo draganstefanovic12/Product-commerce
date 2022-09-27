@@ -3,12 +3,12 @@ import "./reset.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import BrowserRoutes from "./routes";
-import { UserContextProvider } from "./context/UserContext";
+import { AuthContextProvider } from "./context/AuthContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <UserContextProvider>
+    <AuthContextProvider>
       <BrowserRoutes />
-    </UserContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );

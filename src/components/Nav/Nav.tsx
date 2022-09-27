@@ -1,10 +1,10 @@
-import { useUser } from "../../context/UserContext";
+import { useAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import ProfileMenu from "../ProfileMenu";
 import HamburgerMenu from "./HamburgerMenu";
 
 const Nav = () => {
-  const { username } = useUser();
+  const { username } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = () => {

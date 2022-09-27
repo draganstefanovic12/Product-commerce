@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useUser } from "../context/UserContext";
+import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AxiosResponse } from "axios";
@@ -15,7 +15,7 @@ type res = {
 };
 
 const useLogin = () => {
-  const { dispatch } = useUser();
+  const { dispatch } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState<null | string>(null);
 
