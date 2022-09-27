@@ -1,4 +1,4 @@
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../features/auth/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import ProfileMenu from "../ProfileMenu";
 import HamburgerMenu from "./HamburgerMenu";
@@ -16,8 +16,8 @@ const Nav = () => {
       <div className="container mx-auto py-5 flex justify-between">
         <Link to="/">Placeholder name</Link>
         <div className="hidden md:flex space-x-6">
-          <Link to="/">placeholder</Link>
-          <Link to="/">placeholder</Link>
+          <Link to="/">Newest</Link>
+          <Link to="/">Categories</Link>
           {!username && <button onClick={handleLogin}>Login</button>}
           {username && <ProfileMenu />}
         </div>

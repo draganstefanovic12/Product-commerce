@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { changePassword } from "../../api/backendApi";
+import { changePassword } from "../../../api/backendApi";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 
 const passwordFields = [
   { name: "oldpw", placeholder: "Old password" },
@@ -41,7 +41,10 @@ const ChangePassword = () => {
         }}
       >
         {() => (
-          <Form onChange={handleChange} className="flex flex-col w-1/4 gap-2">
+          <Form
+            onChange={handleChange}
+            className="flex flex-col sm:w-2/4 md:w-1/4 gap-2"
+          >
             {passwordFields.map((field, i) => (
               <Field
                 key={i}

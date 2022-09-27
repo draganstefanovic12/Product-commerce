@@ -1,34 +1,42 @@
+import { useAuth } from "../../features/auth/context/AuthContext";
 import { useState } from "react";
-import { useLogout } from "../../hooks/useLogout";
+import { useLogout } from "../../features/auth/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
 
-const ProfileMenu = () => {
-  const navigate = useNavigate();
+const NavDropdown = () => {
   const { logout } = useLogout();
-  const [showMenu, setShowMenu] = useState(false);
+  const { username } = useAuth();
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleHover = () => {
-    setShowMenu(true);
+  const handleOpen = () => {
+    setIsOpen(true);
   };
 
-  const handleStopHover = () => {
-    setShowMenu(false);
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   const handleSettings = () => {
     navigate("/settings");
-    setShowMenu(false);
+    setIsOpen(false);
+  };
+
+  const handleProfile = () => {
+    navigate(`/profile/${username}`);
+    setIsOpen(false);
   };
 
   return (
     <div
-      onMouseLeave={handleStopHover}
-      onMouseEnter={handleHover}
+      onMouseLeave={handleClose}
+      onMouseEnter={handleOpen}
       className="z-10 relative cursor-pointer"
     >
-      Profile
-      {showMenu && (
+      {username}
+      {isOpen && (
         <ul className="absolute child:text-sm bg-white child:p-2 child-hover:bg-slate-50 shadow">
+          <li onClick={handleProfile}>Profile</li>
           <li onClick={handleSettings}>Settings</li>
           <li onClick={logout}>Logout</li>
         </ul>
@@ -37,4 +45,4 @@ const ProfileMenu = () => {
   );
 };
 
-export default ProfileMenu;
+export default NavDropdown;
