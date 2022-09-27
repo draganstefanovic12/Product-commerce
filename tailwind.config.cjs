@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       backgroundImage: {
         pattern: "url('./assets/images/shattered-island.gif')",
-        hamburger: "url('./assets/images/hamburger.svg')",
       },
       height: {
         128: "32rem",

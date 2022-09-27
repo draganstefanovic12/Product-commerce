@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import Button from "../../components/Button";
 import useLogin from "../../hooks/useLogin";
-import FormOptions from "../../components/FormOptions/FormOptions";
+import FormOptions from "../../features/Form/FormOptions";
 
 const loginSchema = Yup.object({
   username: Yup.string().required("Username is required."),

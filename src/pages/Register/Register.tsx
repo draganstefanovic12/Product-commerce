@@ -2,7 +2,7 @@ import { useRegister } from "../../hooks/useRegister";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../../components/Button";
-import FormOptions from "../../components/FormOptions/FormOptions";
+import FormOptions from "../../features/Form/FormOptions";
 
 const signUpSchema = Yup.object({
   username: Yup.string().required(),

@@ -1,18 +1,25 @@
-import { Link } from "react-router-dom";
-import { useLogout } from "../../hooks/useLogout";
-import HamburgerMenu from "../HamburgerMenu";
+import { useUser } from "../../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
+import ProfileMenu from "../ProfileMenu";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Nav = () => {
-  const { logout } = useLogout();
+  const { username } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   return (
-    <nav className="fixed top-0 w-full shadow hover:shadow-md transition-shadow">
+    <nav className="bg-white w-full shadow hover:shadow-md fixed top-0 transition-shadow">
       <div className="container mx-auto py-5 flex justify-between">
-        <h1>Placeholder name</h1>
+        <Link to="/">Placeholder name</Link>
         <div className="hidden md:flex space-x-6">
           <Link to="/">placeholder</Link>
           <Link to="/">placeholder</Link>
-          <button onClick={logout}>Logout</button>
+          {!username && <button onClick={handleLogin}>Login</button>}
+          {username && <ProfileMenu />}
         </div>
         <HamburgerMenu />
       </div>

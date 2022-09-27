@@ -1,7 +1,6 @@
-import { AxiosResponse } from "axios";
-import { useState } from "react";
-import { backendApi } from "../api/backendApi";
 import { useUser } from "../context/UserContext";
+import { useState } from "react";
+import axios, { AxiosResponse } from "axios";
 
 type RegisterProps = {
   username: string;
@@ -19,8 +18,8 @@ export const useRegister = () => {
   const [error, setError] = useState();
 
   const register = async (user: RegisterProps) => {
-    const response = (await backendApi
-      .post("/users/signup", {
+    const response = (await axios
+      .post("http://localhost:5006/users/signup", {
         username: user.username,
         password: user.password,
         email: user.email,

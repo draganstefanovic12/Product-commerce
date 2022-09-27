@@ -1,34 +1,19 @@
-import { useUser } from "./context/UserContext";
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage";
 import Register from "./pages/Register/Register";
+import Settings from "./pages/Settings";
 
 const BrowserRoutes = () => {
-  const { username } = useUser();
-
   return (
     <Router>
-      {username && <Nav />}
+      <Nav />
       <Routes>
-        <Route
-          path="/login"
-          element={!username ? <Login /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/register"
-          element={!username ? <Register /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/"
-          element={username ? <MainPage /> : <Navigate to="/login" />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
   );

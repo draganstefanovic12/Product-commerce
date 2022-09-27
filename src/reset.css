@@ -10,6 +10,7 @@
 
 html,
 body {
+  margin-top: 2rem;
   overflow: hidden;
 }
 
