@@ -2,7 +2,6 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { getCategoryProducts } from "../api/backendApi";
 import CreateProduct from "../features/products/components/CreateProduct";
-import ProductCard from "../features/products/components/ProductCard";
 
 const Categories = () => {
   const { category, offset } = useParams();
