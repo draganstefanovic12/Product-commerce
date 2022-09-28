@@ -2,9 +2,9 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Register from "./pages/Register/Register";
 import Settings from "./pages/Settings";
 import MainPage from "./pages/MainPage";
+import Register from "./pages/Register/Register";
 
 const BrowserRoutes = () => {
   return (
