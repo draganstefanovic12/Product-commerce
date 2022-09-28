@@ -4,6 +4,11 @@ export const backendApi = axios.create({
   baseURL: "http://localhost:5006",
 });
 
+export const getProfile = async (user: string | undefined) => {
+  const response = await backendApi.get(`/users/profile/${user}`);
+  return response.data;
+};
+
 backendApi.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem("appUser")!);
   config.headers!["Authorization"] = `Bearer ${user!.token}`;

@@ -1,9 +1,9 @@
-import { useAuth } from "../../features/auth/context/AuthContext";
+import { useAuth } from "../../../features/auth/context/AuthContext";
 import { useState } from "react";
-import { useLogout } from "../../features/auth/hooks/useLogout";
+import { useLogout } from "../../../features/auth/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
 
-const NavDropdown = () => {
+const NavUserDropdown = () => {
   const { logout } = useLogout();
   const { username } = useAuth();
   const navigate = useNavigate();
@@ -45,4 +45,4 @@ const NavDropdown = () => {
   );
 };
 
-export default NavDropdown;
+export default NavUserDropdown;

@@ -1,7 +1,7 @@
 import { useAuth } from "../../features/auth/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import ProfileMenu from "../ProfileMenu";
-import HamburgerMenu from "./HamburgerMenu";
+import HamburgerMenu from "./components/HamburgerMenu";
+import NavUserDropdown from "./components/NavUserDropdown";
 
 const Nav = () => {
   const { username } = useAuth();
@@ -19,7 +19,7 @@ const Nav = () => {
           <Link to="/">Newest</Link>
           <Link to="/">Categories</Link>
           {!username && <button onClick={handleLogin}>Login</button>}
-          {username && <ProfileMenu />}
+          {username && <NavUserDropdown />}
         </div>
         <HamburgerMenu />
       </div>

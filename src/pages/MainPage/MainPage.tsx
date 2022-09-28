@@ -1,4 +1,4 @@
-import ProductCard from "../../features/products/Components/ProductCard";
+import ProductCard from "../../features/products/components/ProductCard";
 
 const MainPage = () => {
   return <div></div>;
