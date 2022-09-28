@@ -10,4 +10,8 @@
   .form {
     @apply w-96 h-128 bg-white rounded-lg grid gap-2 content-center justify-items-center shadow relative;
   }
+
+  .dropdown-child {
+    @apply absolute child:text-sm bg-white child:p-2 child-hover:bg-slate-50 shadow;
+  }
 }

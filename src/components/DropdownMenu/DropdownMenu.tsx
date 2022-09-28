@@ -1,12 +1,11 @@
-import { useAuth } from "../../features/auth/context/AuthContext";
 import { useState } from "react";
 
 type DropdownProps = {
   children: JSX.Element;
+  name: string;
 };
 
-const DropdownMenu = ({ children }: DropdownProps) => {
-  const { username } = useAuth();
+const DropdownMenu = ({ children, name }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -24,7 +23,7 @@ const DropdownMenu = ({ children }: DropdownProps) => {
       className="z-10 relative cursor-pointer"
     >
       <>
-        {username}
+        {name}
         {isOpen && children}
       </>
     </div>

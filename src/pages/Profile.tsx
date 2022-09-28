@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { getProfile } from "../../api/backendApi";
+import { getProfile } from "../api/backendApi";
 
 const Profile = () => {
   const { username } = useParams();

@@ -1,4 +1,4 @@
-import ChangePassword from "../../features/user/components/ChangePassword";
+import ChangePassword from "../features/user/components/ChangePassword";
 
 const Settings = () => {
   return (

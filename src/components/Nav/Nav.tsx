@@ -2,7 +2,8 @@ import { useAuth } from "../../features/auth/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import HamburgerMenu from "./components/HamburgerMenu";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import ProfileMenu from "./components/ProfileMenu";
+import ProfileDropdown from "./components/ProfileMenu";
+import CategoriesDropdown from "../../features/products/components/CategoriesDropdown";
 
 const Nav = () => {
   const { username } = useAuth();
@@ -15,12 +16,14 @@ const Nav = () => {
   return (
     <nav className="bg-white w-full shadow hover:shadow-md fixed top-0 transition-shadow">
       <div className="container mx-auto py-5 flex justify-between">
-        <Link to="/">Placeholder name</Link>
+        <Link to="/">Home</Link>
         <div className="hidden md:flex space-x-6">
           <Link to="/">Newest</Link>
-          <Link to="/">Categories</Link>
+          <DropdownMenu name="Categories" children={<CategoriesDropdown />} />
           {!username && <button onClick={handleLogin}>Login</button>}
-          {username && <DropdownMenu children={<ProfileMenu />} />}
+          {username && (
+            <DropdownMenu name={username} children={<ProfileDropdown />} />
+          )}
         </div>
         <HamburgerMenu />
       </div>

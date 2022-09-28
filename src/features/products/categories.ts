@@ -1,4 +1,4 @@
-export const categories = [
+const categories = [
   { name: "Electronics" },
   { name: "Instruments" },
   { name: "Clothing" },
@@ -6,3 +6,5 @@ export const categories = [
   { name: "Vehicles" },
   { name: "Books, Movies & Music" },
 ];
+
+export default categories;

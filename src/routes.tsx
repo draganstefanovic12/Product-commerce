@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import MainPage from "./pages/MainPage";
-import Register from "./pages/Register/Register";
+import Register from "./pages/Register";
 
 const BrowserRoutes = () => {
   return (
