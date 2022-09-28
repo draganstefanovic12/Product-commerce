@@ -16,13 +16,11 @@ const ProfileMenu = () => {
   };
 
   return (
-    <>
-      <ul className="dropdown-child">
-        <li onClick={handleProfile}>Profile</li>
-        <li onClick={handleSettings}>Settings</li>
-        <li onClick={logout}>Logout</li>
-      </ul>
-    </>
+    <ul className="dropdown-child">
+      <li onClick={handleProfile}>Profile</li>
+      <li onClick={handleSettings}>Settings</li>
+      <li onClick={logout}>Logout</li>
+    </ul>
   );
 };
 

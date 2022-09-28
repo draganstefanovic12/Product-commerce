@@ -4,7 +4,7 @@ const categories = [
   { name: "Clothing" },
   { name: "Pets" },
   { name: "Vehicles" },
-  { name: "Books, Movies & Music" },
+  { name: "Books" },
 ];
 
 export default categories;

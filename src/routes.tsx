@@ -17,7 +17,7 @@ const BrowserRoutes = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/" element={<MainPage />} />
-        <Route path="/categories/:category" element={<Categories />}></Route>
+        <Route path="/category/:category/:offset" element={<Categories />} />
       </Routes>
     </Router>
   );

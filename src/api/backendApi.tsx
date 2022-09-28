@@ -9,6 +9,17 @@ export const getProfile = async (user: string | undefined) => {
   return response.data;
 };
 
+export const getCategoryProducts = async (
+  category: string | undefined,
+  offset: string | undefined
+) => {
+  const response = await backendApi.get(
+    `/products/category/${category}/${offset}`
+  );
+  return response.data;
+};
+
+//interceptor that attaches user token to every request that requires one
 backendApi.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem("appUser")!);
   config.headers!["Authorization"] = `Bearer ${user!.token}`;
