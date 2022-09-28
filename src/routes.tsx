@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import MainPage from "./pages/MainPage";
 import Register from "./pages/Register";
+import Categories from "./pages/Categories";
 
 const BrowserRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const BrowserRoutes = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/" element={<MainPage />} />
+        <Route path="/categories/:category" element={<Categories />}></Route>
       </Routes>
     </Router>
   );

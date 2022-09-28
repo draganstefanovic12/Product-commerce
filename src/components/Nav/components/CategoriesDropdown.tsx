@@ -1,4 +1,4 @@
-import categories from "../categories";
+import categories from "../../../features/products/categories";
 
 const CategoriesDropdown = () => {
   return (

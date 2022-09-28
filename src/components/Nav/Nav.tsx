@@ -2,8 +2,8 @@ import { useAuth } from "../../features/auth/context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import HamburgerMenu from "./components/HamburgerMenu";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import ProfileDropdown from "./components/ProfileMenu";
-import CategoriesDropdown from "../../features/products/components/CategoriesDropdown";
+import ProfileDropdown from "./components/ProfileDropdown";
+import CategoriesDropdown from "./components/CategoriesDropdown";
 
 const Nav = () => {
   const { username } = useAuth();
