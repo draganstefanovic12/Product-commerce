@@ -22,3 +22,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@media only screen and (max-width: 768px) {
+  #root {
+    margin-top: 0.1rem;
+    overflow: hidden;
+  }
+}

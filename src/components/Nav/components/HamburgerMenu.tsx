@@ -18,17 +18,17 @@ const HamburgerMenu = () => {
   };
 
   return (
-    <>
+    <div className="flex md:hidden">
       <img
         src={cartImg}
         alt="cart"
-        className="h-5"
+        className="w-5"
         onClick={handleShowCartContent}
       />
       <svg
         onClick={handleShowMenu}
         fill="none"
-        className="md:hidden sm:block space-y-1 w-6 z-10 relative"
+        className="md:hidden sm:block w space-y-1 w-6 z-10 relative"
         viewBox="0 0 24 24"
         stroke={stroke}
       >
@@ -39,7 +39,7 @@ const HamburgerMenu = () => {
       >
         <Link to="/">Categories</Link>
       </ul>
-    </>
+    </div>
   );
 };
 

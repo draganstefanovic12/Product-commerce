@@ -1,11 +1,10 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { getCategoryProducts } from "../api/backendApi";
-import SellProduct from "../features/products/components/SellProduct";
 
 const Categories = () => {
   const { category, offset } = useParams();
-  const { isLoading, data } = useQuery(["category"], () => {
+  const { isLoading, data } = useQuery(["category", offset], () => {
     return getCategoryProducts(category, offset);
   });
 

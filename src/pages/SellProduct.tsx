@@ -23,7 +23,7 @@ const productForm = [
 
 const SellProduct = () => {
   return (
-    <div className="flex w-full justify-center relative">
+    <div className="flex w-4/4 justify-center relative">
       <Formik
         onSubmit={(values) => {
           console.log(values);
