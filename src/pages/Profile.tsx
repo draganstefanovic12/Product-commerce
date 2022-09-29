@@ -1,3 +1,4 @@
+import { Product } from "../features/products/types";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -7,9 +8,10 @@ import ChangeAvatar from "../features/user/components/ChangeAvatar";
 
 const Profile = () => {
   const { username } = useParams();
+  //add edit option later
   const [isEditing, setIsEditing] = useState(false);
 
-  const { isLoading, data: user } = useQuery(["profile"], () => {
+  const { isLoading, data: user } = useQuery(["profile", username], () => {
     return getProfile(username);
   });
 
@@ -41,7 +43,9 @@ const Profile = () => {
             <li>Feedback: </li>
           </ul>
           <div className="h-screen w-full p-2 shadow-inner">
-            <ProductCard product={user.products} />
+            {user.products.map((product: Product) => (
+              <ProductCard product={product} />
+            ))}
           </div>
         </div>
         {isEditing && <ChangeAvatar />}

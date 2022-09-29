@@ -43,7 +43,7 @@ const ChangePassword = () => {
         {() => (
           <Form
             onChange={handleChange}
-            className="flex flex-col sm:w-2/4 md:w-1/4 gap-2"
+            className="flex flex-col sm:w-2/4 md:w-1/4"
           >
             {passwordFields.map((field, i) => (
               <Field
@@ -51,7 +51,7 @@ const ChangePassword = () => {
                 placeholder={field.placeholder}
                 type="password"
                 name={field.name}
-                className="input-field w-full bg-gray-100"
+                className="input-field w-full bg-gray-100 mb-2"
               />
             ))}
             <ErrorMessage
@@ -61,7 +61,7 @@ const ChangePassword = () => {
             />
             <p className="text-green-400 font-bold">{success}</p>
             <p className="text-red-400">{error}</p>
-            <Button type="submit" className="w-24 self-center">
+            <Button type="submit" className="w-24 self-center bg-gray-700">
               Submit
             </Button>
           </Form>

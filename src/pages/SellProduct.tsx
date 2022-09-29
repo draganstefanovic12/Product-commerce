@@ -8,9 +8,8 @@ const initialValues = {
   name: "",
   description: "",
   price: "",
-  file: "",
-  cond: "",
-  trade: "",
+  cond: false,
+  trade: false,
   stock: "",
   category: "",
 };
@@ -23,15 +22,14 @@ const productForm = [
 ];
 
 const SellProduct = () => {
+  const [category, setCategory] = useState("Electronics");
   const [uploadImages, setUploadImages] = useState<FileList | null>();
-
-  // console.log([...uploadImages!]);
 
   return (
     <div className="flex w-4/4 justify-center relative">
       <Formik
         onSubmit={(values) => {
-          createProduct(uploadImages, values);
+          createProduct(uploadImages, { ...values, category: category });
         }}
         initialValues={initialValues}
       >
@@ -59,7 +57,13 @@ const SellProduct = () => {
               <div className="flex flex-col gap-3">
                 <div className="justify-between flex w-72 px-3">
                   <label>Category</label>
-                  <Field name="category" type="select" values={categories} />
+                  <select onChange={(e) => setCategory(e.target.value)}>
+                    {categories.map((category, i) => (
+                      <option key={i} value={category.name}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div className="justify-between flex w-72 px-3">
                   <label>
