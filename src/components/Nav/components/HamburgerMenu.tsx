@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
+import cartImg from "../../../assets/images/shopping-cart.svg";
+import { useCart } from "../../../features/shopping cart/context/ShoppingCartContext";
 import { useState } from "react";
 
 const HamburgerMenu = () => {
-  const [isOpen, setIsOpen] = useState("hidden");
+  const { isOpen, setIsOpen } = useCart();
+  const [showMenu, setShowMenu] = useState("hidden");
   const [stroke, setStroke] = useState("currentColor");
 
   const handleShowMenu = (): void => {
-    setIsOpen(isOpen === "hidden" ? "flex" : "hidden");
+    setShowMenu(showMenu === "hidden" ? "flex" : "hidden");
     setStroke(stroke === "#fff" ? "currentColor" : "#fff");
+  };
+
+  const handleShowCartContent = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
     <>
+      <img
+        src={cartImg}
+        alt="cart"
+        className="h-5"
+        onClick={handleShowCartContent}
+      />
       <svg
         onClick={handleShowMenu}
         fill="none"
@@ -22,7 +35,7 @@ const HamburgerMenu = () => {
         <path d="M4 6h16M4 12h16M4 18h16" />
       </svg>
       <ul
-        className={`${isOpen} flex-col absolute top-0 left-0 w-full bg-blue-500 p-10 space-y-5 text-white text-center`}
+        className={`${showMenu} flex-col absolute top-0 left-0 w-full bg-blue-500 p-10 space-y-5 text-white text-center`}
       >
         <Link to="/">Categories</Link>
       </ul>

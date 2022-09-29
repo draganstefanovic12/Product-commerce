@@ -44,7 +44,7 @@ const SellProduct = () => {
                 multiple="multiple"
               />
             ))}
-            <div className="flex sm:flex-col md:justify-between">
+            <div className="md:flex md:justify-between">
               <div className="flex flex-col gap-3">
                 <div className="justify-between flex w-72 px-3">
                   <label>Category</label>

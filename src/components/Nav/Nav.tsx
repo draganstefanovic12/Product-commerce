@@ -25,7 +25,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-white sm:w-full w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow">
+    <nav className="bg-white sm:w-36 md:w-screen shadow hover:shadow-md fixed z-50 top-0 transition-shadow">
       <div className="container mx-auto py-5 flex justify-between child:cursor-pointer">
         <Link to="/">Home</Link>
         <div className="hidden md:flex space-x-6">
