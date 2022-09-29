@@ -20,12 +20,16 @@ const Nav = () => {
     navigate("/login");
   };
 
+  const handleSell = () => {
+    navigate("/sell");
+  };
+
   return (
-    <nav className="bg-white w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow">
+    <nav className="bg-white sm:w-full w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow">
       <div className="container mx-auto py-5 flex justify-between child:cursor-pointer">
         <Link to="/">Home</Link>
         <div className="hidden md:flex space-x-6">
-          <p>Sell</p>
+          <p onClick={handleSell}>Sell</p>
           <DropdownMenu name="Categories" children={<CategoriesDropdown />} />
           {!username && <button onClick={handleLogin}>Login</button>}
           {username && (

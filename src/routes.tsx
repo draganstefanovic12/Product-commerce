@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage";
 import Register from "./pages/Register";
 import Categories from "./pages/Categories";
 import ShoppingCartContent from "./features/shopping cart/components/ShoppingCartContent";
+import SellProduct from "./pages/SellProduct";
 
 const BrowserRoutes = () => {
   return (
@@ -18,8 +19,9 @@ const BrowserRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile/:username" element={<Profile />} />
-        <Route path="/" element={<MainPage />} />
         <Route path="/category/:category/:offset" element={<Categories />} />
+        <Route path="/sell" element={<SellProduct />} />
+        <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
   );
