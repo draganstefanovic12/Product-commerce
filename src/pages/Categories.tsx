@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { getCategoryProducts } from "../api/backendApi";
-import CreateProduct from "../features/products/components/CreateProduct";
+import SellProduct from "../features/products/components/SellProduct";
 
 const Categories = () => {
   const { category, offset } = useParams();
@@ -14,7 +14,7 @@ const Categories = () => {
     return <p>spinner placeholder</p>;
   }
 
-  return <CreateProduct />;
+  return <div></div>;
 };
 
 export default Categories;

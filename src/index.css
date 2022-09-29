@@ -12,6 +12,6 @@
   }
 
   .dropdown-child {
-    @apply absolute child:text-sm bg-white child:p-2 child-hover:bg-slate-50 shadow;
+    @apply absolute child:text-sm bg-white child:p-2 child-hover:bg-slate-50 shadow z-50;
   }
 }

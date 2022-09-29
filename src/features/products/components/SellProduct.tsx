@@ -1,7 +1,11 @@
 import { Field, Form, Formik } from "formik";
-import close from "../../../assets/images/close.svg";
 import Button from "../../../components/Button";
 import categories from "../categories";
+
+type SellProps = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const initialValues = {
   name: "",
@@ -22,7 +26,7 @@ const productForm = [
   { name: "file", placeholder: "Product images", type: "file" },
 ];
 
-const CreateProduct = () => {
+const SellProduct = () => {
   return (
     <div>
       <Formik
@@ -33,11 +37,6 @@ const CreateProduct = () => {
       >
         {() => (
           <Form className="form h-screen w-full md:w-max md:absolute md:right-0 rounded-none">
-            <img
-              src={close}
-              alt="close"
-              className="h-3 absolute top-3 right-3 cursor-pointer"
-            />
             <h1>Sell new product</h1>
             {productForm.map((fieldProp, i) => (
               <Field
@@ -73,4 +72,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default SellProduct;

@@ -6,11 +6,13 @@ import Settings from "./pages/Settings";
 import MainPage from "./pages/MainPage";
 import Register from "./pages/Register";
 import Categories from "./pages/Categories";
+import ShoppingCartContent from "./features/shopping cart/components/ShoppingCartContent";
 
 const BrowserRoutes = () => {
   return (
     <Router>
       <Nav />
+      <ShoppingCartContent />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

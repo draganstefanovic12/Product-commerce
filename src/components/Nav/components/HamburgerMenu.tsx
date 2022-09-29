@@ -24,7 +24,6 @@ const HamburgerMenu = () => {
       <ul
         className={`${isOpen} flex-col absolute top-0 left-0 w-full bg-blue-500 p-10 space-y-5 text-white text-center`}
       >
-        <Link to="/">Newest</Link>
         <Link to="/">Categories</Link>
       </ul>
     </>
