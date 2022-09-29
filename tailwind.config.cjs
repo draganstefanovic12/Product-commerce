@@ -9,6 +9,9 @@ module.exports = {
       height: {
         128: "32rem",
       },
+      gridTemplateColumns: {
+        profile: "15% 75%",
+      },
     },
   },
   plugins: [
