@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { getProfile } from "../api/backendApi";
+import { getProfile } from "../api/userApi";
+import ProductCard from "../features/products/components/ProductCard";
 import ChangeAvatar from "../features/user/components/ChangeAvatar";
 
 const Profile = () => {
@@ -16,12 +17,10 @@ const Profile = () => {
     return <p>spinner</p>;
   }
 
-  console.log(user);
-
   return (
     <div className="flex w-full justify-center">
       <div className="container shadow h-screen">
-        <div className="flex flex-col md:flex-row gap-5 md:child:self-end drop-shadow-sm shadow-sm p-2 pb-0">
+        <div className="flex flex-col md:flex-row gap-12 md:child:self-end drop-shadow-sm shadow-sm p-2 pb-0">
           <img
             src={user.avatar}
             alt="avatar"
@@ -38,9 +37,12 @@ const Profile = () => {
           <ul className="h-screen w-full shadow-sm p-2">
             <li>Joined: {user.joined}</li>
             <li>Products sold: </li>
+            <li>Location: </li>
             <li>Feedback: </li>
           </ul>
-          <div></div>
+          <div className="h-screen w-full p-2 shadow-inner">
+            <ProductCard product={user.products} />
+          </div>
         </div>
         {isEditing && <ChangeAvatar />}
       </div>

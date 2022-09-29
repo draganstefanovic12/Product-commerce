@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { createProduct } from "../api/productApi";
 import { Field, Form, Formik } from "formik";
 import Button from "../components/Button";
 import categories from "../features/products/categories";
@@ -18,15 +20,18 @@ const productForm = [
   { name: "description", placeholder: "Product description", type: "textarea" },
   { name: "price", placeholder: "Product price (USD)", type: "number" },
   { name: "stock", placeholder: "In stock", type: "number" },
-  { name: "file", placeholder: "Product images", type: "file" },
 ];
 
 const SellProduct = () => {
+  const [uploadImages, setUploadImages] = useState<FileList | null>();
+
+  // console.log([...uploadImages!]);
+
   return (
     <div className="flex w-4/4 justify-center relative">
       <Formik
         onSubmit={(values) => {
-          console.log(values);
+          createProduct(uploadImages, values);
         }}
         initialValues={initialValues}
       >
@@ -41,9 +46,15 @@ const SellProduct = () => {
                 type={fieldProp.type}
                 className="input-field my-5 w-full"
                 component={fieldProp.type === "textarea" && "textarea"}
-                multiple="multiple"
               />
             ))}
+            <input
+              type="file"
+              className="input-field w-full my-5"
+              accept="image/*"
+              onChange={(e) => setUploadImages(e.currentTarget.files)}
+              multiple
+            />
             <div className="md:flex md:justify-between">
               <div className="flex flex-col gap-3">
                 <div className="justify-between flex w-72 px-3">

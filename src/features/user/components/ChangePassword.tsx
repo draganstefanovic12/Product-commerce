@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { changePassword } from "../../../api/backendApi";
+import { changePassword } from "../../../api/userApi";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import Button from "../../../components/Button";

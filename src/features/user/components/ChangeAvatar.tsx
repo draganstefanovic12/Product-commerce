@@ -1,4 +1,4 @@
-import { changeAvatar, removeAvatar } from "../../../api/backendApi";
+import { changeAvatar, removeAvatar } from "../../../api/userApi";
 import { useMutation, useQueryClient } from "react-query";
 import Button from "../../../components/Button";
 
