@@ -18,4 +18,8 @@
   .profile-info-box {
     @apply h-20 items-center flex shadow px-5 rounded bg-gray-50;
   }
+
+  .secondary-btn {
+    @apply bg-gray-700 hover:bg-gray-800 text-sm shadow text-white px-5 rounded;
+  }
 }

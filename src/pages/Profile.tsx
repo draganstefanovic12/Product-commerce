@@ -2,20 +2,19 @@ import { useAuth } from "../features/auth/context/AuthContext";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { Selection } from "../features/profile/types/types";
 import { getProfile } from "../api/userApi";
 import ChangeAvatar from "../features/user/components/ChangeAvatar";
 import SellingProducts from "../features/user/components/SellingProducts";
 import SoldProducts from "../features/user/components/SoldProducts";
 import WatchlistProducts from "../features/user/components/WatchlistProducts";
-
-type Selection = "selling" | "sold" | "watchlist";
+import ProfileProductSelection from "../features/profile/components/ProfileProducts";
 
 const Profile = () => {
   const { username } = useParams();
   const { username: currUser } = useAuth();
-  const [profileCategory, setProfileCategory] = useState<Selection>("selling");
+  const [profileProducts, setProfileProducts] = useState<Selection>("selling");
   const [isEditing, setIsEditing] = useState(false);
-
   const { isLoading, data: user } = useQuery(
     ["profile", username, isEditing],
     () => {
@@ -27,26 +26,9 @@ const Profile = () => {
     return <p>spinner</p>;
   }
 
-  const handleSelling = () => {
-    setProfileCategory("selling");
-  };
-
-  const handleSold = () => {
-    setProfileCategory("sold");
-  };
-
-  const handleWatchlist = () => {
-    setProfileCategory("watchlist");
-  };
-
   const handleEditing = () => {
     setIsEditing(!isEditing);
   };
-
-  const sellingSelected = profileCategory === "selling" ? "shadow-inner" : "";
-  const soldSelected = profileCategory === "sold" ? "shadow-inner" : "";
-  const watchlistSelected =
-    profileCategory === "watchlist" ? "shadow-inner" : "";
 
   return (
     <div className="flex w-full justify-center bg-gray-50">
@@ -61,7 +43,7 @@ const Profile = () => {
             {isEditing && <ChangeAvatar setIsEditing={setIsEditing} />}
             {username === currUser && (
               <button
-                className="absolute bg-gray-700 hover:bg-gray-800 text-sm shadow text-white px-5 rounded right-5 bottom-2"
+                className="secondary-btn absolute right-5 bottom-2"
                 onClick={handleEditing}
               >
                 Edit
@@ -69,17 +51,10 @@ const Profile = () => {
             )}
           </div>
           <h1 className="text-lg">{username}</h1>
-          <div className="flex child:cursor-pointer child:px-10 child-hover:bg-gray-100">
-            <p className={sellingSelected} onClick={handleSelling}>
-              Selling
-            </p>
-            <p className={soldSelected} onClick={handleSold}>
-              Sold
-            </p>
-            <p className={watchlistSelected} onClick={handleWatchlist}>
-              Watchlist
-            </p>
-          </div>
+          <ProfileProductSelection
+            profileProducts={profileProducts}
+            setProfileProducts={setProfileProducts}
+          />
         </div>
         <div className="grid grid-cols-profile">
           <ul className="h-screen w-full shadow-sm p-2 flex flex-col gap-4">
@@ -97,13 +72,13 @@ const Profile = () => {
             </div>
           </ul>
           <div className="h-screen w-full p-2 shadow-inner">
-            {profileCategory === "selling" && (
+            {profileProducts === "selling" && (
               <SellingProducts products={user.products} />
             )}
-            {profileCategory === "sold" && (
+            {profileProducts === "sold" && (
               <SoldProducts products={user.products} />
             )}
-            {profileCategory === "watchlist" && (
+            {profileProducts === "watchlist" && (
               <WatchlistProducts products={user.watchlist} />
             )}
           </div>
