@@ -8,5 +8,5 @@ export type User = {
   watchlist: Product[];
   products: Product[];
   username: string;
-  createdAt: string;
+  joined: string;
 };

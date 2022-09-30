@@ -9,6 +9,7 @@ import SellingProducts from "../features/user/components/SellingProducts";
 import SoldProducts from "../features/user/components/SoldProducts";
 import WatchlistProducts from "../features/user/components/WatchlistProducts";
 import ProfileProductSelection from "../features/profile/components/ProfileProducts";
+import ProfileInfoBox from "../features/profile/components/ProfileInfoBox";
 
 const Profile = () => {
   const { username } = useParams();
@@ -57,20 +58,7 @@ const Profile = () => {
           />
         </div>
         <div className="grid grid-cols-profile">
-          <ul className="h-screen w-full shadow-sm p-2 flex flex-col gap-4">
-            <div className="profile-info-box">
-              <li>Joined: {user.joined}</li>
-            </div>
-            <div className="profile-info-box">
-              <li>Products sold: </li>
-            </div>
-            <div className="profile-info-box">
-              <li>Location: </li>
-            </div>
-            <div className="profile-info-box">
-              <li>Feedback: Positive</li>
-            </div>
-          </ul>
+          <ProfileInfoBox user={user} />
           <div className="h-screen w-full p-2 shadow-inner">
             {profileProducts === "selling" && (
               <SellingProducts products={user.products} />
