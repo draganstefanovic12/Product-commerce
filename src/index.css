@@ -14,4 +14,8 @@
   .dropdown-child {
     @apply absolute child:text-sm bg-white child:p-2 child-hover:bg-slate-50 shadow z-50;
   }
+
+  .profile-info-box {
+    @apply h-20 items-center flex shadow px-5 rounded bg-gray-50;
+  }
 }

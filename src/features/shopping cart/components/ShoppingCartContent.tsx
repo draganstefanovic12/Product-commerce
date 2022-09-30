@@ -2,7 +2,7 @@ import close from "../../../assets/images/close.svg";
 import { useCart } from "../context/ShoppingCartContext";
 
 const ShoppingCartContent = () => {
-  const { cart, isOpen, setIsOpen } = useCart();
+  const { isOpen, setIsOpen } = useCart();
   const showCart = isOpen ? "translate-x-0" : "translate-x-96 hidden";
 
   const handleClose = () => {

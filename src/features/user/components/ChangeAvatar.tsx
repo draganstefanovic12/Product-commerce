@@ -2,7 +2,11 @@ import { changeAvatar, removeAvatar } from "../../../api/userApi";
 import { useMutation, useQueryClient } from "react-query";
 import Button from "../../../components/Button";
 
-const ChangeAvatar = () => {
+type AvatarProps = {
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ChangeAvatar = ({ setIsEditing }: AvatarProps) => {
   const queryClient = useQueryClient();
 
   const handleSubmit = (e: File): Promise<string> => {
@@ -12,17 +16,19 @@ const ChangeAvatar = () => {
   const mutateUser = useMutation(handleSubmit, {
     onSuccess: () => {
       queryClient.invalidateQueries("profile");
+      setIsEditing(false);
     },
   });
 
   const removeMutate = useMutation(removeAvatar, {
     onSuccess: () => {
       queryClient.invalidateQueries("profile");
+      setIsEditing(false);
     },
   });
 
   return (
-    <>
+    <div className="flex flex-col gap-1 mb-1">
       <input
         name="fileupload"
         accept="image/*"
@@ -35,11 +41,11 @@ const ChangeAvatar = () => {
       <input name="fileupload" type="submit" id="submit" className="hidden" />
       <Button
         onClick={() => removeMutate.mutate()}
-        className="w-max bg-gray-800"
+        className="bg-gray-700 hover:bg-gray-800 shadow text-white w-36 px-5 rounded text-sm font-normal"
       >
         Remove Avatar
       </Button>
-    </>
+    </div>
   );
 };
 

@@ -38,6 +38,13 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
 
   const addToCart = useCallback(
     (product: Product) => {
+      const checkCart = cart.find(
+        (currProd) => currProd.product.name === product.name
+      );
+      //Checking if the product is already in the cart
+      if (checkCart) {
+        return;
+      }
       const newProd = [...cart!, { product: product, count: 1 }];
       setCart(newProd);
     },

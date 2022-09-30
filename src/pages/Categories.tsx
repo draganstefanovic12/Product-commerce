@@ -6,11 +6,10 @@ import ProductCard from "../features/products/components/ProductCard";
 
 const Categories = () => {
   const { category, offset } = useParams();
-  const { isLoading, data } = useQuery(["category", offset], () => {
+  const { isLoading, data } = useQuery(["category", category, offset], () => {
     return getCategoryProducts(category, offset);
   });
 
-  console.log(data);
   if (isLoading) {
     return <p>spinner placeholder</p>;
   }

@@ -7,4 +7,5 @@ export type Product = {
   stock: string;
   category: string;
   images?: string[];
+  sold?: boolean;
 };
