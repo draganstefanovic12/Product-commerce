@@ -10,7 +10,7 @@ import Button from "../components/Button";
 const Product = () => {
   const { id } = useParams();
   const { cart, addToCart } = useCart();
-  const { isLoading, data: product } = useQuery(["product"], () => {
+  const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
   }) as UseQueryResult<ProductPage>;
 
@@ -22,18 +22,16 @@ const Product = () => {
     addToCart(product);
   };
 
-  console.log(product);
-
   const trades =
     product?.trade === true ? "Accepting trades" : "Not accepting trades";
 
   return (
     <Container>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />
         <div className="flex flex-col p-5 shadow w-full justify-between">
           <div className="flex flex-col gap-5">
-            <h1 className="text-lg">{product!.name}</h1>
+            <h1 className="text-3xl">{product!.name}</h1>
             <div className="flex shadow rounded w-max p-5 h-16">
               <h1>
                 Seller:
@@ -53,22 +51,22 @@ const Product = () => {
             </div>
           </div>
           <div>
-            <div className="flex align-bottom">
+            <div className="flex flex-col align-bottom">
               <p className="text-4xl pr-2">{product!.price}$</p>
-              <Button
-                onClick={handleAddCart}
-                className="w-36 bg-gray-700 hover:bg-gray-800"
-              >
-                Add to cart
-              </Button>
+              <p>In stock: {product!.stock}</p>
             </div>
-            <p>In stock: {product!.stock}</p>
+            <Button
+              onClick={handleAddCart}
+              className="w-36 bg-gray-700 hover:bg-gray-800"
+            >
+              Add to cart
+            </Button>
           </div>
         </div>
       </div>
-      <div className="p-5 w-full shadow rounded mt-2">
+      <div className="px-5 w-full h-32">
         <p>Description</p>
-        <p>{product?.description}</p>
+        <p className="shadow-sm rounded h-32 p-3">{product?.description}</p>
       </div>
     </Container>
   );

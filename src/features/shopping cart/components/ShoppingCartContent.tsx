@@ -19,7 +19,7 @@ const ShoppingCartContent = () => {
         onClick={handleClose}
         src={close}
         alt="close"
-        className="h-3 absolute right-3 top-3 cursor-pointer"
+        className="h-3 absolute right-3 top-7 cursor-pointer"
       />
       <p>Cart content: </p>
       {cart.map((product: CartProducts) => (

@@ -45,14 +45,14 @@ const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
       <div className="items-center flex flex-col">
         <Button
           onClick={handleIncrement}
-          className="secondary-btn w-6 px-0 py-0 bg-gray-700 hover:bg-gray-800"
+          className="w-6 px-0 py-0 shadow bg-white"
         >
           +
         </Button>
         <p className="self-center">{prop.count}</p>
         <Button
           onClick={handleDecrement}
-          className="secondary-btn w-6 px-0 py-0 bg-gray-700 hover:bg-gray-800"
+          className="w-6 px-0 py-0 shadow bg-white"
         >
           -
         </Button>

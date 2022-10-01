@@ -23,7 +23,7 @@ const ImageCarousel = ({ product }: CarouselProps) => {
   };
 
   return (
-    <div className="relative w-2/4 h-128 flex justify-center items-center shadow overflow-hidden">
+    <div className="relative w-4/4 md:w-2/4 h-128 flex justify-center items-center shadow overflow-hidden">
       <img
         src={`http://localhost:5006${product?.images![number]}`}
         alt="img"
