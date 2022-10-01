@@ -49,7 +49,7 @@ export const AuthContextProvider = ({ children }: PropsProvider) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const user = localStorage.getItem("appUser");
+    const user = localStorage.getItem("commUser");
 
     //Checking if there's a user in local storage
     if (user) {

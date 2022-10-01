@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import axios, { AxiosResponse } from "axios";
+import { useNavigate } from "react-router-dom";
 
 type RegisterProps = {
   username: string;
@@ -16,6 +17,7 @@ type res = {
 export const useRegister = () => {
   const { dispatch } = useAuth();
   const [error, setError] = useState();
+  const navigate = useNavigate();
 
   const register = async (user: RegisterProps) => {
     const response = (await axios
@@ -27,8 +29,9 @@ export const useRegister = () => {
       .catch((e) => setError(e.response.data.message))) as AxiosResponse<res>;
 
     if (response.status === 200) {
-      localStorage.setItem("appUser", JSON.stringify(response.data));
+      localStorage.setItem("commUser", JSON.stringify(response.data));
       dispatch({ type: "LOGIN", payload: response.data });
+      navigate("/");
     }
 
     return response.data;

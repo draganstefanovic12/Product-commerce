@@ -29,7 +29,7 @@ const Nav = () => {
       <div className="container mx-auto py-5 flex justify-between child:cursor-pointer">
         <Link to="/">Home</Link>
         <div className="hidden md:flex space-x-6">
-          <p onClick={handleSell}>Sell</p>
+          {username && <p onClick={handleSell}>Sell</p>}
           <DropdownMenu name="Categories" children={<CategoriesDropdown />} />
           {!username && <button onClick={handleLogin}>Login</button>}
           {username && (

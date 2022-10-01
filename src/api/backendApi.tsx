@@ -6,7 +6,10 @@ export const backendApi = axios.create({
 
 //interceptor that attaches user token to every request that requires one
 backendApi.interceptors.request.use((config) => {
-  const user = JSON.parse(localStorage.getItem("appUser")!);
+  const user = JSON.parse(localStorage.getItem("commUser")!);
+  if (!user) {
+    return config;
+  }
   config.headers!["Authorization"] = `Bearer ${user!.token}`;
   return config;
 });

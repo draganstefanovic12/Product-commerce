@@ -27,7 +27,7 @@ const useLogin = () => {
 
     //If the response is ok saving the user to localstorage
     if (response.status === 200) {
-      localStorage.setItem("appUser", JSON.stringify(response.data));
+      localStorage.setItem("commUser", JSON.stringify(response.data));
       dispatch({ type: "LOGIN", payload: response.data });
       navigate("/");
     }

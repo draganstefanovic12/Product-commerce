@@ -4,7 +4,8 @@ export const useLogout = () => {
   const { dispatch } = useAuth();
 
   const logout = () => {
-    localStorage.removeItem("appUser");
+    localStorage.removeItem("commUser");
+    localStorage.removeItem("commCart");
     dispatch({ type: "LOGOUT", payload: null });
   };
 

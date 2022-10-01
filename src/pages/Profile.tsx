@@ -32,6 +32,8 @@ const Profile = () => {
     setIsEditing(!isEditing);
   };
 
+  console.log(user.avatar);
+
   return (
     <Container>
       <div className="flex flex-col md:flex-row gap-5 relative md:child:self-end drop-shadow-sm shadow-sm p-2 pb-0">
