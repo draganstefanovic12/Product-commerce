@@ -1,10 +1,11 @@
+import Container from "../components/Container";
 import ChangePassword from "../features/user/components/ChangePassword";
 
 const Settings = () => {
   return (
-    <div className="flex w-full justify-center">
+    <Container>
       <ChangePassword />
-    </div>
+    </Container>
   );
 };
 

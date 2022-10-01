@@ -26,7 +26,7 @@ const SellProduct = () => {
   const [uploadImages, setUploadImages] = useState<FileList | null>();
 
   return (
-    <div className="flex w-4/4 justify-center relative">
+    <div className="flex w-4/4 justify-center relative bg-gray-50">
       <Formik
         onSubmit={(values) => {
           createProduct(uploadImages, { ...values, category: category });
@@ -34,7 +34,7 @@ const SellProduct = () => {
         initialValues={initialValues}
       >
         {() => (
-          <Form className="h-screen w-full md:w-2/4 flex flex-col rounded-none shadow relative px-10">
+          <Form className="h-screen w-full md:w-2/4 flex flex-col rounded-none shadow relative px-10 bg-white">
             <h1 className="mt-5">Sell new product</h1>
             {productForm.map((fieldProp, i) => (
               <Field
