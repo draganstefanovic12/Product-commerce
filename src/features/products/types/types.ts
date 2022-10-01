@@ -11,4 +11,11 @@ export type Product = {
   _id?: string;
   seller: string;
   createdAt: string;
+  reviews: [];
+};
+
+export type Review = {
+  user: string;
+  review: string;
+  stars: number;
 };
