@@ -9,4 +9,6 @@ export type Product = {
   images?: string[];
   sold?: boolean;
   _id?: string;
+  seller: string;
+  createdAt: string;
 };

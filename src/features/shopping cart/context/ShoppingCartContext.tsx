@@ -12,17 +12,20 @@ type CartContextProps = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   cart: CartProducts[];
-  addToCart: (product: Product) => void;
-  handleCount: (product: Product, type: "increment" | "decrement") => void;
-  removeFromCart: (product: Product) => void;
+  addToCart: (product: Product | undefined) => void;
+  handleCount: (
+    product: Product | undefined,
+    type: "increment" | "decrement"
+  ) => void;
+  removeFromCart: (product: Product | undefined) => void;
 };
 
 type ProviderProps = {
   children: ReactNode;
 };
 
-type CartProducts = {
-  product: Product;
+export type CartProducts = {
+  product: Product | undefined;
   count: number;
 };
 
@@ -36,10 +39,12 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
   const [cart, setCart] = useState<CartProducts[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(cart);
+
   const addToCart = useCallback(
-    (product: Product) => {
+    (product: Product | undefined) => {
       const checkCart = cart.find(
-        (currProd) => currProd.product.name === product.name
+        (currProd) => currProd.product!.name === product!.name
       );
       //Checking if the product is already in the cart
       if (checkCart) {
@@ -47,24 +52,26 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
       }
       const newProd = [...cart!, { product: product, count: 1 }];
       setCart(newProd);
+      localStorage.setItem("commCart", JSON.stringify(newProd));
     },
     [cart]
   );
 
   const removeFromCart = useCallback(
-    (product: Product) => {
+    (product: Product | undefined) => {
       const filteredProd = cart?.filter(
-        (currProd) => currProd.product.name !== product.name
+        (currProd) => currProd.product!.name !== product!.name
       );
       setCart(filteredProd);
+      localStorage.setItem("commCart", JSON.stringify(filteredProd));
     },
     [cart]
   );
 
   const handleCount = useCallback(
-    (product: Product, type: "increment" | "decrement") => {
+    (product: Product | undefined, type: "increment" | "decrement") => {
       const changedCount = cart.map((currProd) => {
-        if (currProd.product.name === product.name) {
+        if (currProd.product!.name === product!.name) {
           type === "increment"
             ? (currProd.count = currProd.count + 1)
             : (currProd.count = currProd.count - 1);
@@ -74,13 +81,17 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
         return currProd;
       });
       setCart(changedCount);
+      localStorage.setItem("commCart", JSON.stringify(changedCount));
     },
     [cart]
   );
 
   useEffect(() => {
-    localStorage.setItem("commCart", JSON.stringify(cart));
-  }, [addToCart, cart, handleCount, removeFromCart]);
+    const cartContent = localStorage.getItem("commCart");
+    if (cartContent) {
+      setCart(JSON.parse(cartContent));
+    }
+  }, []);
 
   return (
     <CartContext.Provider

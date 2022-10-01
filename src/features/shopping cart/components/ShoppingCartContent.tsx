@@ -1,8 +1,10 @@
+import { CartProducts, useCart } from "../context/ShoppingCartContext";
 import close from "../../../assets/images/close.svg";
-import { useCart } from "../context/ShoppingCartContext";
+import ShoppingCartProductBox from "./ShoppingCartProduxtBox";
 
 const ShoppingCartContent = () => {
   const { isOpen, setIsOpen } = useCart();
+  const { cart } = useCart();
   const showCart = isOpen ? "translate-x-0" : "translate-x-96 hidden";
 
   const handleClose = () => {
@@ -20,6 +22,9 @@ const ShoppingCartContent = () => {
         className="h-3 absolute right-3 top-3 cursor-pointer"
       />
       <p>Cart content: </p>
+      {cart.map((product: CartProducts) => (
+        <ShoppingCartProductBox prop={product} />
+      ))}
     </div>
   );
 };
