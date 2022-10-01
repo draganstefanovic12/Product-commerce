@@ -28,7 +28,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <>
+    <div className="py-5 px-10">
       <h1>Change Password</h1>
       <Formik
         initialValues={{ oldpw: "", newpw: "", confpw: "" }}
@@ -67,7 +67,7 @@ const ChangePassword = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 

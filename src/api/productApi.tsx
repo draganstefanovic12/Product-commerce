@@ -16,3 +16,8 @@ export const createProduct = async (
   const response = await backendApi.post("/products/product/new", formData);
   console.log(response.data);
 };
+
+export const getProduct = async (id: string | undefined) => {
+  const response = await backendApi.get(`/products/product/${id}`);
+  return response.data;
+};

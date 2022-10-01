@@ -8,4 +8,5 @@ export type Product = {
   category: string;
   images?: string[];
   sold?: boolean;
+  _id?: string;
 };
