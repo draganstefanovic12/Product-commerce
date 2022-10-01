@@ -1,6 +1,7 @@
 import { CartProducts, useCart } from "../context/ShoppingCartContext";
 import close from "../../../assets/images/close.svg";
 import ShoppingCartProductBox from "./ShoppingCartProduxtBox";
+import Button from "../../../components/Button";
 
 const ShoppingCartContent = () => {
   const { isOpen, setIsOpen } = useCart();
@@ -10,6 +11,12 @@ const ShoppingCartContent = () => {
   const handleClose = () => {
     setIsOpen(false);
   };
+
+  const totalPrice = cart.reduce(
+    (price, product) =>
+      price + parseInt(product.product!.price) * product.count,
+    0
+  );
 
   return (
     <div
@@ -25,6 +32,13 @@ const ShoppingCartContent = () => {
       {cart.map((product: CartProducts) => (
         <ShoppingCartProductBox prop={product} />
       ))}
+      <div className="flex child:text-2xl w-full justify-between">
+        <p>Total</p>
+        <p>{totalPrice}$</p>
+      </div>
+      <Button className="bg-gray-700 hover:bg-gray-800 w-2/5 px-2 py-0">
+        Checkout
+      </Button>
     </div>
   );
 };

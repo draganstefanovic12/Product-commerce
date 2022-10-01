@@ -1,7 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
-import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
 
 type RegisterProps = {
   username: string;
