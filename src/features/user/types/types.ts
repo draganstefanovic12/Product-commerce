@@ -9,4 +9,5 @@ export type User = {
   products: Product[];
   username: string;
   joined: string;
+  avatar: string;
 };

@@ -6,6 +6,7 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HamburgerMenu from "./components/HamburgerMenu";
 import ProfileDropdown from "./components/ProfileDropdown";
 import CategoriesDropdown from "./components/CategoriesDropdown";
+import SearchField from "./components/SearchField";
 
 const Nav = () => {
   const { cart, isOpen, setIsOpen } = useCart();
@@ -29,6 +30,7 @@ const Nav = () => {
       <div className="container mx-auto py-5 flex justify-between child:cursor-pointer">
         <Link to="/">Home</Link>
         <div className="hidden md:flex space-x-6">
+          <SearchField />
           {username && <p onClick={handleSell}>Sell</p>}
           <DropdownMenu name="Categories" children={<CategoriesDropdown />} />
           {!username && <button onClick={handleLogin}>Login</button>}

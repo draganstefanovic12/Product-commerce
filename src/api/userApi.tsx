@@ -24,3 +24,10 @@ export const removeAvatar = async () => {
   const response = await backendApi.post("/users/avatar/remove");
   return response.data;
 };
+
+export const handleSearch = async (query: string | null) => {
+  if (query !== null) {
+    const response = await backendApi.get(`/users/search/${query}`);
+    return response.data;
+  }
+};

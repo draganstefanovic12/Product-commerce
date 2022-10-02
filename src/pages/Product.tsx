@@ -1,7 +1,7 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
-import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../api/productApi";
+import { Link, useParams } from "react-router-dom";
 import { Product as ProductPage } from "../features/products/types";
 import { useQuery, UseQueryResult } from "react-query";
 import Container from "../components/Container";
