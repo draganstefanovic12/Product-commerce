@@ -61,7 +61,10 @@ const ChangePassword = () => {
             />
             <p className="text-green-400 font-bold">{success}</p>
             <p className="text-red-400">{error}</p>
-            <Button type="submit" className="w-24 self-center bg-gray-700">
+            <Button
+              type="submit"
+              className="w-24 self-center bg-gray-700 hover:bg-gray-800"
+            >
               Submit
             </Button>
           </Form>

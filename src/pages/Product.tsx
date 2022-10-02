@@ -1,7 +1,8 @@
+import { useAuth } from "../features/auth/context/AuthContext";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../api/productApi";
-import { Product as ProductPage, Review } from "../features/products/types";
+import { Product as ProductPage } from "../features/products/types";
 import { useQuery, UseQueryResult } from "react-query";
 import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
@@ -10,6 +11,7 @@ import ProductReviews from "../features/products/components/ProductReviews";
 
 const Product = () => {
   const { id } = useParams();
+  const { username } = useAuth();
   const { cart, addToCart } = useCart();
   const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
@@ -51,23 +53,29 @@ const Product = () => {
               <h1>Date created: {product!.createdAt.slice(0, 10)}</h1>
             </div>
           </div>
-          <div className="flex-row flex justify-between p-2 md:block mt-5">
+          <div className="flex-row flex justify-between px-5 md:block mt-5">
             <div className="flex flex-col align-bottom">
               <p className="text-4xl pr-2">{product!.price}$</p>
               <p>In stock: {product!.stock}</p>
             </div>
             <Button
               onClick={handleAddCart}
-              className="w-36 h-10 bg-gray-700 hover:bg-gray-800 self-center"
+              className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
             >
               Add to cart
             </Button>
+            {/* for later */}
+            {/* {username !== product?.seller && (
+              <Button className="w-52 h-10 bg-gray-700 hover:bg-gray-800">
+                Add to watchlist
+              </Button>
+            )} */}
           </div>
         </div>
       </div>
       <div className="px-2 w-full border-b-2 border-gray-100 border-solid">
         <p className="text-2xl">Description</p>
-        <p className="rounded">{product?.description}</p>
+        <p className="rounded text-[#728292]">{product?.description}</p>
       </div>
       <div className="px-2 w-full h-32">
         <p className="text-2xl">Reviews</p>

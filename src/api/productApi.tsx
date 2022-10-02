@@ -14,10 +14,17 @@ export const createProduct = async (
   formData.append("product", JSON.stringify(product));
 
   const response = await backendApi.post("/products/product/new", formData);
-  console.log(response.data);
+  return response.data;
 };
 
 export const getProduct = async (id: string | undefined) => {
   const response = await backendApi.get(`/products/product/${id}`);
+  return response.data;
+};
+
+export const addToWatchlist = async (product: Product | undefined) => {
+  const response = await backendApi.post("/watchlist", {
+    product: product,
+  });
   return response.data;
 };

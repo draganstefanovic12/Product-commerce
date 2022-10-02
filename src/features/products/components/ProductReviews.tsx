@@ -18,7 +18,7 @@ const ProductReviews = ({ product }: ReviewProps) => {
           </div>
         ))
       ) : (
-        <p>This product has no reviews.</p>
+        <p className="text-[#728292]">This product has no reviews.</p>
       )}
     </>
   );

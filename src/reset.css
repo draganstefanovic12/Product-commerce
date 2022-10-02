@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;500;700&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Nunito:wght@400;500;700&display=swap");
 *,
 *::before,
 *::after {
@@ -6,6 +7,8 @@
   box-sizing: border-box;
   border: 0 none;
   outline: 0 none;
+  --font-nunito: "Nunito", sans-serif;
+  --font-lato: "Lato", sans-serif;
 }
 
 html,
@@ -21,6 +24,17 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-nunito);
+}
+
+p,
+li {
+  font-family: var(--font-lato);
 }
 
 @media only screen and (max-width: 768px) {
