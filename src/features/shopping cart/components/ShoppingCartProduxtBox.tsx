@@ -31,7 +31,7 @@ const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
         <img
           src={`http://localhost:5006${prop!.product!.images![0]}`}
           alt="product"
-          className="w-16"
+          className="w-16 object-cover"
         />
         <img
           src={remove}
@@ -39,8 +39,12 @@ const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
           className="h-4 absolute top-1 right-1 cursor-pointer"
           onClick={handleRemoveFromCart}
         />
-        <p>{prop.product!.name}</p>
-        <p>{prop.product!.price}$</p>
+        <div className="w-3/5">
+          <p className="whitespace-nowrap overflow-ellipsis overflow-hidden">
+            {prop.product!.name}
+          </p>
+          <p>{prop.product!.price}$</p>
+        </div>
       </div>
       <div className="items-center flex flex-col">
         <Button

@@ -35,15 +35,10 @@ const Nav = () => {
           {username && (
             <DropdownMenu name={username} children={<ProfileDropdown />} />
           )}
-          <div className="relative">
-            <img
-              src={cartIcon}
-              alt="cart"
-              className="h-5"
-              onClick={handleCreateProduct}
-            />
+          <div className="relative" onClick={handleCreateProduct}>
+            <img src={cartIcon} alt="cart" className="h-5" />
             {cart.length > 0 && (
-              <p className="absolute bottom-5 right-0 text-red-700 bg-white h-3">
+              <p className="absolute bottom-2 -right-1 text-red-700 bg-white h-5">
                 {cart.length}
               </p>
             )}

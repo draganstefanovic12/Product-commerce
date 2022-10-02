@@ -59,7 +59,7 @@ const Profile = () => {
           setProfileProducts={setProfileProducts}
         />
       </div>
-      <div className="hidden md:grid md:grid-cols-profile">
+      <div className="block md:grid md:grid-cols-profile">
         <ProfileInfoBox user={user} />
         <div className="h-screen w-full p-2 shadow-inner">
           {profileProducts === "selling" && (

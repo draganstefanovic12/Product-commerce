@@ -12,6 +12,7 @@ type CartContextProps = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   cart: CartProducts[];
+  setCart: React.Dispatch<React.SetStateAction<CartProducts[]>>;
   addToCart: (product: Product | undefined) => void;
   handleCount: (
     product: Product | undefined,
@@ -38,8 +39,6 @@ export const useCart = () => {
 export const CartContextProvider = ({ children }: ProviderProps) => {
   const [cart, setCart] = useState<CartProducts[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(cart);
 
   const addToCart = useCallback(
     (product: Product | undefined) => {
@@ -102,6 +101,7 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
         cart,
         isOpen,
         setIsOpen,
+        setCart,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ type ProfileType = {
 
 const ProfileInfoBox = ({ user }: ProfileType) => {
   return (
-    <ul className="h-screen w-full shadow-sm p-2 flex flex-col gap-4">
+    <ul className="hidden h-screen w-full shadow-sm p-2 md:flex flex-col gap-4">
       <div className="profile-info-box">
         <li>Joined: {user.joined}</li>
       </div>

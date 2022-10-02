@@ -30,8 +30,8 @@ const Product = () => {
     <Container>
       <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />
-        <div className="flex flex-col p-5 w-full justify-between">
-          <div className="flex flex-col gap-5">
+        <div className="flex flex-col w-full justify-between">
+          <div className="flex flex-col p-5 gap-5">
             <h1 className="text-3xl">{product!.name}</h1>
             <div className="flex shadow rounded w-max p-5">
               <h1>
@@ -51,7 +51,7 @@ const Product = () => {
               <h1>Date created: {product!.createdAt.slice(0, 10)}</h1>
             </div>
           </div>
-          <div className="flex-row flex justify-between md:block mt-5">
+          <div className="flex-row flex justify-between p-2 md:block mt-5">
             <div className="flex flex-col align-bottom">
               <p className="text-4xl pr-2">{product!.price}$</p>
               <p>In stock: {product!.stock}</p>
@@ -65,12 +65,11 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <div className="px-5 w-full h-32 border-b-2 border-gray-100 border-solid">
+      <div className="px-2 w-full border-b-2 border-gray-100 border-solid">
         <p className="text-2xl">Description</p>
-        <p className="rounded h-32 py-3">{product?.description}</p>
+        <p className="rounded">{product?.description}</p>
       </div>
-
-      <div className="px-5 w-full h-32">
+      <div className="px-2 w-full h-32">
         <p className="text-2xl">Reviews</p>
         <ProductReviews product={product} />
       </div>

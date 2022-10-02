@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import ProductCard from "../../products/components/ProductCard";
 import { ProfileCategoryProps } from "../types/types";
+import ProductCard from "../../products/components/ProductCard";
 
 const SellingProducts = ({ products }: ProfileCategoryProps) => {
   const sellingProducts = products
@@ -11,7 +11,9 @@ const SellingProducts = ({ products }: ProfileCategoryProps) => {
       </Link>
     ));
 
-  return <>{sellingProducts}</>;
+  return (
+    <div className="flex flex-col md:flex-row gap-3">{sellingProducts}</div>
+  );
 };
 
 export default SellingProducts;

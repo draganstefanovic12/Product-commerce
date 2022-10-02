@@ -32,13 +32,15 @@ const ShoppingCartContent = () => {
       {cart.map((product: CartProducts) => (
         <ShoppingCartProductBox prop={product} />
       ))}
-      <div className="flex child:text-2xl w-full justify-between">
-        <p>Total</p>
-        <p>{totalPrice}$</p>
+      <div className="self-end flex flex-col items-end mt-2">
+        <div className="flex child:text-2xl w-full justify-between border-b-2 border-solid border-gray-100">
+          <p>Total</p>
+          <p>{totalPrice}$</p>
+        </div>
+        <Button className="bg-gray-700 hover:bg-gray-800 w-2/5 mt-2 px-2 py-0">
+          Checkout
+        </Button>
       </div>
-      <Button className="bg-gray-700 hover:bg-gray-800 w-2/5 px-2 py-0">
-        Checkout
-      </Button>
     </div>
   );
 };

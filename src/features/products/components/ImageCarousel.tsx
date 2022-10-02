@@ -27,7 +27,7 @@ const ImageCarousel = ({ product }: CarouselProps) => {
       <img
         src={`http://localhost:5006${product?.images![number]}`}
         alt="img"
-        className="h-128"
+        className="h-128 object-cover shadow"
       />
       <img
         onClick={handlePreviousImage}
