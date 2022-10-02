@@ -34,6 +34,15 @@ const Product = () => {
         <ImageCarousel product={product} />
         <div className="flex flex-col w-full justify-between">
           <div className="flex flex-col p-5 gap-5">
+            <h1>
+              <Link
+                className="hover:underline pr-1"
+                to={`/category/${product?.category}/0`}
+              >
+                {product?.category}
+              </Link>
+              {">"} {product?.name}
+            </h1>
             <h1 className="text-3xl">{product!.name}</h1>
             <div className="flex shadow rounded w-max p-5">
               <h1>
