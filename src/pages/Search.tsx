@@ -19,14 +19,16 @@ const Search = () => {
   return (
     <Container className="p-5">
       <h1>{results.length} results</h1>
-      {results.map(
-        (result: Product & User) =>
-          result.name && (
-            <Link to={`/product/${result._id}`}>
-              <ProductCard product={result} />
-            </Link>
-          )
-      )}
+      <div className="w-max child:w-60">
+        {results.map(
+          (result: Product & User) =>
+            result.name && (
+              <Link to={`/product/${result._id}`}>
+                <ProductCard product={result} />
+              </Link>
+            )
+        )}
+      </div>
     </Container>
   );
 };
