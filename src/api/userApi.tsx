@@ -25,9 +25,7 @@ export const removeAvatar = async () => {
   return response.data;
 };
 
-export const handleSearch = async (query: string | null) => {
-  if (query !== null) {
-    const response = await backendApi.get(`/users/search/${query}`);
-    return response.data;
-  }
+export const handleSearch = async (query: string | undefined) => {
+  const response = await backendApi.get(`/users/search/${query}`);
+  return response.data;
 };

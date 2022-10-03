@@ -1,6 +1,7 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
+import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import Settings from "./pages/Settings";
@@ -23,6 +24,7 @@ const BrowserRoutes = () => {
         <Route path="/category/:category/:offset" element={<Categories />} />
         <Route path="/sell" element={<SellProduct />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/search/:query" element={<Search />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
