@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import Categories from "./pages/Categories";
 import SellProduct from "./pages/SellProduct";
 import ShoppingCartContent from "./features/shopping cart/components/ShoppingCartContent";
+import Messages from "./pages/Messages";
 
 const BrowserRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const BrowserRoutes = () => {
         <Route path="/sell" element={<SellProduct />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path="/messages" element={<Messages />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>

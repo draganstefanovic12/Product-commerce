@@ -1,19 +1,17 @@
-import { useAuth } from "../features/auth/context/AuthContext";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { getProduct } from "../api/productApi";
 import { Link, useParams } from "react-router-dom";
 import { Product as ProductPage } from "../features/products/types";
 import { useQuery, UseQueryResult } from "react-query";
+import Button from "../components/Button";
+import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
-import Button from "../components/Button";
 import ProductReviews from "../features/products/components/ProductReviews";
-import Spinner from "../components/Spinner/Spinner";
 
 const Product = () => {
   const { id } = useParams();
-  const { username } = useAuth();
-  const { cart, addToCart } = useCart();
+  const { addToCart } = useCart();
   const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
   }) as UseQueryResult<ProductPage>;
