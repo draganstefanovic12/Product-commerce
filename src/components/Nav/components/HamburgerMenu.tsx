@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import cartImg from "../../../assets/images/shopping-cart.svg";
 import { useCart } from "../../../features/shopping cart/context/ShoppingCartContext";
 import { useState } from "react";
+import cartImg from "../../../assets/images/shopping-cart.svg";
 
 const HamburgerMenu = () => {
   const { isOpen, setIsOpen } = useCart();

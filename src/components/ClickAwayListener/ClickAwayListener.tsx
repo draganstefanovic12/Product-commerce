@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useRef } from "react";
+import { ReactNode, useCallback, useEffect } from "react";
 
 type ClickAwayProps = {
   children: ReactNode;
@@ -23,7 +23,7 @@ const ClickAwayListener = ({
   );
 
   useEffect(() => {
-    //Closing an element on click away, this is for search field and shopping card content
+    //Closing an element on click away, this is for search field
     document.addEventListener("click", handleClickFunction);
   }, [divRef, handleClickFunction]);
 

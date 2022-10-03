@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   name?: string;
+  value?: string | null | undefined;
 }
 
 const Input = ({
@@ -15,9 +16,11 @@ const Input = ({
   placeholder,
   type,
   name,
+  value,
 }: InputProps) => {
   return (
     <input
+      value={value!}
       type={type}
       name={name}
       onChange={onChange}

@@ -41,7 +41,7 @@ const ChangeAvatar = ({ setIsEditing }: AvatarProps) => {
       <input name="fileupload" type="submit" id="submit" className="hidden" />
       <Button
         onClick={() => removeMutate.mutate()}
-        className="bg-gray-700 hover:bg-gray-800 shadow text-white w-36 px-5 rounded text-sm font-normal"
+        className="shadow w-40 px-5 rounded text-sm font-normal"
       >
         Remove Avatar
       </Button>
