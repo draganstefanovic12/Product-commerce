@@ -1,11 +1,11 @@
 import { User } from "../features/user/types/types";
 import { Product } from "../features/products/types";
 import { useQuery } from "react-query";
-import { Link, useParams } from "react-router-dom";
 import { handleSearch } from "../api/userApi";
-import ProductCard from "../features/products/components/ProductCard";
-import Container from "../components/Container";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner";
+import Container from "../components/Container";
+import ProductCard from "../features/products/components/ProductCard";
 
 const Search = () => {
   const { query } = useParams();
