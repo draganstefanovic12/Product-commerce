@@ -37,6 +37,28 @@ li {
   font-family: var(--font-lato);
 }
 
+.spinner-parent {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 120px;
+}
+
+.spinner-child {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  border: 4px solid #3cefff;
+  animation: spin 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotateY(540deg);
+  }
+}
+
 @media only screen and (max-width: 768px) {
   #root {
     margin-top: 0.1rem;

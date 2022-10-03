@@ -29,8 +29,8 @@ const ShoppingCartContent = () => {
         className="h-3 absolute right-3 top-7 cursor-pointer"
       />
       <p>Cart content: </p>
-      {cart.map((product: CartProducts) => (
-        <ShoppingCartProductBox prop={product} />
+      {cart.map((product: CartProducts, i) => (
+        <ShoppingCartProductBox key={i} prop={product} />
       ))}
       <div className="self-end flex flex-col items-end mt-2">
         <div className="flex child:text-2xl w-full justify-between border-b-2 border-solid border-gray-100">

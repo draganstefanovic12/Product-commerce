@@ -8,6 +8,7 @@ import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
 import Button from "../components/Button";
 import ProductReviews from "../features/products/components/ProductReviews";
+import Spinner from "../components/Spinner/Spinner";
 
 const Product = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const Product = () => {
   }) as UseQueryResult<ProductPage>;
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   const handleAddCart = () => {

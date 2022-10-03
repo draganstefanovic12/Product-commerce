@@ -11,6 +11,7 @@ import ProfileInfoBox from "../features/profile/components/ProfileInfoBox";
 import SellingProducts from "../features/user/components/SellingProducts";
 import WatchlistProducts from "../features/user/components/WatchlistProducts";
 import ProfileProductSelection from "../features/profile/components/ProfileProducts";
+import Spinner from "../components/Spinner/Spinner";
 
 const Profile = () => {
   const { username } = useParams();
@@ -25,7 +26,7 @@ const Profile = () => {
   );
 
   if (isLoading) {
-    return <p>spinner</p>;
+    return <Spinner />;
   }
 
   const handleEditing = () => {

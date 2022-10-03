@@ -4,7 +4,7 @@ import search from "../../../assets/images/search.svg";
 import { useNavigate } from "react-router-dom";
 
 const SearchField = () => {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string>("");
   const navigate = useNavigate();
 
   const handleValue = (e: React.ChangeEvent<HTMLInputElement>) => {

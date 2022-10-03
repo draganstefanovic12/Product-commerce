@@ -6,6 +6,7 @@ import { getCategoryProducts } from "../api/categoryCollectionApi";
 import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import ProductCard from "../features/products/components/ProductCard";
+import Spinner from "../components/Spinner/Spinner";
 
 const Categories = () => {
   const [cover, setCover] = useState<string>("");
@@ -22,7 +23,7 @@ const Categories = () => {
   }, [category, data]);
 
   if (isLoading) {
-    return <p>spinner placeholder</p>;
+    return <Spinner />;
   }
 
   return (

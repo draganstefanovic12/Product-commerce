@@ -10,6 +10,7 @@ backendApi.interceptors.request.use((config) => {
   if (!user) {
     return config;
   }
+
   config.headers!["Authorization"] = `Bearer ${user!.token}`;
   return config;
 });

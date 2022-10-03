@@ -12,6 +12,12 @@ export const changePassword = async (password: string, newPassword: string) => {
   });
   return response.data;
 };
+export const changeUsername = async (newUsername: string) => {
+  const response = await backendApi.post("/users/changeusername", {
+    newUsername: newUsername,
+  });
+  return response.data;
+};
 
 export const changeAvatar = async (file: File) => {
   const formData = new FormData();

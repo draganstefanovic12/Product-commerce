@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { handleSearch } from "../api/userApi";
 import ProductCard from "../features/products/components/ProductCard";
 import Container from "../components/Container";
+import Spinner from "../components/Spinner/Spinner";
 
 const Search = () => {
   const { query } = useParams();
@@ -13,7 +14,7 @@ const Search = () => {
   });
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   return (

@@ -11,7 +11,9 @@ const passwordFields = [
 ];
 
 const passwordSchema = Yup.object({
-  newpw: Yup.string().required(),
+  newpw: Yup.string()
+    .required()
+    .min(6, "Password needs to be longer than 6 characters."),
   confpw: Yup.string().oneOf(
     [Yup.ref("newpw"), null],
     "Passwords need to match."
@@ -61,10 +63,7 @@ const ChangePassword = () => {
             />
             <p className="text-green-400 font-bold">{success}</p>
             <p className="text-red-400">{error}</p>
-            <Button
-              type="submit"
-              className="w-24 self-center bg-gray-700 hover:bg-gray-800"
-            >
+            <Button type="submit" className="w-24 self-center">
               Submit
             </Button>
           </Form>
