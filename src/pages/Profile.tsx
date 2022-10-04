@@ -1,9 +1,10 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Selection } from "../features/profile/types/types";
 import { getProfile } from "../api/userApi";
+import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
 import ChangeAvatar from "../features/user/components/ChangeAvatar";
 import SoldProducts from "../features/user/components/SoldProducts";
@@ -11,11 +12,11 @@ import ProfileInfoBox from "../features/profile/components/ProfileInfoBox";
 import SellingProducts from "../features/user/components/SellingProducts";
 import WatchlistProducts from "../features/user/components/WatchlistProducts";
 import ProfileProductSelection from "../features/profile/components/ProfileProducts";
-import Spinner from "../components/Spinner/Spinner";
 
 const Profile = () => {
   const { username } = useParams();
   const { username: currUser } = useAuth();
+  const navigate = useNavigate();
   const [profileProducts, setProfileProducts] = useState<Selection>("selling");
   const [isEditing, setIsEditing] = useState(false);
   const { isLoading, data: user } = useQuery(
@@ -31,6 +32,10 @@ const Profile = () => {
 
   const handleEditing = () => {
     setIsEditing(!isEditing);
+  };
+
+  const handleMessage = () => {
+    navigate(`/messages/${username}`);
   };
 
   return (
@@ -49,6 +54,14 @@ const Profile = () => {
               onClick={handleEditing}
             >
               Edit
+            </button>
+          )}
+          {username !== currUser && (
+            <button
+              className="secondary-btn absolute right-5 md:bottom-2 sm:bottom-5"
+              onClick={handleMessage}
+            >
+              Send message
             </button>
           )}
         </div>

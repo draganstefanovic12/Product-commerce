@@ -33,8 +33,8 @@ const Categories = () => {
         <h1 className="text-2xl box-border mb-2">{category}</h1>
         <div className="flex flex-col md:flex-row gap-3">
           {data.map((product: Product, i: number) => (
-            <Link to={`/product/${product._id}`}>
-              <ProductCard key={i} product={product} />
+            <Link key={i} to={`/product/${product._id}`}>
+              <ProductCard product={product} />
             </Link>
           ))}
         </div>

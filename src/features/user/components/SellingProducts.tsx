@@ -5,8 +5,8 @@ import ProductCard from "../../products/components/ProductCard";
 const SellingProducts = ({ products }: ProfileCategoryProps) => {
   const sellingProducts = products
     .filter((currProd) => !currProd.sold)
-    .map((product) => (
-      <Link to={`/product/${product._id}`}>
+    .map((product, i) => (
+      <Link key={i} to={`/product/${product._id}`}>
         <ProductCard product={product} />
       </Link>
     ));

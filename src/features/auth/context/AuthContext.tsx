@@ -7,6 +7,7 @@ import {
 } from "react";
 import { useQuery } from "react-query";
 import { getProfile } from "../../../api/userApi";
+import { User } from "../../user/types/types";
 
 //Using context to share user username and user token for authorization
 type UserContextProps = {
@@ -20,16 +21,16 @@ type PropsProvider = {
   children: ReactNode;
 };
 
-type User = {
+type AuthUser = {
   username: string;
   token: string;
 } | null;
 
 type Actions =
-  | { type: "LOGIN"; payload: User }
+  | { type: "LOGIN"; payload: AuthUser }
   | { type: "LOGOUT"; payload: null };
 
-const initialState = null as User;
+const initialState = null as AuthUser;
 
 const authReducer = (user: typeof initialState, action: Actions) => {
   switch (action.type) {

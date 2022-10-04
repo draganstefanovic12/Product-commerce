@@ -10,4 +10,6 @@ export type User = {
   username: string;
   joined: string;
   avatar: string;
+  _id: string;
+  messages: [];
 };
