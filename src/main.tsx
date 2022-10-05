@@ -10,13 +10,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthContextProvider>
-        <CartContextProvider>
-          <BrowserRoutes />
-        </CartContextProvider>
-      </AuthContextProvider>
-    </QueryClientProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <AuthContextProvider>
+      <CartContextProvider>
+        <BrowserRoutes />
+      </CartContextProvider>
+    </AuthContextProvider>
+  </QueryClientProvider>
+  // </React.StrictMode>
 );
