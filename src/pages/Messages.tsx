@@ -25,6 +25,7 @@ const Messages = () => {
 
   const handleChangeRoom = (room: MessageRoom) => {
     setSelectedRoom(room);
+    socket.emit("join_room", { room: room.room });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -38,6 +39,14 @@ const Messages = () => {
       sending: user?._id,
     });
     setValue("");
+    //appends the message to the room
+    setSelectedRoom({
+      room: selectedRoom?.room,
+      messages: [
+        ...selectedRoom?.messages!,
+        { content: value, from: user?.username! },
+      ],
+    });
   };
 
   useEffect(() => {
@@ -65,8 +74,6 @@ const Messages = () => {
     });
   }, [socket]);
 
-  console.log(user?.messages);
-
   return (
     <Container>
       <div className="grid grid-cols-profile w-full">
@@ -74,7 +81,7 @@ const Messages = () => {
           {rooms.map((rooms: MessageRoom, i) => (
             <li
               className={
-                rooms.room !== selectedRoom?.room
+                rooms.room === selectedRoom?.room
                   ? "p-5 shadow cursor-pointer bg-gray-50"
                   : "p-5 shadow cursor-pointer"
               }
@@ -89,7 +96,7 @@ const Messages = () => {
           ))}
         </ul>
         <div className="w-full h-screen flex-col flex justify-between">
-          <ul className="p-4 flex flex-col gap-1">
+          <ul className="p-4 flex flex-col gap-1 overflow-auto">
             {selectedRoom?.messages.map((message, i) =>
               message.from !== selectedRoom.room ? (
                 <li
