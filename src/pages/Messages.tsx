@@ -1,25 +1,15 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { MessageRoom } from "../features/messages/types/types";
+import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
-import Button from "../components/Button";
 import Container from "../components/Container";
-
-type MessageRoom = {
-  room: string | undefined;
-  messages: Message[];
-};
-
-type Message = {
-  content: string;
-  from: string;
-};
+import SendMessage from "../features/messages/components/SendMessage";
 
 const Messages = () => {
   const { user } = useAuth();
   const { receipent } = useParams();
   const socket = io("http://localhost:5006");
-  const [value, setValue] = useState("");
   const [rooms, setRooms] = useState<MessageRoom[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<MessageRoom | null>();
 
@@ -28,26 +18,13 @@ const Messages = () => {
     socket.emit("join_room", { room: room.room });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(e.target.value);
-  };
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      //data is an object that contains {room: roomname, content: msg content, sender: whosent}
 
-  const handleSendMessage = () => {
-    socket.emit("send_message", {
-      content: value,
-      to: selectedRoom?.room,
-      sending: user?._id,
+      divRef.current!.scrollIntoView({ behavior: "smooth" });
     });
-    setValue("");
-    //appends the message to the room
-    setSelectedRoom({
-      room: selectedRoom?.room,
-      messages: [
-        ...selectedRoom?.messages!,
-        { content: value, from: user?.username! },
-      ],
-    });
-  };
+  }, [rooms, socket]);
 
   useEffect(() => {
     //Checks if the room already exists with the user id in params
@@ -68,11 +45,7 @@ const Messages = () => {
       );
   }, [receipent, user?.messages]);
 
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      console.log(data);
-    });
-  }, [socket]);
+  const divRef = useRef<HTMLDivElement>(null);
 
   return (
     <Container>
@@ -116,20 +89,12 @@ const Messages = () => {
             )}
           </ul>
           {selectedRoom && (
-            <div className="flex w-full mb-16 self-end">
-              <textarea
-                placeholder="Type message here..."
-                value={value}
-                className="input-field h-16 w-full rounded-r-none"
-                onChange={handleChange}
-              />
-              <Button
-                onClick={handleSendMessage}
-                className="h-16 w-16 rounded-l-none"
-              >
-                Send
-              </Button>
-            </div>
+            <SendMessage
+              divRef={divRef}
+              selectedRoom={selectedRoom}
+              setSelectedRoom={setSelectedRoom}
+              socket={socket}
+            />
           )}
         </div>
       </div>
