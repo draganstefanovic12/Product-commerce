@@ -41,6 +41,11 @@ li {
   font-family: var(--font-lato);
 }
 
+.messages-height {
+  height: calc(100vh - 4rem);
+  overflow: hidden;
+}
+
 .spinner-parent {
   position: absolute;
   left: 50%;

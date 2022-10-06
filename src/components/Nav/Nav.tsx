@@ -40,7 +40,7 @@ const Nav = () => {
     .map((msg: UserMessage) =>
       msg.messages.filter((msg: MessageRoom) => msg.read === false)
     )
-    .reduce((f, s) => [...f, ...s]).length;
+    .reduce((f, s) => [...f, ...s], []).length;
 
   return (
     <nav className="bg-white w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow">

@@ -20,7 +20,7 @@ const ShoppingCartContent = () => {
 
   return (
     <div
-      className={`${showCart} transition-transform md:block absolute bg-white right-0 shadow h-screen w-80 p-5 z-40`}
+      className={`${showCart} transition-transform md:block absolute bg-white right-0 shadow messages-height w-80 p-5 z-40`}
     >
       <img
         onClick={handleClose}

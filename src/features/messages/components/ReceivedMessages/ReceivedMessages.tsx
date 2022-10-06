@@ -12,16 +12,13 @@ type ReceiveProps = {
   rooms: MessageRoom[];
   setRooms: React.Dispatch<React.SetStateAction<MessageRoom[]>>;
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
+  liRef: React.RefObject<HTMLLIElement>;
 };
 
-const ReceivedMessages = ({
-  selectedRoom,
-  socket,
-  setSelectedRoom,
-  rooms,
-  setRooms,
-}: ReceiveProps) => {
+const ReceivedMessages = (props: ReceiveProps) => {
   const { user } = useAuth();
+  const { rooms, setRooms, selectedRoom, setSelectedRoom, socket, liRef } =
+    props;
 
   useEffect(() => {
     socket.on("receive_message", async (data) => {
@@ -57,23 +54,17 @@ const ReceivedMessages = ({
 
   return (
     <ul className="p-4 flex flex-col gap-1 overflow-auto">
-      {selectedRoom?.messages.map((message, i) =>
-        message.from !== selectedRoom.room ? (
-          <li
-            className="h-10 shadow rounded w-max items-center flex p-2"
-            key={i}
-          >
-            {message.content}
-          </li>
-        ) : (
-          <li
-            className="h-10 shadow rounded w-max items-center flex p-2 self-end"
-            key={i}
-          >
-            {message.content}
-          </li>
-        )
-      )}
+      {selectedRoom?.messages.map((message, i) => (
+        <li
+          ref={liRef}
+          className={`h-10 li-chad shadow rounded w-max items-center flex p-2 ${
+            message.from !== selectedRoom.room && "self-end"
+          }`}
+          key={i}
+        >
+          {message.content}
+        </li>
+      ))}
     </ul>
   );
 };

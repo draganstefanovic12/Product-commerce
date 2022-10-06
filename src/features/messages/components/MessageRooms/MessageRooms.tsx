@@ -15,18 +15,14 @@ type RoomProps = {
   rooms: MessageRoom[];
 };
 
-const MessageRooms = ({
-  selectedRoom,
-  setSelectedRoom,
-  receipent,
-  rooms,
-  setRooms,
-  socket,
-}: RoomProps) => {
+const MessageRooms = (props: RoomProps) => {
   const { user } = useAuth();
+  const { selectedRoom, setSelectedRoom, rooms, setRooms, receipent, socket } =
+    props;
 
-  const handleChangeRoom = (room: MessageRoom) => {
-    setSelectedRoom({
+  const handleReadMessages = (room: MessageRoom) => {
+    socket.emit("read_message", { user: user?.username, room: room.room });
+    const updatedRoom = {
       ...room,
       messages: room.messages.map((msg) => {
         if (!msg.read) {
@@ -35,8 +31,8 @@ const MessageRooms = ({
           return msg;
         }
       }),
-    });
-    socket.emit("read_message", { user: user?.username, room: room.room });
+    };
+    setSelectedRoom(updatedRoom);
   };
 
   const handleRooms = useCallback(() => {
@@ -58,7 +54,7 @@ const MessageRooms = ({
   }, [handleRooms]);
 
   return (
-    <ul className="border-r-2 border-gray-100 h-screen border-solid">
+    <ul className="border-r-2 border-gray-100 messages-height border-solid">
       {rooms.map((rooms: MessageRoom, i: number) => (
         <li
           className={
@@ -67,12 +63,21 @@ const MessageRooms = ({
               : "p-5 shadow cursor-pointer"
           }
           key={i}
-          onClick={() => handleChangeRoom(rooms)}
+          onClick={() => handleReadMessages(rooms)}
         >
           <p>{rooms.room}</p>
-          <span className="text-gray-500 text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">
-            {rooms.messages.at(-1)?.content}
-          </span>
+          <div className="flex justify-between items-end">
+            <span
+              className={` text-sm whitespace-nowrap overflow-hidden overflow-ellipsis ${
+                rooms.messages.at(-1)?.read
+                  ? "text-gray-500"
+                  : "text-black font-bold"
+              }`}
+            >
+              {rooms.messages.at(-1)?.content}
+            </span>
+            <span>{rooms.messages.at(-1)?.createdAt.slice(16, 21)}</span>
+          </div>
         </li>
       ))}
     </ul>

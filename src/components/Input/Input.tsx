@@ -8,6 +8,7 @@ interface InputProps {
   type?: string;
   name?: string;
   value?: string | null | undefined;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Input = ({
@@ -17,9 +18,11 @@ const Input = ({
   type,
   name,
   value,
+  onKeyDown,
 }: InputProps) => {
   return (
     <input
+      onKeyDown={onKeyDown}
       value={value!}
       type={type}
       name={name}

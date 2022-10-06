@@ -1,9 +1,9 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Selection } from "../features/profile/types/types";
 import { getProfile } from "../api/userApi";
+import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
 import ChangeAvatar from "../features/user/components/ChangeAvatar";
