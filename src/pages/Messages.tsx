@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Container from "../components/Container";
 import SendMessage from "../features/messages/components/SendMessage";
-import ReceiveMessage from "../features/messages/components/ReceiveMessage";
+import ReceivedMessages from "../features/messages/components/ReceivedMessages";
 
 const Messages = () => {
   const { user } = useAuth();
@@ -58,35 +58,6 @@ const Messages = () => {
   //make only 50 messages load unless requested for more
   //try to figure out how to add "..is typing"
 
-  useEffect(() => {
-    socket.on("receive_message", async (data) => {
-      if (data.from === user?.username) return;
-
-      const exists = rooms.find((room: MessageRoom) => room.room === data.from);
-      if (exists) {
-        setRooms(
-          rooms.map((room: MessageRoom) => {
-            if (room.room === data.from) {
-              return { ...room, messages: [...room.messages, data] };
-            } else {
-              return room;
-            }
-          })
-        );
-      } else {
-        setRooms([{ room: data.from, messages: [data] }, ...rooms]);
-      }
-      divRef.current!.scrollIntoView({ behavior: "smooth" });
-    });
-    //cleanup function for socket io so it doesn't render multiple times
-    setSelectedRoom(
-      rooms.find((currRooms) => currRooms.room === selectedRoom?.room)
-    );
-    return () => {
-      socket.off("receive_message");
-    };
-  }, [handleRooms, rooms, selectedRoom?.room, socket, user?.username]);
-
   const divRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -111,7 +82,13 @@ const Messages = () => {
           ))}
         </ul>
         <div className="w-full h-screen flex-col flex justify-between">
-          <ReceiveMessage selectedRoom={selectedRoom} />
+          <ReceivedMessages
+            socket={socket}
+            rooms={rooms}
+            selectedRoom={selectedRoom}
+            setRooms={setRooms}
+            setSelectedRoom={setSelectedRoom}
+          />
           {selectedRoom && (
             <SendMessage
               divRef={divRef}
