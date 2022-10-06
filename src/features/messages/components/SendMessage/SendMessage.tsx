@@ -8,18 +8,11 @@ import { DefaultEventsMap } from "socket.io/dist/typed-events";
 type Props = {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
   selectedRoom: MessageRoom;
-  setSelectedRoom: React.Dispatch<
-    React.SetStateAction<MessageRoom | null | undefined>
-  >;
+  setRooms: React.Dispatch<React.SetStateAction<MessageRoom[]>>;
   divRef: React.RefObject<HTMLDivElement>;
 };
 
-const SendMessage = ({
-  socket,
-  selectedRoom,
-  setSelectedRoom,
-  divRef,
-}: Props) => {
+const SendMessage = ({ socket, selectedRoom, setRooms, divRef }: Props) => {
   const [value, setValue] = useState("");
   const { user } = useAuth();
 
@@ -31,17 +24,25 @@ const SendMessage = ({
     socket.emit("send_message", {
       content: value,
       to: selectedRoom?.room,
-      sending: user?._id,
+      sending: user?.username,
     });
     setValue("");
+    setRooms((currRooms) =>
+      currRooms.map((rooms: MessageRoom) => {
+        if (rooms.room === selectedRoom?.room) {
+          return {
+            ...rooms,
+            messages: [
+              ...rooms.messages,
+              { content: value, from: user?.username! },
+            ],
+          };
+        } else {
+          return rooms;
+        }
+      })
+    );
     //appends the message to the room
-    setSelectedRoom({
-      room: selectedRoom?.room,
-      messages: [
-        ...selectedRoom?.messages!,
-        { content: value, from: user?.username! },
-      ],
-    });
   };
 
   return (

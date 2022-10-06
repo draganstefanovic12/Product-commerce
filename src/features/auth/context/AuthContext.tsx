@@ -53,11 +53,11 @@ export const AuthContextProvider = ({ children }: PropsProvider) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const { data: user } = useQuery(
-    ["currentUser", state?.username],
+    ["currentUser"],
     () => {
       return getProfile(state?.username);
     },
-    { enabled: !!state?.username }
+    { enabled: !!state?.username, staleTime: Infinity }
   );
 
   useEffect(() => {

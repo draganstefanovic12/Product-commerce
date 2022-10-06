@@ -1,7 +1,7 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { useParams } from "react-router-dom";
 import { MessageRoom } from "../features/messages/types/types";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Container from "../components/Container";
 import SendMessage from "../features/messages/components/SendMessage";
@@ -15,26 +15,12 @@ const Messages = () => {
 
   const handleChangeRoom = (room: MessageRoom) => {
     setSelectedRoom(room);
-    socket.emit("join_room", { room: room.room });
   };
 
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      //data is an object that contains {room: roomname, content: msg content, sender: whosent}
-
-      divRef.current!.scrollIntoView({ behavior: "smooth" });
-    });
-  }, [rooms, socket]);
-
-  useEffect(() => {
-    //Checks if the room already exists with the user id in params
-    //then sets the current room if it does
-    //if it doesnt, it creates a new room state and places it first
+  const handleRooms = useCallback(() => {
     const checker = user?.messages.find(
       (currRooms: MessageRoom) => currRooms.room === receipent
     );
-    user?.messages &&
-      setSelectedRoom(checker ? checker : { room: receipent, messages: [] });
     user?.messages &&
       setRooms(
         receipent
@@ -44,6 +30,51 @@ const Messages = () => {
           : user?.messages
       );
   }, [receipent, user?.messages]);
+
+  useEffect(() => {
+    handleRooms();
+  }, [handleRooms]);
+
+  (() => {
+    socket.emit(
+      "join_rooms",
+      user?.messages.map((room: MessageRoom) => `${room.room}${user?.username}`)
+    );
+  })();
+
+  //also fix the layout and make the bottom not scrollable.
+  //on new message it should smooth scroll to the bottom to keep it readable.
+  //make only 50 messages load unless requested for more
+  //try to figure out how to add "..is typing"
+
+  useEffect(() => {
+    socket.on("receive_message", async (data) => {
+      if (data.from === user?.username) return;
+
+      const exists = rooms.find((room: MessageRoom) => room.room === data.from);
+      if (exists) {
+        setRooms(
+          rooms.map((room: MessageRoom) => {
+            if (room.room === data.from) {
+              return { ...room, messages: [...room.messages, data] };
+            } else {
+              return room;
+            }
+          })
+        );
+      } else {
+        setRooms([{ room: data.from, messages: [data] }, ...rooms]);
+      }
+      divRef.current!.scrollIntoView({ behavior: "smooth" });
+    });
+    //cleanup function for socket io so it doesn't render multiple times
+    setSelectedRoom(
+      rooms.find((currRooms) => currRooms.room === selectedRoom?.room)
+    );
+    return () => {
+      socket.off("receive_message");
+    };
+  }, [handleRooms, rooms, socket, user?.username]);
 
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -92,7 +123,7 @@ const Messages = () => {
             <SendMessage
               divRef={divRef}
               selectedRoom={selectedRoom}
-              setSelectedRoom={setSelectedRoom}
+              setRooms={setRooms}
               socket={socket}
             />
           )}
