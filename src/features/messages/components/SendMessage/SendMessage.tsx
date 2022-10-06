@@ -1,6 +1,6 @@
 import Button from "../../../../components/Button";
 import { Socket } from "socket.io-client";
-import { useAuth } from "../../../auth/context/AuthContext";
+import { useUser } from "../../../user/context/UserContext";
 import { useState } from "react";
 import { MessageRoom } from "../../types";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
@@ -13,8 +13,8 @@ type Props = {
 };
 
 const SendMessage = ({ socket, selectedRoom, setRooms }: Props) => {
+  const { user } = useUser();
   const [value, setValue] = useState("");
-  const { user } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

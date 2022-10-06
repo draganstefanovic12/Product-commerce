@@ -5,14 +5,10 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import { useQuery } from "react-query";
-import { getProfile } from "../../../api/userApi";
-import { User } from "../../user/types/types";
 
 //Using context to share user username and user token for authorization
 type UserContextProps = {
   username?: string | undefined;
-  user?: User;
   token?: string | undefined;
   dispatch: React.Dispatch<Actions>;
 };
@@ -52,14 +48,6 @@ export const useAuth = () => {
 export const AuthContextProvider = ({ children }: PropsProvider) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  const { data: user } = useQuery(
-    ["currentUser"],
-    () => {
-      return getProfile(state?.username);
-    },
-    { enabled: !!state?.username, staleTime: Infinity }
-  );
-
   useEffect(() => {
     const user = localStorage.getItem("commUser");
 
@@ -70,7 +58,7 @@ export const AuthContextProvider = ({ children }: PropsProvider) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, user, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch }}>
       {children}
     </AuthContext.Provider>
   );

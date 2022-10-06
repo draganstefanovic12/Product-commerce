@@ -1,6 +1,7 @@
 import { useCart } from "../../features/shopping cart/context/ShoppingCartContext";
+import { useUser } from "../../features/user/context/UserContext";
 import { useAuth } from "../../features/auth/context/AuthContext";
-import { MessageRoom } from "../../features/messages/types";
+import { Message, MessageRoom } from "../../features/messages/types";
 import { Link, useNavigate } from "react-router-dom";
 import messages from "../../assets/images/messages.svg";
 import cartIcon from "../../assets/images/shopping-cart.svg";
@@ -11,12 +12,13 @@ import ProfileDropdown from "./components/ProfileDropdown";
 import CategoriesDropdown from "./components/CategoriesDropdown";
 
 export type UserMessage = {
-  messages: MessageRoom[];
+  messages: Message[];
 };
 
 const Nav = () => {
+  const { unreadMessages } = useUser();
+  const { username } = useAuth();
   const { cart, isOpen, setIsOpen } = useCart();
-  const { username, user } = useAuth();
   const navigate = useNavigate();
 
   const handleCreateProduct = () => {
@@ -34,13 +36,6 @@ const Nav = () => {
   const handleMessages = () => {
     navigate("/messages");
   };
-
-  //getting the unread message number
-  const unreadMessages = user?.messages
-    .map((msg: UserMessage) =>
-      msg.messages.filter((msg: MessageRoom) => msg.read === false)
-    )
-    .reduce((f, s) => [...f, ...s], []).length;
 
   return (
     <nav className="bg-white w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow">

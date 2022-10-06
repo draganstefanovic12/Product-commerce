@@ -6,17 +6,20 @@ import BrowserRoutes from "./routes";
 import { AuthContextProvider } from "./features/auth/context/AuthContext";
 import { CartContextProvider } from "./features/shopping cart/context/ShoppingCartContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { UserContextProvider } from "./features/user/context/UserContext";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
   <QueryClientProvider client={queryClient}>
-    <AuthContextProvider>
-      <CartContextProvider>
-        <BrowserRoutes />
-      </CartContextProvider>
-    </AuthContextProvider>
+    <UserContextProvider>
+      <AuthContextProvider>
+        <CartContextProvider>
+          <BrowserRoutes />
+        </CartContextProvider>
+      </AuthContextProvider>
+    </UserContextProvider>
   </QueryClientProvider>
   // </React.StrictMode>
 );

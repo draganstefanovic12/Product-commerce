@@ -1,5 +1,5 @@
 import { Socket } from "socket.io-client";
-import { useAuth } from "../../../auth/context/AuthContext";
+import { useUser } from "../../../user/context/UserContext";
 import { useEffect } from "react";
 import { MessageRoom } from "../../types";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
@@ -16,7 +16,7 @@ type ReceiveProps = {
 };
 
 const ReceivedMessages = (props: ReceiveProps) => {
-  const { user } = useAuth();
+  const { user, unreadMessages } = useUser();
   const { rooms, setRooms, selectedRoom, setSelectedRoom, socket, liRef } =
     props;
 

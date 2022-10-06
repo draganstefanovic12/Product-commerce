@@ -1,5 +1,5 @@
 import { Socket } from "socket.io-client";
-import { useAuth } from "../../../auth/context/AuthContext";
+import { useUser } from "../../../user/context/UserContext";
 import { MessageRoom } from "../../types";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import { useCallback, useEffect } from "react";
@@ -16,23 +16,17 @@ type RoomProps = {
 };
 
 const MessageRooms = (props: RoomProps) => {
-  const { user } = useAuth();
+  const { user, setUnreadMessages } = useUser();
   const { selectedRoom, setSelectedRoom, rooms, setRooms, receipent, socket } =
     props;
 
   const handleReadMessages = (room: MessageRoom) => {
     socket.emit("read_message", { user: user?.username, room: room.room });
-    const updatedRoom = {
-      ...room,
-      messages: room.messages.map((msg) => {
-        if (!msg.read) {
-          return { ...msg, read: true };
-        } else {
-          return msg;
-        }
-      }),
-    };
-    setSelectedRoom(updatedRoom);
+    setUnreadMessages(
+      (currUnread) =>
+        currUnread - room.messages.filter((msg) => !msg.read).length
+    );
+    setSelectedRoom(room);
   };
 
   const handleRooms = useCallback(() => {

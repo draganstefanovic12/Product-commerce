@@ -1,15 +1,15 @@
-import { useAuth } from "../features/auth/context/AuthContext";
+import { useUser } from "../features/user/context/UserContext";
 import { useParams } from "react-router-dom";
 import { MessageRoom } from "../features/messages/types/types";
 import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Container from "../components/Container";
 import SendMessage from "../features/messages/components/SendMessage";
-import ReceivedMessages from "../features/messages/components/ReceivedMessages";
 import MessageRooms from "../features/messages/components/MessageRooms";
+import ReceivedMessages from "../features/messages/components/ReceivedMessages";
 
 const Messages = () => {
-  const { user } = useAuth();
+  const { user } = useUser();
   const { receipent } = useParams();
   const socket = io("http://localhost:5006");
   const [rooms, setRooms] = useState<MessageRoom[]>([]);
