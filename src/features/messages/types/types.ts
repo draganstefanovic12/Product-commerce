@@ -1,6 +1,8 @@
 export type Message = {
   content: string;
   from: string;
+  createdAt: string;
+  read: boolean;
 };
 
 export type MessageRoom = {

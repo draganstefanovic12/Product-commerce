@@ -37,7 +37,7 @@ const SendMessage = ({ socket, selectedRoom, setRooms, divRef }: Props) => {
               {
                 content: value,
                 from: user?.username!,
-                read: false,
+                read: true,
                 createdAt: new Date().toString(),
               },
             ],

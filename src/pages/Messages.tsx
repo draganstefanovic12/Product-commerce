@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Container from "../components/Container";
 import SendMessage from "../features/messages/components/SendMessage";
+import ReceiveMessage from "../features/messages/components/ReceiveMessage";
 
 const Messages = () => {
   const { user } = useAuth();
@@ -14,11 +15,18 @@ const Messages = () => {
   const [selectedRoom, setSelectedRoom] = useState<MessageRoom | null>();
 
   const handleChangeRoom = (room: MessageRoom) => {
-    setSelectedRoom(room);
+    setSelectedRoom({
+      ...room,
+      messages: room.messages.map((msg) => {
+        if (!msg.read) {
+          return { ...msg, read: true };
+        } else {
+          return msg;
+        }
+      }),
+    });
     socket.emit("read_message", { user: user?.username, room: room.room });
   };
-
-  console.log(selectedRoom);
 
   const handleRooms = useCallback(() => {
     const checker = user?.messages.find(
@@ -103,25 +111,7 @@ const Messages = () => {
           ))}
         </ul>
         <div className="w-full h-screen flex-col flex justify-between">
-          <ul className="p-4 flex flex-col gap-1 overflow-auto">
-            {selectedRoom?.messages.map((message, i) =>
-              message.from !== selectedRoom.room ? (
-                <li
-                  className="h-10 shadow rounded w-max items-center flex p-2"
-                  key={i}
-                >
-                  {message.content}
-                </li>
-              ) : (
-                <li
-                  className="h-10 shadow rounded w-max items-center flex p-2 self-end"
-                  key={i}
-                >
-                  {message.content}
-                </li>
-              )
-            )}
-          </ul>
+          <ReceiveMessage selectedRoom={selectedRoom} />
           {selectedRoom && (
             <SendMessage
               divRef={divRef}
