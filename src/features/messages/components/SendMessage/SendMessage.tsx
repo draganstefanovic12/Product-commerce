@@ -7,9 +7,9 @@ import { DefaultEventsMap } from "socket.io/dist/typed-events";
 
 type Props = {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
-  selectedRoom: MessageRoom;
+  selectedRoom: MessageRoom | null | undefined;
   setRooms: React.Dispatch<React.SetStateAction<MessageRoom[]>>;
-  divRef: React.RefObject<HTMLDivElement>;
+  divRef?: React.RefObject<HTMLDivElement>;
 };
 
 const SendMessage = ({ socket, selectedRoom, setRooms, divRef }: Props) => {

@@ -1,11 +1,12 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { useParams } from "react-router-dom";
 import { MessageRoom } from "../features/messages/types/types";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import io from "socket.io-client";
 import Container from "../components/Container";
 import SendMessage from "../features/messages/components/SendMessage";
 import ReceivedMessages from "../features/messages/components/ReceivedMessages";
+import MessageRooms from "../features/messages/components/MessageRooms";
 
 const Messages = () => {
   const { user } = useAuth();
@@ -13,38 +14,6 @@ const Messages = () => {
   const socket = io("http://localhost:5006");
   const [rooms, setRooms] = useState<MessageRoom[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<MessageRoom | null>();
-
-  const handleChangeRoom = (room: MessageRoom) => {
-    setSelectedRoom({
-      ...room,
-      messages: room.messages.map((msg) => {
-        if (!msg.read) {
-          return { ...msg, read: true };
-        } else {
-          return msg;
-        }
-      }),
-    });
-    socket.emit("read_message", { user: user?.username, room: room.room });
-  };
-
-  const handleRooms = useCallback(() => {
-    const checker = user?.messages.find(
-      (currRooms: MessageRoom) => currRooms.room === receipent
-    );
-    user?.messages &&
-      setRooms(
-        receipent
-          ? checker
-            ? user?.messages!
-            : [{ room: receipent, messages: [] }, ...user?.messages!]
-          : user?.messages
-      );
-  }, [receipent, user?.messages]);
-
-  useEffect(() => {
-    handleRooms();
-  }, [handleRooms]);
 
   (() => {
     socket.emit(
@@ -57,46 +26,25 @@ const Messages = () => {
   //on new message it should smooth scroll to the bottom to keep it readable.
   //make only 50 messages load unless requested for more
   //try to figure out how to add "..is typing"
-
   const divRef = useRef<HTMLDivElement>(null);
 
+  //props to pass to all components to split up the code a bit to make it more readable
+  const props = {
+    receipent: receipent,
+    rooms: rooms,
+    selectedRoom: selectedRoom,
+    setRooms: setRooms,
+    setSelectedRoom: setSelectedRoom,
+    socket: socket,
+  };
+
   return (
-    <Container>
+    <Container className="">
       <div className="grid grid-cols-profile w-full">
-        <ul className="border-r-2 border-gray-100 h-screen border-solid">
-          {rooms.map((rooms: MessageRoom, i) => (
-            <li
-              className={
-                rooms.room === selectedRoom?.room
-                  ? "p-5 shadow cursor-pointer bg-gray-50"
-                  : "p-5 shadow cursor-pointer"
-              }
-              key={i}
-              onClick={() => handleChangeRoom(rooms)}
-            >
-              <p>{rooms.room}</p>
-              <span className="text-gray-500 text-sm whitespace-nowrap overflow-hidden overflow-ellipsis">
-                {rooms.messages.at(-1)?.content}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <MessageRooms {...props} />
         <div className="w-full h-screen flex-col flex justify-between">
-          <ReceivedMessages
-            socket={socket}
-            rooms={rooms}
-            selectedRoom={selectedRoom}
-            setRooms={setRooms}
-            setSelectedRoom={setSelectedRoom}
-          />
-          {selectedRoom && (
-            <SendMessage
-              divRef={divRef}
-              selectedRoom={selectedRoom}
-              setRooms={setRooms}
-              socket={socket}
-            />
-          )}
+          <ReceivedMessages {...props} />
+          {selectedRoom && <SendMessage {...props} />}
         </div>
       </div>
     </Container>
