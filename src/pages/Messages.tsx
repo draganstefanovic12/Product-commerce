@@ -15,7 +15,10 @@ const Messages = () => {
 
   const handleChangeRoom = (room: MessageRoom) => {
     setSelectedRoom(room);
+    socket.emit("read_message", { user: user?.username, room: room.room });
   };
+
+  console.log(selectedRoom);
 
   const handleRooms = useCallback(() => {
     const checker = user?.messages.find(
@@ -74,7 +77,7 @@ const Messages = () => {
     return () => {
       socket.off("receive_message");
     };
-  }, [handleRooms, rooms, socket, user?.username]);
+  }, [handleRooms, rooms, selectedRoom?.room, socket, user?.username]);
 
   const divRef = useRef<HTMLDivElement>(null);
 
