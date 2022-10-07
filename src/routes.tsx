@@ -3,7 +3,7 @@ import Nav from "./components/Nav";
 import Login from "./pages/Login";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
-import Product from "./pages/Product";
+import ProductPage from "./pages/Product";
 import Settings from "./pages/Settings";
 import Messages from "./pages/Messages";
 import MainPage from "./pages/MainPage";
@@ -24,7 +24,7 @@ const BrowserRoutes = () => {
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/category/:category/:offset" element={<Categories />} />
         <Route path="/sell" element={<SellProduct />} />
-        <Route path="/product/:id" element={<Product />} />
+        <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/search/:query" element={<Search />} />
         <Route path="/messages" element={<Messages />}>
           <Route path=":receipent" element={<Messages />} />

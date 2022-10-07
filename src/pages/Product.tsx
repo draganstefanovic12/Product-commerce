@@ -1,20 +1,21 @@
+import { Product } from "../features/products/types";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { getProduct } from "../api/productApi";
 import { Link, useParams } from "react-router-dom";
-import { Product as ProductPage } from "../features/products/types";
 import { useQuery, UseQueryResult } from "react-query";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
 import ProductReviews from "../features/products/components/ProductReviews";
+import EditProduct from "../features/products/components/EditProduct";
 
-const Product = () => {
+const ProductPage = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
   const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
-  }) as UseQueryResult<ProductPage>;
+  }) as UseQueryResult<Product>;
 
   if (isLoading) {
     return <Spinner />;
@@ -58,7 +59,7 @@ const Product = () => {
               <h1>{trades}</h1>
             </div>
             <div className="flex shadow rounded w-max p-5 h-16">
-              <h1>Date created: {product!.createdAt.slice(0, 10)}</h1>
+              <h1>Date created: {product!.createdAt!.slice(0, 10)}</h1>
             </div>
           </div>
           <div className="flex-row flex justify-between px-5 md:block mt-5">
@@ -81,6 +82,7 @@ const Product = () => {
           </div>
         </div>
       </div>
+      <EditProduct props={product} />
       <div className="px-2 w-full border-b-2 border-gray-100 border-solid">
         <p className="text-2xl">Description</p>
         <p className="rounded text-[#728292]">{product?.description}</p>
@@ -93,4 +95,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductPage;

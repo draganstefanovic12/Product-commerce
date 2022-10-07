@@ -16,7 +16,7 @@ type ReceiveProps = {
 };
 
 const ReceivedMessages = (props: ReceiveProps) => {
-  const { user, unreadMessages } = useUser();
+  const { user } = useUser();
   const { rooms, setRooms, selectedRoom, setSelectedRoom, socket, liRef } =
     props;
 
