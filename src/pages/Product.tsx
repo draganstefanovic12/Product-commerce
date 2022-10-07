@@ -82,11 +82,11 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <EditProduct props={product} />
       <div className="px-2 w-full border-b-2 border-gray-100 border-solid">
         <p className="text-2xl">Description</p>
         <p className="rounded text-[#728292]">{product?.description}</p>
       </div>
+      <EditProduct props={product} />
       <div className="px-2 w-full h-32">
         <p className="text-2xl">Reviews</p>
         <ProductReviews product={product} />

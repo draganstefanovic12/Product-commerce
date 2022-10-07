@@ -28,3 +28,15 @@ export const addToWatchlist = async (product: Product | undefined) => {
   });
   return response.data;
 };
+
+export const deleteProduct = async (_id: string | undefined) => {
+  const response = await backendApi.post(`/products/product/delete/${_id}`);
+  return response.data;
+};
+
+export const editProduct = async (product: Product, id: string | undefined) => {
+  const response = await backendApi.post(`/products/product/edit/${id}`, {
+    newProd: product,
+  });
+  return response.data;
+};
