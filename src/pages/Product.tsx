@@ -9,10 +9,14 @@ import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
 import ProductReviews from "../features/products/components/ProductReviews";
 import EditProduct from "../features/products/components/EditProduct";
+import { useState } from "react";
+import { useAuth } from "../features/auth/context/AuthContext";
 
 const ProductPage = () => {
   const { id } = useParams();
+  const { username } = useAuth();
   const { addToCart } = useCart();
+  const [isEditing, setIsEditing] = useState(false);
   const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
   }) as UseQueryResult<Product>;
@@ -23,6 +27,10 @@ const ProductPage = () => {
 
   const handleAddCart = () => {
     addToCart(product);
+  };
+
+  const handleEditing = () => {
+    setIsEditing(true);
   };
 
   const trades =
@@ -67,12 +75,17 @@ const ProductPage = () => {
               <p className="text-4xl pr-2">{product!.price}$</p>
               <p>In stock: {product!.stock}</p>
             </div>
-            <Button
-              onClick={handleAddCart}
-              className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
-            >
-              Add to cart
-            </Button>
+            <div className="flex gap-5">
+              <Button
+                onClick={handleAddCart}
+                className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
+              >
+                Add to cart
+              </Button>
+              {username === product?.seller && (
+                <Button onClick={handleEditing}>Edit</Button>
+              )}
+            </div>
             {/* for later */}
             {/* {username !== product?.seller && (
               <Button className="w-52 h-10 bg-gray-700 hover:bg-gray-800">
@@ -86,7 +99,7 @@ const ProductPage = () => {
         <p className="text-2xl">Description</p>
         <p className="rounded text-[#728292]">{product?.description}</p>
       </div>
-      <EditProduct props={product} />
+      {isEditing && <EditProduct props={product} setIsEditing={setIsEditing} />}
       <div className="px-2 w-full h-32">
         <p className="text-2xl">Reviews</p>
         <ProductReviews product={product} />

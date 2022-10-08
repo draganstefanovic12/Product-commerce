@@ -3,18 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import { deleteProduct, editProduct } from "../../../api/productApi";
 import Button from "../../../components/Button";
+import close from "../../../assets/images/close.svg";
 
 type EditProps = {
   props: Product | undefined;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const EditProduct = ({ props }: EditProps) => {
-  const { price, name, trade, stock, description, category, _id } = props!;
+const EditProduct = ({ props, setIsEditing }: EditProps) => {
+  const { price, name, trade, stock, description, category } = props!;
   const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteProduct(props?._id);
     navigate("/");
+  };
+
+  const handleClose = () => {
+    setIsEditing(false);
   };
 
   return (
@@ -29,10 +35,17 @@ const EditProduct = ({ props }: EditProps) => {
       }}
       onSubmit={(values) => {
         editProduct(values, props?._id);
+        setIsEditing(false);
       }}
     >
       <Form className="form absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4">
         <div className="form relative">
+          <img
+            onClick={handleClose}
+            src={close}
+            alt="close"
+            className="h-3 absolute right-3 top-7 cursor-pointer"
+          />
           <h1>Edit product details</h1>
           <label>Product name</label>
           <Field className="input-field" name="name" type="text" />

@@ -3,6 +3,7 @@ import { createProduct } from "../api/productApi";
 import { Field, Form, Formik } from "formik";
 import Button from "../components/Button";
 import categories from "../features/products/categories";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -23,6 +24,8 @@ const productForm = [
 
 const SellProduct = () => {
   const [category, setCategory] = useState("Electronics");
+  const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
   const [uploadImages, setUploadImages] = useState<FileList | null>();
 
   return (
@@ -30,6 +33,10 @@ const SellProduct = () => {
       <Formik
         onSubmit={(values) => {
           createProduct(uploadImages, { ...values, category: category });
+          setSuccess(true);
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
         }}
         initialValues={initialValues}
       >
@@ -80,6 +87,9 @@ const SellProduct = () => {
               <Button className="h-10 self-end sm:mt-5 md:mt-0" type="submit">
                 Submit
               </Button>
+              {success && (
+                <p className="text-green-400">Product created successfully.</p>
+              )}
             </div>
           </Form>
         )}

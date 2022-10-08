@@ -16,6 +16,11 @@ const SearchField = () => {
     navigate(`/search/${value}`);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (value!.length === 0) return;
+    e.key === "Enter" && navigate(`/search/${value}`);
+  };
+
   return (
     <div>
       <div className="relative w-56">
@@ -24,6 +29,7 @@ const SearchField = () => {
           placeholder="Search..."
           className="h-6 w-56 bg-gray-100"
           onChange={handleValue}
+          onKeyDown={handleKeyPress}
         />
         <img
           src={search}
