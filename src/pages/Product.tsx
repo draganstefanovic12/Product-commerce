@@ -1,5 +1,7 @@
+import { useAuth } from "../features/auth/context/AuthContext";
 import { Product } from "../features/products/types";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
+import { useState } from "react";
 import { getProduct } from "../api/productApi";
 import { Link, useParams } from "react-router-dom";
 import { useQuery, UseQueryResult } from "react-query";
@@ -9,8 +11,6 @@ import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
 import ProductReviews from "../features/products/components/ProductReviews";
 import EditProduct from "../features/products/components/EditProduct";
-import { useState } from "react";
-import { useAuth } from "../features/auth/context/AuthContext";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -86,7 +86,6 @@ const ProductPage = () => {
                 <Button onClick={handleEditing}>Edit</Button>
               )}
             </div>
-            {/* for later */}
             {/* {username !== product?.seller && (
               <Button className="w-52 h-10 bg-gray-700 hover:bg-gray-800">
                 Add to watchlist

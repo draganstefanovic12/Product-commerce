@@ -1,10 +1,10 @@
-import Button from "../../../../components/Button";
 import { Socket } from "socket.io-client";
 import { useUser } from "../../../user/context/UserContext";
 import { useState } from "react";
 import { MessageRoom } from "../../types";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
 import Input from "../../../../components/Input";
+import Button from "../../../../components/Button";
 
 type Props = {
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;

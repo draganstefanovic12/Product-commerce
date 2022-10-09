@@ -1,15 +1,16 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
+import Footer from "./components/Footer";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
-import ProductPage from "./pages/Product";
 import Settings from "./pages/Settings";
 import Messages from "./pages/Messages";
 import MainPage from "./pages/MainPage";
 import Register from "./pages/Register";
 import Categories from "./pages/Categories";
 import SellProduct from "./pages/SellProduct";
+import ProductPage from "./pages/Product";
 import ShoppingCartContent from "./features/shopping cart/components/ShoppingCartContent";
 
 const BrowserRoutes = () => {
@@ -31,6 +32,7 @@ const BrowserRoutes = () => {
         </Route>
         <Route path="/" element={<MainPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

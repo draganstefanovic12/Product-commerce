@@ -11,15 +11,15 @@ import { UserContextProvider } from "./features/user/context/UserContext";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-  <QueryClientProvider client={queryClient}>
-    <UserContextProvider>
-      <AuthContextProvider>
-        <CartContextProvider>
-          <BrowserRoutes />
-        </CartContextProvider>
-      </AuthContextProvider>
-    </UserContextProvider>
-  </QueryClientProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <UserContextProvider>
+        <AuthContextProvider>
+          <CartContextProvider>
+            <BrowserRoutes />
+          </CartContextProvider>
+        </AuthContextProvider>
+      </UserContextProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );

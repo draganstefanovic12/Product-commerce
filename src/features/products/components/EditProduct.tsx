@@ -2,8 +2,8 @@ import { Product } from "../types";
 import { useNavigate } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import { deleteProduct, editProduct } from "../../../api/productApi";
-import Button from "../../../components/Button";
 import close from "../../../assets/images/close.svg";
+import Button from "../../../components/Button";
 
 type EditProps = {
   props: Product | undefined;

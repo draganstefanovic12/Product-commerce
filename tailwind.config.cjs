@@ -8,9 +8,19 @@ module.exports = {
       },
       height: {
         128: "32rem",
+        160: "40rem",
       },
       gridTemplateColumns: {
         profile: "15% 85%",
+      },
+      animation: {
+        fade: "fade 1s ease-in-out 1",
+      },
+      keyframes: {
+        fade: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
     },
   },

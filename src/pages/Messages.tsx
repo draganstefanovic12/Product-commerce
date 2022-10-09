@@ -49,7 +49,12 @@ const Messages = () => {
       <div className="grid grid-cols-profile w-full">
         <MessageRooms {...props} />
         <div className="w-full flex-col flex messages-height justify-between">
-          <ReceivedMessages {...props} />
+          {rooms.length === 0 && (
+            <p className="self-center pt-5 text-gray-400">
+              You have no messages.
+            </p>
+          )}
+          {rooms.length > 0 && <ReceivedMessages {...props} />}
           {selectedRoom && <SendMessage {...props} />}
         </div>
       </div>

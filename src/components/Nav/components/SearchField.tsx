@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../../Input";
 import search from "../../../assets/images/search.svg";
-import { useNavigate } from "react-router-dom";
 
 const SearchField = () => {
   const [value, setValue] = useState<string>("");
