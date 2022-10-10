@@ -42,16 +42,18 @@ const ProductPage = () => {
         <ImageCarousel product={product} />
         <div className="flex flex-col w-full justify-between">
           <div className="flex flex-col p-5 gap-5">
-            <h1>
+            <h1 className="text-secondary">
               <Link
-                className="hover:underline pr-1"
+                className="hover:underline pr-1 "
                 to={`/category/${product?.category}/0`}
               >
                 {product?.category}
               </Link>
               {">"} {product?.name}
             </h1>
-            <h1 className="text-3xl">{product!.name}</h1>
+            <h1 className="text-3xl text-[#212121] font-extrabold">
+              {product!.name}
+            </h1>
             <div className="flex shadow rounded w-max p-5">
               <h1>
                 Seller:
@@ -72,7 +74,7 @@ const ProductPage = () => {
           </div>
           <div className="flex-row flex justify-between px-5 md:block mt-5">
             <div className="flex flex-col align-bottom">
-              <p className="text-4xl pr-2">{product!.price}$</p>
+              <p className="text-4xl pr-2 font-bold">{product!.price}$</p>
               <p>In stock: {product!.stock}</p>
             </div>
             <div className="flex gap-5">

@@ -26,6 +26,7 @@ const Checkout = () => {
           }}
         >
           <Form className="form justify-items-start p-5 shadow-none">
+            <h1>Shipping information</h1>
             <label>Name</label>
             <Field name="name" className="input-field" />
             <label>Address</label>

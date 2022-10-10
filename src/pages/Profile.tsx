@@ -65,7 +65,7 @@ const Profile = () => {
             </button>
           )}
         </div>
-        <h1 className="text-lg">{username}</h1>
+        <h1 className="text-lg font-bold">{username}</h1>
         <ProfileProductSelection
           profileProducts={profileProducts}
           setProfileProducts={setProfileProducts}

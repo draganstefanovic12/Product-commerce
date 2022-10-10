@@ -40,10 +40,10 @@ const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
           onClick={handleRemoveFromCart}
         />
         <div className="w-3/5">
-          <p className="whitespace-nowrap overflow-ellipsis overflow-hidden">
+          <p className="whitespace-nowrap overflow-ellipsis text-dark font-bold overflow-hidden">
             {prop.product!.name}
           </p>
-          <p>{prop.product!.price}$</p>
+          <p className="text-secondary">{prop.product!.price}$</p>
         </div>
       </div>
       <div className="items-center flex flex-col">
