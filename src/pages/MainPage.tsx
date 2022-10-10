@@ -1,5 +1,7 @@
 import Container from "../components/Container";
 import landingBg from "../assets/images/landing-bg.png";
+import NewProducts from "../features/main page/NewProducts";
+import MainPageCategory from "../features/main page/MainPageCategory";
 
 const MainPage = () => {
   return (
@@ -15,8 +17,15 @@ const MainPage = () => {
           <p className="text-2xl animate-fade">buy, sell and trade</p>
         </div>
       </div>
-      <Container>
-        <div></div>
+      <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
+        <NewProducts />
+      </Container>
+
+      <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
+        <MainPageCategory category="Electronics" />
+      </Container>
+      <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
+        <MainPageCategory category="Books" />
       </Container>
     </>
   );

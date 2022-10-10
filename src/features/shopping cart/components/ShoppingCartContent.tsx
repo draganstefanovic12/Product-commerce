@@ -2,11 +2,17 @@ import { CartProducts, useCart } from "../context/ShoppingCartContext";
 import close from "../../../assets/images/close.svg";
 import ShoppingCartProductBox from "./ShoppingCartProduxtBox";
 import Button from "../../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 const ShoppingCartContent = () => {
   const { isOpen, setIsOpen } = useCart();
+  const navigate = useNavigate();
   const { cart } = useCart();
   const showCart = isOpen ? "translate-x-0" : "translate-x-96 hidden";
+
+  const handleCheckout = () => {
+    navigate("/checkout");
+  };
 
   const handleClose = () => {
     setIsOpen(false);
@@ -37,7 +43,10 @@ const ShoppingCartContent = () => {
           <p>Total</p>
           <p>{totalPrice}$</p>
         </div>
-        <Button className="bg-gray-700 hover:bg-gray-800 w-2/5 mt-2 px-2 py-0">
+        <Button
+          onClick={handleCheckout}
+          className="bg-gray-700 hover:bg-gray-800 w-2/5 mt-2 px-2 py-0"
+        >
           Checkout
         </Button>
       </div>

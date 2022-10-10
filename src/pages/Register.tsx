@@ -33,7 +33,12 @@ const Register = () => {
             <label>Password</label>
             <Field type="password" name="password" className="input-field" />
             <label>Repeat Password</label>
-            <Field type="password" name="confirm" className="input-field" />
+            <Field
+              type="password"
+              name="confirm"
+              value=""
+              className="input-field"
+            />
             <ErrorMessage name="password" />
             <Button className="mt-5" type="submit">
               Submit

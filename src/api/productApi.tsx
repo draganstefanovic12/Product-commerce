@@ -11,6 +11,7 @@ export const createProduct = async (
     formData.append("fileupload", files![i]);
   }
 
+  //appending images and product to form data
   formData.append("product", JSON.stringify(product));
 
   const response = await backendApi.post("/products/product/new", formData);
@@ -19,6 +20,11 @@ export const createProduct = async (
 
 export const getProduct = async (id: string | undefined) => {
   const response = await backendApi.get(`/products/product/${id}`);
+  return response.data;
+};
+
+export const getNewProducts = async () => {
+  const response = await backendApi.get("/products/product/new");
   return response.data;
 };
 
