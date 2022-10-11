@@ -39,6 +39,7 @@ const Nav = () => {
         <Link to="/">Home</Link>
         <div className="hidden md:flex space-x-6">
           <SearchField />
+          <DropdownMenu name="Categories" children={<CategoriesDropdown />} />
           {username && (
             <>
               <p onClick={handleSell}>Sell</p>
@@ -46,7 +47,6 @@ const Nav = () => {
               <Messages />
             </>
           )}
-          <DropdownMenu name="Categories" children={<CategoriesDropdown />} />
           {!username && <button onClick={handleLogin}>Login</button>}
           <div className="relative" onClick={handleCreateProduct}>
             <img src={cartIcon} alt="cart" className="h-5" />

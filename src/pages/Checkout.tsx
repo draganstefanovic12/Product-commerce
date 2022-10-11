@@ -71,7 +71,7 @@ const Checkout = () => {
           </Form>
         </Formik>
       </div>
-      <div className="flex flex-col gap-5 mt-20 content-center justify-items-center">
+      <div className="flex w-full flex-col gap-5 mt-20 content-center justify-items-center pr-5">
         {cart.map((product, i) => (
           <ShoppingCartProductBox key={i} prop={product} className="none" />
         ))}

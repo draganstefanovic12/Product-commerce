@@ -1,9 +1,9 @@
 import { useAuth } from "../features/auth/context/AuthContext";
 import { Product } from "../features/products/types";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
-import { useState } from "react";
 import { getProduct } from "../api/productApi";
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useQuery, UseQueryResult } from "react-query";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner/Spinner";
@@ -20,6 +20,10 @@ const ProductPage = () => {
   const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
   }) as UseQueryResult<Product>;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (isLoading) {
     return <Spinner />;
@@ -40,8 +44,8 @@ const ProductPage = () => {
     <Container>
       <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />
-        <div className="flex flex-col w-full justify-between">
-          <div className="flex flex-col p-5 gap-5">
+        <div className="flex flex-col w-full justify-between shadow sm:shadow-none bg-white md:bg-inherit">
+          <div className="flex flex-col p-2 md:p-5 gap-5">
             <h1 className="text-secondary">
               <Link
                 className="hover:underline pr-1 "
@@ -72,27 +76,27 @@ const ProductPage = () => {
               <h1>Date created: {product!.createdAt!.slice(0, 10)}</h1>
             </div>
           </div>
-          <div className="flex-row flex justify-between px-5 md:block mt-5">
-            <div className="flex flex-col align-bottom">
+          <div className="flex-row flex justify-between md:block mt-5">
+            <div className="flex flex-col px-2 md:px-5 align-bottom">
               <p className="text-4xl pr-2 font-bold">{product!.price}$</p>
               <p>In stock: {product!.stock}</p>
             </div>
-            <div className="flex gap-5">
+            <div className="flex w-full gap-5 p-5">
               <Button
                 onClick={handleAddCart}
-                className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
+                className="w-full h-10 bg-gray-700 hover:bg-gray-800"
               >
                 Add to cart
               </Button>
               {username === product?.seller && (
-                <Button onClick={handleEditing}>Edit</Button>
+                <Button
+                  className="w-full h-10 bg-gray-700 hover:bg-gray-800"
+                  onClick={handleEditing}
+                >
+                  Edit
+                </Button>
               )}
             </div>
-            {/* {username !== product?.seller && (
-              <Button className="w-52 h-10 bg-gray-700 hover:bg-gray-800">
-                Add to watchlist
-              </Button>
-            )} */}
           </div>
         </div>
       </div>

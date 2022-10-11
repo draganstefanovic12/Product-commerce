@@ -9,7 +9,7 @@ const Footer = () => {
   const { pathname } = useLocation();
 
   return pathname !== "/messages" ? (
-    <div className="w-screen flex justify-center items-center h-36 bg-white shadow-2xl mt-10">
+    <div className="w-screen hidden md:flex justify-center items-center h-36 bg-white shadow-2xl mt-10">
       <img
         onClick={handleGithubPage}
         src={github}

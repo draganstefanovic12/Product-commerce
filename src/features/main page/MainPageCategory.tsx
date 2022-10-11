@@ -18,8 +18,8 @@ const MainPageCategory = ({ category }: Props) => {
       <h1 className="text-xl">{category}</h1>
       <div className="flex gap-3.5 flex-wrap">
         {products &&
-          products.map((product: Product) => (
-            <Link to={`/product/${product._id}`}>
+          products.map((product: Product, i: number) => (
+            <Link key={i} to={`/product/${product._id}`}>
               <ProductCard product={product} />
             </Link>
           ))}

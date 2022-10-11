@@ -22,9 +22,9 @@ const Search = () => {
       <h1>{results.length} results</h1>
       <div className="w-max child:w-60">
         {results.map(
-          (result: Product & User) =>
+          (result: Product & User, i: number) =>
             result.name && (
-              <Link to={`/product/${result._id}`}>
+              <Link key={i} to={`/product/${result._id}`}>
                 <ProductCard product={result} />
               </Link>
             )

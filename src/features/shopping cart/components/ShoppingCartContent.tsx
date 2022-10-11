@@ -1,8 +1,8 @@
-import { CartProducts, useCart } from "../context/ShoppingCartContext";
 import close from "../../../assets/images/close.svg";
-import ShoppingCartProductBox from "./ShoppingCartProduxtBox";
 import Button from "../../../components/Button";
+import ShoppingCartProductBox from "./ShoppingCartProduxtBox";
 import { useNavigate } from "react-router-dom";
+import { CartProducts, useCart } from "../context/ShoppingCartContext";
 
 const ShoppingCartContent = () => {
   const { isOpen, setIsOpen } = useCart();

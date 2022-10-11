@@ -12,9 +12,13 @@ const MainPage = () => {
           alt="landing-img"
           className="w-screen h-160 object-cover"
         />
-        <div className="absolute top-5 left-32 ">
-          <h1 className="text-7xl landing animate-fade">Product Commerce</h1>
-          <p className="text-2xl animate-fade">buy, sell and trade</p>
+        <div className="absolute top-5 left-5 md:left-32 ">
+          <h1 className="sm:text-xs md:text-7xl landing animate-fade">
+            Product Commerce
+          </h1>
+          <p className="sm:text-sm md:text-2xl animate-fade">
+            buy, sell and trade
+          </p>
         </div>
       </div>
       <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
