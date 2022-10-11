@@ -23,9 +23,9 @@ const productForm = [
 ];
 
 const SellProduct = () => {
+  const [success, setSuccess] = useState(false);
   const [category, setCategory] = useState("Electronics");
   const navigate = useNavigate();
-  const [success, setSuccess] = useState(false);
   const [uploadImages, setUploadImages] = useState<FileList | null>();
 
   return (
@@ -49,7 +49,9 @@ const SellProduct = () => {
                 name={fieldProp.name}
                 placeholder={fieldProp.placeholder}
                 type={fieldProp.type}
-                className="input-field my-5 w-full"
+                className={`input-field my-5 w-full ${
+                  fieldProp.type === "textarea" && "h-96"
+                }`}
                 component={fieldProp.type === "textarea" && "textarea"}
               />
             ))}

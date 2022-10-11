@@ -36,7 +36,7 @@ const ShoppingCartContent = () => {
       />
       <p>Cart content: </p>
       {cart.map((product: CartProducts, i) => (
-        <ShoppingCartProductBox key={i} prop={product} />
+        <ShoppingCartProductBox key={i} prop={product} className="shadow" />
       ))}
       <div className="self-end flex flex-col items-end mt-2">
         <div className="flex child:text-2xl w-full justify-between border-b-2 border-solid border-gray-100">

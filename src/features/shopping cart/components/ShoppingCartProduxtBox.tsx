@@ -4,9 +4,11 @@ import Button from "../../../components/Button";
 
 type ProductBoxProps = {
   prop: CartProducts;
+  className?: string;
 };
 
-const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
+//using shadow and shadow-none as classname props to show the products differently
+const ShoppingCartProductBox = ({ prop, className }: ProductBoxProps) => {
   const { removeFromCart, handleCount } = useCart();
 
   const handleRemoveFromCart = () => {
@@ -27,11 +29,13 @@ const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
 
   return (
     <div className="flex gap-3 mt-5">
-      <div className="w-full flex gap-2 shadow relative rounded">
+      <div className={`w-full flex gap-2 relative rounded ${className}`}>
         <img
           src={`http://localhost:5006${prop!.product!.images![0]}`}
           alt="product"
-          className="w-16 object-cover"
+          className={`${
+            className === "shadow" ? "w-12" : "w-28"
+          } object-cover h-28`}
         />
         <img
           src={remove}
@@ -46,21 +50,23 @@ const ShoppingCartProductBox = ({ prop }: ProductBoxProps) => {
           <p className="text-secondary">{prop.product!.price}$</p>
         </div>
       </div>
-      <div className="items-center flex flex-col">
-        <Button
-          onClick={handleIncrement}
-          className="w-6 px-0 py-0 shadow bg-white"
-        >
-          +
-        </Button>
-        <p className="self-center">{prop.count}</p>
-        <Button
-          onClick={handleDecrement}
-          className="w-6 px-0 py-0 shadow bg-white"
-        >
-          -
-        </Button>
-      </div>
+      {className === "shadow" && (
+        <div className="items-center flex flex-col">
+          <Button
+            onClick={handleIncrement}
+            className="w-6 px-0 py-0 shadow bg-white"
+          >
+            +
+          </Button>
+          <p className="self-center">{prop.count}</p>
+          <Button
+            onClick={handleDecrement}
+            className="w-6 px-0 py-0 shadow bg-white"
+          >
+            -
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
