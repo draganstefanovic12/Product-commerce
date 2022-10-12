@@ -45,7 +45,7 @@ const Messages = () => {
   };
 
   return (
-    <Container className="messages-height">
+    <Container className="messages-height mr-4">
       <div className="grid grid-cols-profile w-full">
         <MessageRooms {...props} />
         <div className="w-full flex-col flex messages-height justify-between">

@@ -18,21 +18,13 @@ const Profile = () => {
   const { username: currUser } = useAuth();
   const navigate = useNavigate();
   const [profileProducts, setProfileProducts] = useState<Selection>("selling");
-  const [isEditing, setIsEditing] = useState(false);
-  const { isLoading, data: user } = useQuery(
-    ["profile", username, isEditing],
-    () => {
-      return getProfile(username);
-    }
-  );
+  const { isLoading, data: user } = useQuery(["profile", username], () => {
+    return getProfile(username);
+  });
 
   if (isLoading) {
     return <Spinner />;
   }
-
-  const handleEditing = () => {
-    setIsEditing(!isEditing);
-  };
 
   const handleMessage = () => {
     navigate(`/messages/${username}`);
@@ -47,16 +39,7 @@ const Profile = () => {
             alt="avatar"
             className="rounded-full w-32 h-32 md:h-44 md:w-44 object-cover mb-2 mx-5"
           />
-          {isEditing && <ChangeAvatar setIsEditing={setIsEditing} />}
-          {username === currUser && (
-            <button
-              className="secondary-btn absolute right-5 md:bottom-2 sm:bottom-5"
-              onClick={handleEditing}
-            >
-              Edit
-            </button>
-          )}
-          {username !== currUser && (
+          {username !== currUser && currUser && (
             <button
               className="secondary-btn absolute right-5 md:bottom-2 sm:bottom-5"
               onClick={handleMessage}

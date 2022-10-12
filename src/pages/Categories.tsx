@@ -15,8 +15,8 @@ const Categories = () => {
     return getCategoryProducts(category, offset);
   });
 
-  //Dinamically changing cover backgrounds depending on the category selected
   useEffect(() => {
+    //Dinamically changing cover backgrounds depending on the category selected
     categoryCovers.map(
       (cover) => cover.name === category && setCover(cover.link)
     );
@@ -29,10 +29,12 @@ const Categories = () => {
   return (
     <Container>
       <img src={cover} alt="" className="h-48 w-full object-cover" />
-      <div className="p-2 w-52">
-        <h1 className="text-2xl box-border mb-2">{category}</h1>
+      <div className="p-2 w-full">
+        <h1 className="text-2xl box-border mb-2 border-b-2 border-dark border-solid font-bold">
+          {category}
+        </h1>
         <div className="flex flex-col md:flex-row gap-3">
-          {data.map((product: Product, i: number) => (
+          {data.products.map((product: Product, i: number) => (
             <Link key={i} to={`/product/${product._id}`}>
               <ProductCard product={product} />
             </Link>

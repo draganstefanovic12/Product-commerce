@@ -25,8 +25,6 @@ const ProductPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  console.log(product);
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -47,7 +45,7 @@ const ProductPage = () => {
       <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />
         <div className="flex flex-col w-full justify-between shadow sm:shadow-none bg-white md:bg-inherit">
-          <div className="flex flex-col p-2 md:p-5 gap-5">
+          <div className="flex flex-col p-2 md:p-5 gap-0">
             <h1 className="text-secondary">
               <Link
                 className="hover:underline pr-1 "
@@ -60,7 +58,7 @@ const ProductPage = () => {
             <h1 className="text-3xl text-[#212121] lato font-extrabold">
               {product!.name}
             </h1>
-            <div className="flex shadow rounded w-max p-5">
+            <div className="flex shadow rounded w-max p-5 mt-5">
               <h1>
                 Seller:
                 <Link
@@ -71,10 +69,10 @@ const ProductPage = () => {
                 </Link>
               </h1>
             </div>
-            <div className="flex shadow rounded w-max p-5 h-16">
+            <div className="flex shadow rounded w-max p-5 h-16 mt-5">
               <h1>{trades}</h1>
             </div>
-            <div className="flex shadow rounded w-max p-5 h-16">
+            <div className="flex shadow rounded w-max p-5 h-16 mt-5">
               <h1>Date created: {product!.createdAt!.slice(0, 10)}</h1>
             </div>
           </div>
