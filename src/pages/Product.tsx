@@ -55,7 +55,7 @@ const ProductPage = () => {
               </Link>
               {">"} {product?.name}
             </h1>
-            <h1 className="text-3xl text-[#212121] font-extrabold">
+            <h1 className="text-3xl text-[#212121] product-main-title font-extrabold">
               {product!.name}
             </h1>
             <div className="flex shadow rounded w-max p-5">

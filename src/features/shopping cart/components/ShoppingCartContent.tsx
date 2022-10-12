@@ -34,7 +34,7 @@ const ShoppingCartContent = () => {
         alt="close"
         className="h-3 absolute right-3 top-7 cursor-pointer"
       />
-      <p>Cart content: </p>
+      <p className="font-bold text-2xl">Cart content: </p>
       {cart.map((product: CartProducts, i) => (
         <ShoppingCartProductBox key={i} prop={product} className="shadow" />
       ))}

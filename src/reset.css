@@ -18,6 +18,10 @@ body {
   background-color: #f9fafb;
 }
 
+.product-main-title {
+  font-family: var(--font-lato);
+}
+
 ul {
   list-style: none inside;
 }
