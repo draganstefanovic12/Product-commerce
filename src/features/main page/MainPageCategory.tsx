@@ -15,7 +15,9 @@ const MainPageCategory = ({ category }: Props) => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2 text-dark lato">{category}</h1>
+      <h1 className="text-2xl font-bold mb-2 text-dark lato border-bottom">
+        {category}
+      </h1>
       <div className="flex gap-3.5 flex-wrap">
         {products &&
           products.products.map((product: Product, i: number) => (

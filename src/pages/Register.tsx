@@ -14,7 +14,7 @@ const Register = () => {
   const { register, error } = useRegister();
 
   return (
-    <div className="h-screen grid place-items-center bg-pattern">
+    <div className="messages-height grid place-items-center bg-pattern">
       <Formik
         initialValues={{ username: "", email: "", password: "" }}
         validationSchema={signUpSchema}

@@ -22,4 +22,8 @@
   .secondary-btn {
     @apply bg-gray-700 hover:bg-gray-800 text-sm shadow text-white px-5 rounded;
   }
+
+  .border-bottom {
+    @apply border-b-2 border-dark border-solid;
+  }
 }

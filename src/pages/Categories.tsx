@@ -30,7 +30,7 @@ const Categories = () => {
     <Container>
       <img src={cover} alt="" className="h-48 w-full object-cover" />
       <div className="p-2 w-full">
-        <h1 className="text-2xl box-border mb-2 border-b-2 border-dark border-solid font-bold">
+        <h1 className="text-2xl box-border border-bottom font-bold mb-5">
           {category}
         </h1>
         <div className="flex flex-col md:flex-row gap-3">

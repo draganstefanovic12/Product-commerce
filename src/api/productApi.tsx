@@ -18,11 +18,13 @@ export const createProduct = async (
   return response.data;
 };
 
+//fetches a single product
 export const getProduct = async (id: string | undefined) => {
   const response = await backendApi.get(`/products/product/${id}`);
   return response.data;
 };
 
+//fetches new products on main page
 export const getNewProducts = async () => {
   const response = await backendApi.get("/products/product/new");
   return response.data;

@@ -51,9 +51,7 @@ const Checkout = () => {
         >
           <Form className="form w-2/4 flex flex-col md:flex-row justify-items-start px-5 mt-20 shadow-none">
             <div>
-              <h1 className="text-3xl border-b-2 border-gray-700 border-solid">
-                Details
-              </h1>
+              <h1 className="text-3xl border-bottom">Details</h1>
               <div className="py-10">
                 <h1>Billing Information</h1>
                 {formFieldsBilling.map((field) => (
@@ -79,14 +77,12 @@ const Checkout = () => {
         </Formik>
       </div>
       <div className="flex w-full flex-col gap-5 mt-20 content-center justify-items-center pr-5">
-        <h1 className="text-3xl border-b-2 border-gray-700 border-solid">
-          Cart
-        </h1>
+        <h1 className="text-3xl">Cart</h1>
         {cart.map((product, i) => (
           <ShoppingCartProductBox key={i} prop={product} className="none" />
         ))}
         <div>
-          <p className="border-b-2 border-gray-700 border-solid">Total:</p>
+          <p className="border-bottom">Total:</p>
           <p className="font-bold text-2xl">{totalPrice}$</p>
         </div>
         <Button>Checkout</Button>
