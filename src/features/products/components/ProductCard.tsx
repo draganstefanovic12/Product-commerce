@@ -10,7 +10,7 @@ const ProductCard = ({ product }: ProductProps) => {
       <img
         src={`http://localhost:5006${product.images![0]}`}
         alt="img"
-        className="h-52 object-cover"
+        className="w-full h-52 object-cover"
       />
       <div className="flex w-full justify-between">
         <h2 className="whitespace-nowrap font-bold text-dark overflow-hidden overflow-ellipsis">

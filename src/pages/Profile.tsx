@@ -10,7 +10,7 @@ import ChangeAvatar from "../features/user/components/ChangeAvatar";
 import SoldProducts from "../features/user/components/SoldProducts";
 import ProfileInfoBox from "../features/profile/components/ProfileInfoBox";
 import SellingProducts from "../features/user/components/SellingProducts";
-import WatchlistProducts from "../features/user/components/WatchlistProducts";
+import WishlistProducts from "../features/user/components/WishlistProducts";
 import ProfileProductSelection from "../features/profile/components/ProfileProducts";
 
 const Profile = () => {
@@ -81,7 +81,7 @@ const Profile = () => {
             <SoldProducts products={user.products} />
           )}
           {profileProducts === "watchlist" && (
-            <WatchlistProducts products={user.watchlist} />
+            <WishlistProducts products={user.watchlist} />
           )}
         </div>
       </div>

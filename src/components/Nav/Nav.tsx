@@ -49,7 +49,7 @@ const Nav = () => {
           )}
           {!username && <button onClick={handleLogin}>Login</button>}
           <div className="relative" onClick={handleCreateProduct}>
-            <img src={cartIcon} alt="cart" className="h-5" />
+            <img src={cartIcon} alt="cart" className="h-5 mt-0.5" />
             {cart.length > 0 && (
               <p className="absolute bottom-3 rounded-xl -right-1 text-red-800 bg-white text-sm h-4">
                 {cart.length}

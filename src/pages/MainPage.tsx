@@ -24,7 +24,6 @@ const MainPage = () => {
       <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
         <NewProducts />
       </Container>
-
       <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
         <MainPageCategory category="Electronics" />
       </Container>

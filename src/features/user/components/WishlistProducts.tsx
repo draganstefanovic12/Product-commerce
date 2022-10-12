@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import ProductCard from "../../products/components/ProductCard";
 import { ProfileCategoryProps } from "../types/types";
+import ProductCard from "../../products/components/ProductCard";
 
-const WatchlistProducts = ({ products }: ProfileCategoryProps) => {
+const WishlistProducts = ({ products }: ProfileCategoryProps) => {
   const watchlistProducts = products.map((watchProd) => (
     <Link to={`/product/${watchProd._id}`}>
       <ProductCard product={watchProd} />
@@ -11,4 +11,4 @@ const WatchlistProducts = ({ products }: ProfileCategoryProps) => {
 
   return <>{watchlistProducts}</>;
 };
-export default WatchlistProducts;
+export default WishlistProducts;

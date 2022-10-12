@@ -2,6 +2,7 @@ import Container from "../components/Container";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { Field, Form, Formik } from "formik";
 import ShoppingCartProductBox from "../features/shopping cart/components/ShoppingCartProduxtBox";
+import Button from "../components/Button";
 
 const Checkout = () => {
   const { cart } = useCart();
@@ -39,27 +40,22 @@ const Checkout = () => {
   ];
 
   return (
-    <Container className="flex gap-20">
+    <Container className="flex flex-col md:flex-row gap-20">
       <div>
         <Formik
           initialValues={initialValues}
           onSubmit={(values) => {
+            console.log(values);
             //simulating product purchase
           }}
         >
-          <Form className="form w-2/4 flex justify-items-start p-5 mt-20 shadow-none">
+          <Form className="form w-2/4 flex flex-col md:flex-row justify-items-start px-5 mt-20 shadow-none">
             <div>
-              <h1>Billing Information</h1>
-              {formFieldsBilling.map((field) => (
-                <div className="flex flex-col w-96">
-                  <label>{field.label}</label>
-                  <Field name={field.name} className="input-field" />
-                </div>
-              ))}
-            </div>
-            <div>
-              <div className="flex flex-col w-96">
-                <h1>Shipping Information</h1>
+              <h1 className="text-3xl border-b-2 border-gray-700 border-solid">
+                Shipping Details
+              </h1>
+              <div>
+                <h1>Billing Information</h1>
                 {formFieldsBilling.map((field) => (
                   <div className="flex flex-col w-96">
                     <label>{field.label}</label>
@@ -67,11 +63,25 @@ const Checkout = () => {
                   </div>
                 ))}
               </div>
+              <div>
+                <div className="flex flex-col w-96">
+                  <h1>Shipping Information</h1>
+                  {formFieldsShipping.map((field) => (
+                    <div className="flex flex-col w-96">
+                      <label>{field.label}</label>
+                      <Field name={field.name} className="input-field" />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </Form>
         </Formik>
       </div>
       <div className="flex w-full flex-col gap-5 mt-20 content-center justify-items-center pr-5">
+        <h1 className="text-3xl border-b-2 border-gray-700 border-solid">
+          Cart
+        </h1>
         {cart.map((product, i) => (
           <ShoppingCartProductBox key={i} prop={product} className="none" />
         ))}
@@ -79,6 +89,7 @@ const Checkout = () => {
           <p className="border-b-2 border-gray-700 border-solid">Total:</p>
           <p className="font-bold text-2xl">{totalPrice}$</p>
         </div>
+        <Button>Checkout</Button>
       </div>
     </Container>
   );

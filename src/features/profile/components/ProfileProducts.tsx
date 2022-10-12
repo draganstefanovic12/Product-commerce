@@ -17,7 +17,7 @@ const ProfileProductSelection = ({
     setProfileProducts("sold");
   };
 
-  const handleWatchlist = () => {
+  const handleWishlist = () => {
     setProfileProducts("watchlist");
   };
 
@@ -34,8 +34,8 @@ const ProfileProductSelection = ({
       <p className={soldSelected} onClick={handleSold}>
         Sold
       </p>
-      <p className={watchlistSelected} onClick={handleWatchlist}>
-        Watchlist
+      <p className={watchlistSelected} onClick={handleWishlist}>
+        Wishlist
       </p>
     </div>
   );
