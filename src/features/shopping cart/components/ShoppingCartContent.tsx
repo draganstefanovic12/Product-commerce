@@ -8,7 +8,7 @@ const ShoppingCartContent = () => {
   const { isOpen, setIsOpen } = useCart();
   const navigate = useNavigate();
   const { cart } = useCart();
-  const showCart = isOpen ? "translate-x-0" : "translate-x-96 hidden";
+  const showCart = isOpen ? "translate-x-0" : "translate-x-full hidden";
 
   const handleCheckout = () => {
     navigate("/checkout");
@@ -26,7 +26,7 @@ const ShoppingCartContent = () => {
 
   return (
     <div
-      className={`${showCart} transition-transform md:block absolute bg-white right-0 shadow messages-height w-80 p-5 z-40`}
+      className={`${showCart} transition-transform md:block bg-white fixed right-0 shadow messages-height w-1/4 p-5 z-40`}
     >
       <img
         onClick={handleClose}

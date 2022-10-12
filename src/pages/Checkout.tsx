@@ -77,12 +77,12 @@ const Checkout = () => {
         </Formik>
       </div>
       <div className="flex w-full flex-col gap-5 mt-20 content-center justify-items-center pr-5">
-        <h1 className="text-3xl">Cart</h1>
+        <h1 className="text-3xl border-bottom">Cart</h1>
         {cart.map((product, i) => (
           <ShoppingCartProductBox key={i} prop={product} className="none" />
         ))}
         <div>
-          <p className="border-bottom">Total:</p>
+          <p className="border-bottom w-80">Total:</p>
           <p className="font-bold text-2xl">{totalPrice}$</p>
         </div>
         <Button>Checkout</Button>

@@ -34,7 +34,7 @@ const ShoppingCartProductBox = ({ prop, className }: ProductBoxProps) => {
           src={`http://localhost:5006${prop!.product!.images![0]}`}
           alt="product"
           className={`${
-            className === "shadow" ? "w-12" : "w-28"
+            className === "shadow" ? "w-24" : "w-28"
           } object-cover h-28`}
         />
         <img

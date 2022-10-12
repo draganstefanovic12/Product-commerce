@@ -60,7 +60,7 @@ const SendMessage = ({ socket, selectedRoom, setRooms }: Props) => {
       <Input
         placeholder="Type message here..."
         value={value}
-        className="input-field h-16 w-screen rounded-r-none focus:ring-0"
+        className="input-field h-16 w-full flex flex-1 rounded-r-none focus:ring-0"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
