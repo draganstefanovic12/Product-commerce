@@ -1,5 +1,4 @@
 import { useCart } from "../../features/shopping cart/context/ShoppingCartContext";
-import { useUser } from "../../features/user/context/UserContext";
 import { useAuth } from "../../features/auth/context/AuthContext";
 import { Message } from "../../features/messages/types";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,7 +15,6 @@ export type UserMessage = {
 };
 
 const Nav = () => {
-  const { unreadMessages } = useUser();
   const { username } = useAuth();
   const { cart, isOpen, setIsOpen } = useCart();
   const navigate = useNavigate();
@@ -43,8 +41,8 @@ const Nav = () => {
           {username && (
             <>
               <p onClick={handleSell}>Sell</p>
-              <DropdownMenu name={username} children={<ProfileDropdown />} />
               <Messages />
+              <DropdownMenu name={username} children={<ProfileDropdown />} />
             </>
           )}
           {!username && <button onClick={handleLogin}>Login</button>}

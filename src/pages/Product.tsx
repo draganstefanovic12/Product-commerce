@@ -25,6 +25,8 @@ const ProductPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  console.log(product);
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -55,7 +57,7 @@ const ProductPage = () => {
               </Link>
               {">"} {product?.name}
             </h1>
-            <h1 className="text-3xl text-[#212121] product-main-title font-extrabold">
+            <h1 className="text-3xl text-[#212121] lato font-extrabold">
               {product!.name}
             </h1>
             <div className="flex shadow rounded w-max p-5">

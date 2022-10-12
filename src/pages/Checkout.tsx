@@ -52,9 +52,9 @@ const Checkout = () => {
           <Form className="form w-2/4 flex flex-col md:flex-row justify-items-start px-5 mt-20 shadow-none">
             <div>
               <h1 className="text-3xl border-b-2 border-gray-700 border-solid">
-                Shipping Details
+                Details
               </h1>
-              <div>
+              <div className="py-10">
                 <h1>Billing Information</h1>
                 {formFieldsBilling.map((field) => (
                   <div className="flex flex-col w-96">
