@@ -46,7 +46,7 @@ const ProductPage = () => {
       <HelmetPageTitle title={product?.name!} />
       <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />
-        <div className="flex flex-col w-full justify-between shadow sm:shadow-none bg-white md:bg-inherit">
+        <div className="flex flex-col w-full  shadow sm:shadow-none bg-white md:bg-inherit relative">
           <div className="flex flex-col p-2 md:p-5 gap-0">
             <h1 className="text-secondary">
               <Link
@@ -83,16 +83,16 @@ const ProductPage = () => {
               <p className="text-4xl pr-2 font-bold">{product!.price}$</p>
               <p>In stock: {product!.stock}</p>
             </div>
-            <div className="flex w-full gap-5 p-5">
+            <div className="flex w-full gap-5 p-5 md:px-5 py-0 md:absolute bottom-0">
               <Button
                 onClick={handleAddCart}
-                className="w-full h-10 bg-gray-700 hover:bg-gray-800"
+                className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
               >
                 Add to cart
               </Button>
               {username === product?.seller && (
                 <Button
-                  className="w-full h-10 bg-gray-700 hover:bg-gray-800"
+                  className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
                   onClick={handleEditing}
                 >
                   Edit

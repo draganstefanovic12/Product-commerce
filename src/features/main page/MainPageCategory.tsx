@@ -20,7 +20,7 @@ const MainPageCategory = ({ category }: Props) => {
       </h1>
       <div className="flex gap-3.5 flex-wrap">
         {products &&
-          products.products.map((product: Product, i: number) => (
+          products.products.slice(0, 6).map((product: Product, i: number) => (
             <Link key={i} to={`/product/${product._id}`}>
               <ProductCard product={product} />
             </Link>

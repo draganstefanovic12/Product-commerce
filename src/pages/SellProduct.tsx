@@ -87,13 +87,15 @@ const SellProduct = () => {
                   <label>Accepting returns:</label>
                   <Field name="trade" type="checkbox" />
                 </div>
+                {success && (
+                  <p className="text-green-400">
+                    Product created successfully.
+                  </p>
+                )}
               </div>
               <Button className="h-10 self-end sm:mt-5 md:mt-0" type="submit">
                 Submit
               </Button>
-              {success && (
-                <p className="text-green-400">Product created successfully.</p>
-              )}
             </div>
           </Form>
         )}

@@ -70,7 +70,9 @@ const MessageRooms = (props: RoomProps) => {
             >
               {rooms.messages.at(-1)?.content}
             </span>
-            <span>{rooms.messages.at(-1)?.createdAt.slice(16, 21)}</span>
+            <span className="text-secondary">
+              {rooms.messages.at(-1)?.createdAt.slice(16, 21)}
+            </span>
           </div>
         </li>
       ))}

@@ -35,7 +35,7 @@ const Nav = () => {
 
   return (
     <nav
-      className={`bg-white w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow ${
+      className={`bg-white w-full shadow hover:shadow-md fixed z-50 top-0 transition-shadow text-[#14181c] ${
         pathname === "/messages" && "-left-2"
       }`}
     >

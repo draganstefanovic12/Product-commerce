@@ -31,8 +31,8 @@ const Profile = () => {
   };
 
   return (
-    <Container className="h-max">
-      <HelmetPageTitle title="Register" />
+    <Container className="h-max overflow-hidden">
+      <HelmetPageTitle title={username!} />
       <div className="flex flex-col md:flex-row gap-5 relative md:child:self-end drop-shadow-sm shadow-sm p-2 pb-0">
         <div>
           <img
@@ -49,9 +49,7 @@ const Profile = () => {
             </button>
           )}
         </div>
-        <h1 className="text-2Along with the gods: the two worldsxl font-bold font-dark">
-          {username}
-        </h1>
+        <h1 className="text-2xl font-bold font-dark">{username}</h1>
         <ProfileProductSelection
           profileProducts={profileProducts}
           setProfileProducts={setProfileProducts}
