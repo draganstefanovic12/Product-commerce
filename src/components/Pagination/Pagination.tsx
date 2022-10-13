@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type PaginationProps = {
   total: number;
@@ -7,14 +7,23 @@ type PaginationProps = {
 
 const Pagination = ({ query, total }: PaginationProps) => {
   const navigate = useNavigate();
-  const pages = Math.floor(total / 20);
+  const { offset } = useParams();
+  const pages = Math.floor(total / 18) + 1;
 
-  return total > 20 ? (
-    <div>
-      {[...Array(pages).keys()].map((number) => (
-        <li onClick={() => navigate(`${query}${number}`)}>{number}</li>
+  return total > 18 ? (
+    <ul className="flex gap-2  place-content-center">
+      {[...Array(pages).keys()].map((number, i) => (
+        <li
+          className={`${
+            i === parseInt(offset!) && "bg-gray-200"
+          } px-2 rounded cursor-pointer`}
+          key={i}
+          onClick={() => navigate(`${query}${i}`)}
+        >
+          {number + 1}
+        </li>
       ))}
-    </div>
+    </ul>
   ) : (
     <div></div>
   );
