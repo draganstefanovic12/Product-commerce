@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
 import ProductCard from "../features/products/components/ProductCard";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const Search = () => {
   const { query } = useParams();
@@ -19,6 +20,7 @@ const Search = () => {
 
   return (
     <Container className="p-5">
+      <HelmetPageTitle title={query!} />
       <h1>{results.length} results</h1>
       <div className="w-max child:w-60">
         {results.map(

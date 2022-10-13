@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../components/Button";
 import FormOptions from "../components/Form/FormOptions";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const signUpSchema = Yup.object({
   username: Yup.string().required(),
@@ -15,6 +16,7 @@ const Register = () => {
 
   return (
     <div className="messages-height grid place-items-center bg-pattern">
+      <HelmetPageTitle title="Register" />
       <Formik
         initialValues={{ username: "", email: "", password: "" }}
         validationSchema={signUpSchema}

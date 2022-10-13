@@ -18,7 +18,7 @@ const ProfileInfoBox = ({ user }: ProfileType) => {
         <li>Products sold: {productsSoldCount}</li>
       </div>
       <div className="profile-info-box">
-        <li>Feedback: Positive</li>
+        <li>Feedback: No feedback.</li>
       </div>
     </ul>
   );

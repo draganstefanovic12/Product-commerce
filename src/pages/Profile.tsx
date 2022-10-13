@@ -9,6 +9,7 @@ import Container from "../components/Container";
 import SoldProducts from "../features/user/components/SoldProducts";
 import ProfileInfoBox from "../features/profile/components/ProfileInfoBox";
 import SellingProducts from "../features/user/components/SellingProducts";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 import WishlistProducts from "../features/user/components/WishlistProducts";
 import ProfileProductSelection from "../features/profile/components/ProfileProducts";
 
@@ -31,6 +32,7 @@ const Profile = () => {
 
   return (
     <Container className="h-max">
+      <HelmetPageTitle title="Register" />
       <div className="flex flex-col md:flex-row gap-5 relative md:child:self-end drop-shadow-sm shadow-sm p-2 pb-0">
         <div>
           <img

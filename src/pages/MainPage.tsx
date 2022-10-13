@@ -1,11 +1,13 @@
 import Container from "../components/Container";
 import landingBg from "../assets/images/landing-bg.png";
 import NewProducts from "../features/main page/NewProducts";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 import MainPageCategory from "../features/main page/MainPageCategory";
 
 const MainPage = () => {
   return (
     <>
+      <HelmetPageTitle title="Product Commerce" />
       <div className="relative">
         <img
           src={landingBg}

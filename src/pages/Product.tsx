@@ -11,6 +11,7 @@ import Container from "../components/Container";
 import ImageCarousel from "../features/products/components/ImageCarousel";
 import ProductReviews from "../features/products/components/ProductReviews";
 import EditProduct from "../features/products/components/EditProduct";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -42,6 +43,7 @@ const ProductPage = () => {
 
   return (
     <Container>
+      <HelmetPageTitle title={product?.name!} />
       <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />
         <div className="flex flex-col w-full justify-between shadow sm:shadow-none bg-white md:bg-inherit">

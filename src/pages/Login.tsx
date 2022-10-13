@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import Button from "../components/Button";
 import useLogin from "../features/auth/hooks/useLogin";
 import FormOptions from "../components/Form/FormOptions";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const loginSchema = Yup.object({
   username: Yup.string().required("Username is required."),
@@ -14,6 +15,7 @@ const Login = () => {
 
   return (
     <div className="messages-height grid place-items-center bg-pattern">
+      <HelmetPageTitle title="Login" />
       <Formik
         initialValues={{ username: "", password: "" }}
         validateOnChange={true}

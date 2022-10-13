@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import Button from "../components/Button";
 import categories from "../features/products/categories";
 import { useNavigate } from "react-router-dom";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const initialValues = {
   name: "",
@@ -30,6 +31,7 @@ const SellProduct = () => {
 
   return (
     <div className="flex w-4/4 justify-center relative bg-gray-50">
+      <HelmetPageTitle title="Sell" />
       <Formik
         onSubmit={(values) => {
           createProduct(uploadImages, { ...values, category: category });

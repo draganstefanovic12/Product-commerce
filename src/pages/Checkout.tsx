@@ -3,6 +3,7 @@ import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { Field, Form, Formik } from "formik";
 import ShoppingCartProductBox from "../features/shopping cart/components/ShoppingCartProduxtBox";
 import Button from "../components/Button";
+import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const Checkout = () => {
   const { cart } = useCart();
@@ -41,6 +42,7 @@ const Checkout = () => {
 
   return (
     <Container className="flex flex-col md:flex-row gap-20">
+      <HelmetPageTitle title="Checkout" />
       <div>
         <Formik
           initialValues={initialValues}
