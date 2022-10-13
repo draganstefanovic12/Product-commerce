@@ -12,6 +12,7 @@ const ShoppingCartContent = () => {
 
   const handleCheckout = () => {
     navigate("/checkout");
+    setIsOpen(false);
   };
 
   const handleClose = () => {

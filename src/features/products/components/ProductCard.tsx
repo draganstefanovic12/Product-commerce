@@ -6,11 +6,11 @@ type ProductProps = {
 
 const ProductCard = ({ product }: ProductProps) => {
   return (
-    <div className="rounded-lg w-64 outline-grey-200 outline-2 shadow-lg hover:shadow-xl px-2 transition-shadow md:w-60 cursor-pointer">
+    <div className="rounded-lg w-32 outline-grey-200 outline-2 shadow-lg hover:shadow-xl px-2 transition-shadow md:w-60 cursor-pointer">
       <img
         src={`http://localhost:5006${product.images![0]}`}
         alt="img"
-        className="w-full h-52 object-cover"
+        className="w-full h-32 md:h-52 object-cover"
       />
       <div className="flex w-full justify-between">
         <h2 className="whitespace-nowrap font-bold text-dark overflow-hidden overflow-ellipsis">

@@ -15,7 +15,7 @@ const MainPageCategory = ({ category }: Props) => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-2 text-dark lato border-bottom">
+      <h1 className="text-2xl font-bold mb-2 text-dark lato border-bottom border-gray-400">
         {category}
       </h1>
       <div className="flex gap-3.5 flex-wrap">

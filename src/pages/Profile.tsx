@@ -6,7 +6,6 @@ import { getProfile } from "../api/userApi";
 import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
-import ChangeAvatar from "../features/user/components/ChangeAvatar";
 import SoldProducts from "../features/user/components/SoldProducts";
 import ProfileInfoBox from "../features/profile/components/ProfileInfoBox";
 import SellingProducts from "../features/user/components/SellingProducts";
@@ -48,7 +47,9 @@ const Profile = () => {
             </button>
           )}
         </div>
-        <h1 className="text-lg font-bold">{username}</h1>
+        <h1 className="text-2Along with the gods: the two worldsxl font-bold font-dark">
+          {username}
+        </h1>
         <ProfileProductSelection
           profileProducts={profileProducts}
           setProfileProducts={setProfileProducts}

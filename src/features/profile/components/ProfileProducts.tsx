@@ -21,10 +21,14 @@ const ProfileProductSelection = ({
     setProfileProducts("watchlist");
   };
 
-  const sellingSelected = profileProducts === "selling" ? "shadow-inner" : "";
-  const soldSelected = profileProducts === "sold" ? "shadow-inner" : "";
+  const sellingSelected =
+    profileProducts === "selling" ? "shadow-inner text-dark" : "text-gray-800";
+  const soldSelected =
+    profileProducts === "sold" ? "shadow-inner text-dark" : "text-gray-800";
   const watchlistSelected =
-    profileProducts === "watchlist" ? "shadow-inner" : "";
+    profileProducts === "watchlist"
+      ? "shadow-inner text-dark"
+      : "text-gray-800";
 
   return (
     <div className="flex child:cursor-pointer child:px-10 child-hover:bg-gray-100">

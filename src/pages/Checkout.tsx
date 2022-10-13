@@ -53,7 +53,9 @@ const Checkout = () => {
             <div>
               <h1 className="text-3xl border-bottom">Details</h1>
               <div className="py-10">
-                <h1>Billing Information</h1>
+                <h1 className="border-bottom border-gray-200">
+                  Billing Information
+                </h1>
                 {formFieldsBilling.map((field) => (
                   <div className="flex flex-col w-96">
                     <label>{field.label}</label>
@@ -63,7 +65,9 @@ const Checkout = () => {
               </div>
               <div>
                 <div className="flex flex-col w-96">
-                  <h1>Shipping Information</h1>
+                  <h1 className="border-bottom border-gray-200">
+                    Shipping Information
+                  </h1>
                   {formFieldsShipping.map((field) => (
                     <div className="flex flex-col w-96">
                       <label>{field.label}</label>

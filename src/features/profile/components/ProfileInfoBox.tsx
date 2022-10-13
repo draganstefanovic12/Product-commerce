@@ -18,9 +18,6 @@ const ProfileInfoBox = ({ user }: ProfileType) => {
         <li>Products sold: {productsSoldCount}</li>
       </div>
       <div className="profile-info-box">
-        <li>Location: </li>
-      </div>
-      <div className="profile-info-box">
         <li>Feedback: Positive</li>
       </div>
     </ul>
