@@ -21,19 +21,19 @@ const MainPage = () => {
           </p>
         </div>
       </div>
-      <Container className="mt-6 h-auto p-3 flex flex-col gap-7 rounded">
+      <Container className="mt-6 h-auto p-1 flex flex-col gap-7 rounded">
         <NewProducts />
       </Container>
-      <Container className="mt-6 h-1/4 p-3 flex flex-col gap-7 rounded">
+      <Container className="mt-6 h-128 md:h-72 p-1 flex flex-col gap-7 rounded">
         <MainPageCategory category="Electronics" />
       </Container>
-      <Container className="mt-6 h-1/4 p-3 flex flex-col gap-7 rounded">
+      <Container className="mt-6 h-128 md:h-72 p-1 flex flex-col gap-7 rounded">
         <MainPageCategory category="Books" />
       </Container>
-      <Container className="mt-6 h-1/4 p-3 flex flex-col gap-7 rounded">
+      <Container className="mt-6 h-128 md:h-72 p-3 flex flex-col gap-7 rounded">
         <MainPageCategory category="Clothing" />
       </Container>
-      <Container className="mt-6 h-1/4 p-3 flex flex-col gap-7 rounded">
+      <Container className="mt-6 h-128 md:h-72 p-3 flex flex-col gap-7 rounded">
         <MainPageCategory category="Instruments" />
       </Container>
     </>

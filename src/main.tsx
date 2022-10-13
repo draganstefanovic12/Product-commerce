@@ -5,8 +5,8 @@ import ReactDOM from "react-dom/client";
 import BrowserRoutes from "./routes";
 import { AuthContextProvider } from "./features/auth/context/AuthContext";
 import { CartContextProvider } from "./features/shopping cart/context/ShoppingCartContext";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { UserContextProvider } from "./features/user/context/UserContext";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 

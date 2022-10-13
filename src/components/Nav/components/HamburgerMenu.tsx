@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../../features/shopping cart/context/ShoppingCartContext";
 import { useState } from "react";
 import cartImg from "../../../assets/images/shopping-cart.svg";
+import { categoryCovers } from "../../../features/categories/categoryCovers";
 
 const HamburgerMenu = () => {
   const { isOpen, setIsOpen } = useCart();
@@ -37,7 +38,9 @@ const HamburgerMenu = () => {
       <ul
         className={`${showMenu} flex-col absolute top-0 left-0 w-full bg-blue-500 p-10 space-y-5 text-white text-center`}
       >
-        <Link to="/">Categories</Link>
+        {categoryCovers.map((category) => (
+          <Link to={`/category/${category.name}/0`}>{category.name}</Link>
+        ))}
       </ul>
     </div>
   );
