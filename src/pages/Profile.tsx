@@ -31,7 +31,7 @@ const Profile = () => {
   };
 
   return (
-    <Container className="h-max overflow-hidden">
+    <Container>
       <HelmetPageTitle title={username!} />
       <div className="flex flex-col md:flex-row gap-5 relative md:child:self-end drop-shadow-sm shadow-sm p-2 pb-0">
         <div>

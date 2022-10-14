@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createProduct } from "../api/productApi";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 import Button from "../components/Button";
 import categories from "../features/products/categories";
-import { useNavigate } from "react-router-dom";
 import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const initialValues = {
@@ -23,6 +24,14 @@ const productForm = [
   { name: "stock", placeholder: "In stock", type: "number" },
 ];
 
+const validationSchema = Yup.object({
+  name: Yup.string().required("Product name is required"),
+  price: Yup.string().required("Price is required"),
+  stock: Yup.string().required(
+    "Please specify the number of products in stock"
+  ),
+});
+
 const SellProduct = () => {
   const [success, setSuccess] = useState(false);
   const [category, setCategory] = useState("Electronics");
@@ -33,6 +42,7 @@ const SellProduct = () => {
     <div className="flex w-4/4 justify-center relative bg-gray-50">
       <HelmetPageTitle title="Sell" />
       <Formik
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           createProduct(uploadImages, { ...values, category: category });
           setSuccess(true);
@@ -46,16 +56,19 @@ const SellProduct = () => {
           <Form className="h-screen w-full md:w-2/4 flex flex-col rounded-none shadow relative px-10 bg-white">
             <h1 className="mt-5">Sell new product</h1>
             {productForm.map((fieldProp, i) => (
-              <Field
-                key={i}
-                name={fieldProp.name}
-                placeholder={fieldProp.placeholder}
-                type={fieldProp.type}
-                className={`input-field my-5 w-full ${
-                  fieldProp.type === "textarea" && "h-96"
-                }`}
-                component={fieldProp.type === "textarea" && "textarea"}
-              />
+              <>
+                <Field
+                  key={i}
+                  name={fieldProp.name}
+                  placeholder={fieldProp.placeholder}
+                  type={fieldProp.type}
+                  className={`input-field my-5 w-full ${
+                    fieldProp.type === "textarea" && "h-96"
+                  }`}
+                  component={fieldProp.type === "textarea" && "textarea"}
+                />
+                <ErrorMessage name={fieldProp.name} className="text-red-500" />
+              </>
             ))}
             <input
               type="file"

@@ -31,7 +31,7 @@ const Categories = () => {
   }
 
   return (
-    <Container className="h-full">
+    <Container className="h-screen">
       <HelmetPageTitle title={category!} />
       <img src={cover} alt="" className="h-48 w-full object-cover" />
       <div className="p-2 w-full">
