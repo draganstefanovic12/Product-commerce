@@ -12,9 +12,7 @@ const SellingProducts = ({ products }: ProfileCategoryProps) => {
     ));
 
   return (
-    <div className="flex flex-col md:flex-row gap-3 flex-wrap">
-      {sellingProducts}
-    </div>
+    <div className="flex md:flex-row gap-3 flex-wrap">{sellingProducts}</div>
   );
 };
 

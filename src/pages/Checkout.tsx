@@ -58,8 +58,8 @@ const Checkout = () => {
                 <h1 className="border-bottom border-gray-200">
                   Billing Information
                 </h1>
-                {formFieldsBilling.map((field) => (
-                  <div className="flex flex-col w-96">
+                {formFieldsBilling.map((field, i) => (
+                  <div key={i} className="flex flex-col w-96">
                     <label>{field.label}</label>
                     <Field name={field.name} className="input-field" />
                   </div>
@@ -82,7 +82,7 @@ const Checkout = () => {
           </Form>
         </Formik>
       </div>
-      <div className="flex w-full flex-col gap-5 mt-20 content-center justify-items-center pr-5">
+      <div className="flex w-full flex-col gap-5 mt-28 md:mt-20 px-5 md:px-0 content-center justify-items-center pr-5">
         <h1 className="text-3xl border-bottom">Cart</h1>
         {cart.map((product, i) => (
           <ShoppingCartProductBox key={i} prop={product} className="none" />

@@ -38,8 +38,10 @@ const HamburgerMenu = () => {
       <ul
         className={`${showMenu} flex-col absolute top-0 left-0 w-full bg-blue-500 p-10 space-y-5 text-white text-center`}
       >
-        {categoryCovers.map((category) => (
-          <Link to={`/category/${category.name}/0`}>{category.name}</Link>
+        {categoryCovers.map((category, i) => (
+          <Link key={i} to={`/category/${category.name}/0`}>
+            {category.name}
+          </Link>
         ))}
       </ul>
     </div>

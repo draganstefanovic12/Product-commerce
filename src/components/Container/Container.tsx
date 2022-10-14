@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import ScrollToTop from "../ScrollToTop";
 
 type ContainerProps = {
   children: ReactNode;
