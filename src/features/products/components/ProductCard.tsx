@@ -6,7 +6,7 @@ type ProductProps = {
 
 const ProductCard = ({ product }: ProductProps) => {
   return (
-    <div className="rounded-lg w-32 outline-grey-200 outline-2 shadow-lg hover:shadow-xl px-2 transition-shadow md:w-60 cursor-pointer">
+    <div className="rounded-lg w-32 outline-grey-200 outline-2 shadow-lg hover:shadow-xl px-1 transition-shadow md:w-60 cursor-pointer">
       <img
         src={`http://localhost:5006${product.images![0]}`}
         alt="img"

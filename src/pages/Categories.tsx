@@ -30,10 +30,10 @@ const Categories = () => {
   }
 
   return (
-    <Container className="min-h-screen p-1">
+    <Container className="min-h-screen pb-1 flex flex-col justify-between h-full">
       <HelmetPageTitle title={category!} />
-      <img src={cover} alt="" className="h-48 w-full object-cover" />
-      <div className="p-2 w-full">
+      <div className="w-full p-2">
+        <img src={cover} alt="" className="h-48 w-full object-cover" />
         <h1 className="text-2xl box-border border-bottom font-bold mb-5">
           {category}
         </h1>

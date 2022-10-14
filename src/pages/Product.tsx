@@ -42,7 +42,7 @@ const ProductPage = () => {
     product?.trade === true ? "Accepting trades" : "Not accepting trades";
 
   return (
-    <Container>
+    <Container className="md:min-h-screen">
       <HelmetPageTitle title={product?.name!} />
       <div className="flex flex-col md:flex-row">
         <ImageCarousel product={product} />

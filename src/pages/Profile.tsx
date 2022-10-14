@@ -57,7 +57,7 @@ const Profile = () => {
       </div>
       <div className="block md:grid md:grid-cols-profile">
         <ProfileInfoBox user={user} />
-        <div className="h-screen w-full p-2 shadow-inner">
+        <div className="h-screen w-full flex md:block md:p-2 py-2 shadow-inner">
           {profileProducts === "selling" && (
             <SellingProducts products={user.products} />
           )}

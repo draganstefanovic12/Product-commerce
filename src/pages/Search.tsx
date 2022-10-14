@@ -19,10 +19,10 @@ const Search = () => {
   }
 
   return (
-    <Container className="p-5">
+    <Container className="p-2 md:p-5 min-h-screen">
       <HelmetPageTitle title={query!} />
       <h1>{results.length} results</h1>
-      <div className="w-max child:w-60">
+      <div className="w-max flex gap-3 md:flex-row">
         {results.map(
           (result: Product & User, i: number) =>
             result.name && (
