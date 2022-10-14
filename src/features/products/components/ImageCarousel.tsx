@@ -29,18 +29,22 @@ const ImageCarousel = ({ product }: CarouselProps) => {
         alt="img"
         className="h-128 object-cover shadow rounded-br cursor-pointer"
       />
-      <img
-        onClick={handlePreviousImage}
-        className="h-10 absolute top-2/4 left-5 cursor-pointer"
-        src={arrowLeft}
-        alt="arrow"
-      />
-      <img
-        onClick={handleNextImage}
-        className="h-10 absolute top-2/4 right-5 cursor-pointer"
-        src={arrowRight}
-        alt="arrow"
-      />
+      {product?.images!.length! > 1 && (
+        <>
+          <img
+            onClick={handlePreviousImage}
+            className="h-10 absolute top-2/4 left-5 cursor-pointer backdrop-blur-md hover:backdrop-blur-xl rounded"
+            src={arrowLeft}
+            alt="arrow"
+          />
+          <img
+            onClick={handleNextImage}
+            className="h-10 absolute top-2/4 right-5 cursor-pointer backdrop-blur-md hover:backdrop-blur-xl rounded"
+            src={arrowRight}
+            alt="arrow"
+          />
+        </>
+      )}
     </div>
   );
 };
