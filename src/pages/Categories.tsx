@@ -19,7 +19,6 @@ const Categories = () => {
   });
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     //Dinamically changing cover backgrounds depending on the category selected
     categoryCovers.map(
       (cover) => cover.name === category && setCover(cover.link)
@@ -31,7 +30,7 @@ const Categories = () => {
   }
 
   return (
-    <Container className="h-screen">
+    <Container className="min-h-screen p-1">
       <HelmetPageTitle title={category!} />
       <img src={cover} alt="" className="h-48 w-full object-cover" />
       <div className="p-2 w-full">

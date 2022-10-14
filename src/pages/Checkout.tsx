@@ -41,7 +41,7 @@ const Checkout = () => {
   ];
 
   return (
-    <Container className="flex flex-col md:flex-row gap-20">
+    <Container className="flex flex-col md:flex-row h-screen gap-20">
       <HelmetPageTitle title="Checkout" />
       <div>
         <Formik

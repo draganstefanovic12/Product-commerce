@@ -11,7 +11,7 @@ const Pagination = ({ query, total }: PaginationProps) => {
   const pages = Math.floor(total / 18) + 1;
 
   return total > 18 ? (
-    <ul className="flex gap-2  place-content-center">
+    <ul className="flex gap-2 justify-center">
       {[...Array(pages).keys()].map((number, i) => (
         <li
           className={`${
