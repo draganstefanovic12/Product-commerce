@@ -1,9 +1,9 @@
-import Container from "../components/Container";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { Field, Form, Formik } from "formik";
-import ShoppingCartProductBox from "../features/shopping cart/components/ShoppingCartProduxtBox";
 import Button from "../components/Button";
+import Container from "../components/Container";
 import HelmetPageTitle from "../components/HelmetPageTitle";
+import ShoppingCartProductBox from "../features/shopping cart/components/ShoppingCartProduxtBox";
 
 const Checkout = () => {
   const { cart } = useCart();
@@ -70,8 +70,8 @@ const Checkout = () => {
                   <h1 className="border-bottom border-gray-200">
                     Shipping Information
                   </h1>
-                  {formFieldsShipping.map((field) => (
-                    <div className="flex flex-col w-96">
+                  {formFieldsShipping.map((field, i) => (
+                    <div key={i} className="flex flex-col w-96">
                       <label>{field.label}</label>
                       <Field name={field.name} className="input-field" />
                     </div>

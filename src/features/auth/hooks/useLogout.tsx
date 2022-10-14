@@ -1,5 +1,5 @@
-import { useCart } from "../../shopping cart/context/ShoppingCartContext";
 import { useAuth } from "../context/AuthContext";
+import { useCart } from "../../shopping cart/context/ShoppingCartContext";
 
 export const useLogout = () => {
   const { dispatch } = useAuth();

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createProduct } from "../api/productApi";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -56,9 +56,8 @@ const SellProduct = () => {
           <Form className="h-screen w-full md:w-2/4 flex flex-col rounded-none shadow relative px-10 bg-white">
             <h1 className="mt-5">Sell new product</h1>
             {productForm.map((fieldProp, i) => (
-              <>
+              <Fragment key={i}>
                 <Field
-                  key={i}
                   name={fieldProp.name}
                   placeholder={fieldProp.placeholder}
                   type={fieldProp.type}
@@ -68,7 +67,7 @@ const SellProduct = () => {
                   component={fieldProp.type === "textarea" && "textarea"}
                 />
                 <ErrorMessage name={fieldProp.name} className="text-red-500" />
-              </>
+              </Fragment>
             ))}
             <input
               type="file"
