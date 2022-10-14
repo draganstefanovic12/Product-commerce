@@ -6,7 +6,7 @@ import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const Settings = () => {
   return (
-    <Container>
+    <Container className="h-screen">
       <HelmetPageTitle title="Settings" />
       <ChangeUsername />
       <ChangePassword />

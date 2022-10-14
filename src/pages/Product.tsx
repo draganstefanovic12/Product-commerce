@@ -1,10 +1,17 @@
+import { useUser } from "../features/user/context/UserContext";
 import { useAuth } from "../features/auth/context/AuthContext";
 import { Product } from "../features/products/types";
 import { useCart } from "../features/shopping cart/context/ShoppingCartContext";
 import { getProduct } from "../api/productApi";
+import { addToWishlist } from "../api/userApi";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useQuery, UseQueryResult } from "react-query";
+import {
+  useQuery,
+  UseQueryResult,
+  useMutation,
+  useQueryClient,
+} from "react-query";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
@@ -14,13 +21,21 @@ import EditProduct from "../features/products/components/EditProduct";
 import HelmetPageTitle from "../components/HelmetPageTitle";
 
 const ProductPage = () => {
+  const queryClient = useQueryClient();
   const { id } = useParams();
+  const { user } = useUser();
   const { username } = useAuth();
   const { addToCart } = useCart();
   const [isEditing, setIsEditing] = useState(false);
   const { isLoading, data: product } = useQuery(["product", id], () => {
     return getProduct(id);
   }) as UseQueryResult<Product>;
+
+  const mutateWishlist = useMutation(addToWishlist, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("currentUser");
+    },
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,6 +52,8 @@ const ProductPage = () => {
   const handleEditing = () => {
     setIsEditing(true);
   };
+
+  const checkWatchlist = user && user.watchlist.find((usr) => usr._id === id);
 
   const trades =
     product?.trade === true ? "Accepting trades" : "Not accepting trades";
@@ -96,6 +113,11 @@ const ProductPage = () => {
                   onClick={handleEditing}
                 >
                   Edit
+                </Button>
+              )}
+              {username && username !== product?.seller && (
+                <Button onClick={() => mutateWishlist.mutate(product?._id)}>
+                  {checkWatchlist ? "Remove from wishlist" : "Add to wishlist"}
                 </Button>
               )}
             </div>

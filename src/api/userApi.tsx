@@ -26,6 +26,12 @@ export const changeAvatar = async (file: File) => {
   return response.data;
 };
 
+//passing product id
+export const addToWishlist = async (id: string | undefined) => {
+  const response = await backendApi.post(`/users/wishlist/${id}`);
+  return response.data;
+};
+
 export const removeAvatar = async () => {
   const response = await backendApi.post("/users/avatar/remove");
   return response.data;

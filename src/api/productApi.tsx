@@ -30,13 +30,6 @@ export const getNewProducts = async () => {
   return response.data;
 };
 
-export const addToWatchlist = async (product: Product | undefined) => {
-  const response = await backendApi.post("/watchlist", {
-    product: product,
-  });
-  return response.data;
-};
-
 export const deleteProduct = async (_id: string | undefined) => {
   const response = await backendApi.post(`/products/product/delete/${_id}`);
   return response.data;

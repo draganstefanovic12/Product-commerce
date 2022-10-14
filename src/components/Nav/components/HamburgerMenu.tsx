@@ -56,6 +56,9 @@ const HamburgerMenu = () => {
             <Link onClick={handleShowMenu} to={`/profile/${username}`}>
               Profile
             </Link>
+            <Link onClick={handleShowMenu} to="/messages">
+              Messages
+            </Link>
             <Link onClick={handleShowMenu} to="/settings">
               Settings
             </Link>
@@ -69,7 +72,9 @@ const HamburgerMenu = () => {
             </p>
           </>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link onClick={handleShowMenu} to="/login">
+            Login
+          </Link>
         )}
       </ul>
     </div>
