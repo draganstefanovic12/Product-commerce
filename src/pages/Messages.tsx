@@ -12,7 +12,7 @@ import ReceivedMessages from "../features/messages/components/ReceivedMessages";
 const Messages = () => {
   const { user } = useUser();
   const { receipent } = useParams();
-  const socket = io("http://localhost:5006");
+  const socket = io("https://dragpersonalproj.xyz/product-commerce");
   const [rooms, setRooms] = useState<MessageRoom[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<MessageRoom | null>();
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const backendApi = axios.create({
-  baseURL: "http://localhost:5006",
+  baseURL: "https://dragpersonalproj.xyz/product-commerce",
 });
 
 //interceptor that attaches user token to every request that requires one

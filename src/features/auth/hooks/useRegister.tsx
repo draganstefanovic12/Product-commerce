@@ -21,7 +21,7 @@ export const useRegister = () => {
 
   const register = async (user: RegisterProps) => {
     const response = (await axios
-      .post("http://localhost:5006/users/signup", {
+      .post("https://dragpersonalproj.xyz/product-commerce/users/signup", {
         username: user.username,
         password: user.password,
         email: user.email,

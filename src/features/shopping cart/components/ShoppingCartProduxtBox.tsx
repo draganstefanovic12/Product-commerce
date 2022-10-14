@@ -31,7 +31,9 @@ const ShoppingCartProductBox = ({ prop, className }: ProductBoxProps) => {
     <div className="flex gap-3 mt-5">
       <div className={`w-full flex gap-2 relative rounded ${className}`}>
         <img
-          src={`http://localhost:5006${prop!.product!.images![0]}`}
+          src={`https://dragpersonalproj.xyz/product-commerce${
+            prop!.product!.images![0]
+          }`}
           alt="product"
           className={`${
             className === "shadow" ? "w-24" : "w-28"

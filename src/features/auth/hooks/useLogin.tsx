@@ -22,7 +22,10 @@ const useLogin = () => {
   const login = async (user: LoginProps) => {
     const { username, password } = user;
     const response = (await axios
-      .post("http://localhost:5006/users/login", { username, password })
+      .post("https://dragpersonalproj.xyz/product-commerce/users/login", {
+        username,
+        password,
+      })
       .catch((e) => setError(e.response.data.message))) as AxiosResponse<res>;
 
     //If the response is ok saving the user to localstorage
