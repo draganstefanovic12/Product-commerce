@@ -8,11 +8,31 @@ import Settings from "./pages/Settings";
 import Messages from "./pages/Messages";
 import MainPage from "./pages/MainPage";
 import Register from "./pages/Register";
+import Checkout from "./pages/Checkout";
+import NotFound from "./pages/NotFound";
 import Categories from "./pages/Categories";
 import SellProduct from "./pages/SellProduct";
 import ProductPage from "./pages/Product";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 import ShoppingCartContent from "./features/shopping cart/components/ShoppingCartContent";
-import Checkout from "./pages/Checkout";
+
+const routes = [
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/profile/:username", element: <Profile /> },
+  { path: "/category/:category/:offset", element: <Categories /> },
+  { path: "/product/:id", element: <ProductPage /> },
+  { path: "/search/:query", element: <Search /> },
+  { path: "/checkout", element: <Checkout /> },
+  { path: "/", element: <MainPage /> },
+];
+
+const protectedRoutes = [
+  { path: "/settings", element: <Settings /> },
+  { path: "/sell", element: <SellProduct /> },
+  { path: "/messages", element: <Messages /> },
+  { path: "/messages/:receipent", element: <Messages /> },
+];
 
 const BrowserRoutes = () => {
   return (
@@ -20,19 +40,17 @@ const BrowserRoutes = () => {
       <Nav />
       <ShoppingCartContent />
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/profile/:username" element={<Profile />} />
-        <Route path="/category/:category/:offset" element={<Categories />} />
-        <Route path="/sell" element={<SellProduct />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/search/:query" element={<Search />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/messages" element={<Messages />}>
-          <Route path=":receipent" element={<Messages />} />
-        </Route>
-        <Route path="/" element={<MainPage />} />
+        {routes.map((route, i) => (
+          <Route key={i} path={route.path} element={route.element} />
+        ))}
+        {protectedRoutes.map((route, i) => (
+          <Route
+            key={i}
+            path={route.path}
+            element={<ProtectedRoutes>{route.element}</ProtectedRoutes>}
+          />
+        ))}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>
