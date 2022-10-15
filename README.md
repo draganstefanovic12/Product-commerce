@@ -1,4 +1,4 @@
-#Products Commerce
+Products Commerce
 
 Full stack ecommerce website. Created using MERN stack. Optimized for mobiles and all screen sizes.
 There's no payment option on the checkout because the site was created for my portfolio.
