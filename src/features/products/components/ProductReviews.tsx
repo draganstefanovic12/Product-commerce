@@ -7,8 +7,8 @@ type ReviewProps = {
 const ProductReviews = ({ product }: ReviewProps) => {
   return (
     <>
-      {product?.reviews.length! > 0 ? (
-        product?.reviews.map((review: Review, i: number) => (
+      {product?.reviews?.length! > 0 ? (
+        product?.reviews?.map((review: Review, i: number) => (
           <div key={i} className="w-3/4 shadow rounded">
             <p>{review.user}</p>
             <div>
