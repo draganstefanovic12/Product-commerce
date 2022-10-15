@@ -1,18 +1,21 @@
 #Products Commerce
 
-Commerce project with that allows users to publish new products for sale.
+Full stack ecommerce website. Created using MERN stack. Optimized for mobiles and all screen sizes.
+There's no payment option on the checkout because the site was created for my portfolio.
 
 Features:
-- Product categories
-- Filterable search product/user system
-- User wishlists, password/username change option, feedback system
+- Adding products to wishlist
+- Messaging system (can message any user anything related about the product)
+- Changing avatar/password/username
+- User feedback on product sale
+- Different categories for different products
 
-Tech stack used:
 Frontend:
 - React
 - TypeScript
 - TailwindCSS
 - Formik/Yup
+- React-query
 
 Backend:
 - NodeJS
