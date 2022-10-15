@@ -101,22 +101,19 @@ const ProductPage = () => {
               <p>In stock: {product!.stock}</p>
             </div>
             <div className="flex w-full gap-5 p-5 md:px-5 py-0 md:absolute bottom-0">
-              <Button
-                onClick={handleAddCart}
-                className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
-              >
+              <Button onClick={handleAddCart} className="w-auto h-10">
                 Add to cart
               </Button>
               {username === product?.seller && (
-                <Button
-                  className="w-36 h-10 bg-gray-700 hover:bg-gray-800"
-                  onClick={handleEditing}
-                >
+                <Button className="w-auto h-10" onClick={handleEditing}>
                   Edit
                 </Button>
               )}
               {username && username !== product?.seller && (
-                <Button onClick={() => mutateWishlist.mutate(product?._id)}>
+                <Button
+                  className="w-auto h-10"
+                  onClick={() => mutateWishlist.mutate(product?._id)}
+                >
                   {checkWatchlist ? "Remove from wishlist" : "Add to wishlist"}
                 </Button>
               )}

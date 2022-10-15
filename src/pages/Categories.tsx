@@ -34,7 +34,7 @@ const Categories = () => {
       <HelmetPageTitle title={category!} />
       <div className="w-full p-2">
         <img src={cover} alt="" className="h-48 w-full object-cover" />
-        <h1 className="text-2xl box-border border-bottom font-bold mb-5">
+        <h1 className="text-2xl box-border border-bottom font-bold mb-5 text-[#333]">
           {category}
         </h1>
         <div className="flex flex-row flex-wrap gap-1 md:gap-3">

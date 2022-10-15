@@ -15,7 +15,7 @@ const ProductCard = ({ product }: ProductProps) => {
         className="w-full h-32 md:h-52 object-cover"
       />
       <div className="flex w-full justify-between">
-        <h2 className="whitespace-nowrap font-bold text-dark overflow-hidden overflow-ellipsis">
+        <h2 className="whitespace-nowrap font-bold text-[#333] overflow-hidden overflow-ellipsis">
           {product.name}
         </h2>
         <div className="flex gap-2">

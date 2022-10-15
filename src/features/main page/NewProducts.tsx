@@ -9,7 +9,7 @@ const NewProducts = () => {
 
   return (
     <div>
-      <h1 className="text-2xl tracking-wide font-bold mb-2 text-dark border-bottom">
+      <h1 className="text-2xl tracking-wide font-bold mb-2 text-[#333] border-bottom">
         New Products
       </h1>
       <div className="flex gap-3.5 flex-wrap">

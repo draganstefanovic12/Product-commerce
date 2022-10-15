@@ -12,7 +12,9 @@ import ReceivedMessages from "../features/messages/components/ReceivedMessages";
 const Messages = () => {
   const { user } = useUser();
   const { receipent } = useParams();
-  const socket = io("https://dragpersonalproj.xyz/product-commerce");
+  const socket = io("https://dragpersonalproj.xyz", {
+    path: "/product-commerce/socket.io",
+  });
   const [rooms, setRooms] = useState<MessageRoom[]>([]);
   const [selectedRoom, setSelectedRoom] = useState<MessageRoom | null>();
 
@@ -46,7 +48,7 @@ const Messages = () => {
   };
 
   return (
-    <Container className="messages-height mr-4">
+    <Container className="messages-height md:mr-4">
       <HelmetPageTitle title="Messages" />
       <div className="grid grid-cols-profile w-full">
         <MessageRooms {...props} />

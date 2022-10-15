@@ -49,7 +49,7 @@ const Profile = () => {
             </button>
           )}
         </div>
-        <h1 className="text-2xl font-bold font-dark">{username}</h1>
+        <h1 className="text-2xl font-bold font-[#333]">{username}</h1>
         <ProfileProductSelection
           profileProducts={profileProducts}
           setProfileProducts={setProfileProducts}
