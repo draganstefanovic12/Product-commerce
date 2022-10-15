@@ -24,4 +24,4 @@ Backend:
 - Bcrypt
 - JWT 
 
-<a to="https://draganstefanovic12.github.io/Product-commerce/">Live preview</a>
+<a href="https://draganstefanovic12.github.io/Product-commerce/">Live preview</a>
