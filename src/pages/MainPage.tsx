@@ -9,18 +9,12 @@ const MainPage = () => {
     <>
       <HelmetPageTitle title="Product Commerce" />
       <div className="relative">
-        <img
-          src={landingBg}
-          alt="landing-img"
-          className="w-screen h-160 object-cover"
-        />
+        <img src={landingBg} alt="landing-img" className="w-screen h-160 object-cover" />
         <div className="absolute top-5 left-5 md:left-32 select-none">
           <h1 className="sm:text-xs md:text-7xl landing animate-fade text-dark">
             Product Commerce
           </h1>
-          <p className="sm:text-sm md:text-2xl animate-fade text-dark">
-            buy, sell and trade
-          </p>
+          <p className="sm:text-sm md:text-2xl animate-fade text-dark">buy, sell and trade</p>
         </div>
       </div>
       <Container className="mt-6 h-auto md:p-1 flex flex-col gap-7 rounded">

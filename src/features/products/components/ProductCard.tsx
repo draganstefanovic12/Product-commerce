@@ -8,9 +8,7 @@ const ProductCard = ({ product }: ProductProps) => {
   return (
     <div className="rounded-lg w-32 outline-grey-200 outline-2 shadow-lg hover:shadow-xl px-1 transition-shadow md:w-60 cursor-pointer">
       <img
-        src={`https://dragpersonalproj.xyz/product-commerce${
-          product.images![0]
-        }`}
+        src={`https://dragpersonalproj.xyz/product-commerce${product.images![0]}`}
         alt="img"
         className="w-full h-32 md:h-52 object-cover"
       />

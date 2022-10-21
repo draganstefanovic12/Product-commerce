@@ -1,10 +1,7 @@
 import { Product } from "../features/products/types";
 import { backendApi } from "./backendApi";
 
-export const createProduct = async (
-  files: FileList | null | undefined,
-  product: Product
-) => {
+export const createProduct = async (files: FileList | null | undefined, product: Product) => {
   const formData = new FormData();
 
   for (let i = 0; i < files!.length; i++) {

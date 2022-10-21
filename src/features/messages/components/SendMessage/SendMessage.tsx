@@ -64,11 +64,7 @@ const SendMessage = ({ socket, selectedRoom, setRooms }: Props) => {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <Button
-        type="submit"
-        onClick={handleSendMessage}
-        className="h-16 w-20 rounded-l-none"
-      >
+      <Button type="submit" onClick={handleSendMessage} className="h-16 w-20 rounded-l-none">
         Send
       </Button>
     </div>

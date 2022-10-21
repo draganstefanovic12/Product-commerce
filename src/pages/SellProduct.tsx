@@ -27,9 +27,7 @@ const productForm = [
 const validationSchema = Yup.object({
   name: Yup.string().required("Product name is required"),
   price: Yup.string().required("Price is required"),
-  stock: Yup.string().required(
-    "Please specify the number of products in stock"
-  ),
+  stock: Yup.string().required("Please specify the number of products in stock"),
 });
 
 const SellProduct = () => {
@@ -61,9 +59,7 @@ const SellProduct = () => {
                   name={fieldProp.name}
                   placeholder={fieldProp.placeholder}
                   type={fieldProp.type}
-                  className={`input-field my-5 w-full ${
-                    fieldProp.type === "textarea" && "h-96"
-                  }`}
+                  className={`input-field my-5 w-full ${fieldProp.type === "textarea" && "h-96"}`}
                   component={fieldProp.type === "textarea" && "textarea"}
                 />
                 <ErrorMessage name={fieldProp.name} className="text-red-500" />
@@ -99,11 +95,7 @@ const SellProduct = () => {
                   <label>Accepting returns:</label>
                   <Field name="trade" type="checkbox" />
                 </div>
-                {success && (
-                  <p className="text-green-400">
-                    Product created successfully.
-                  </p>
-                )}
+                {success && <p className="text-green-400">Product created successfully.</p>}
               </div>
               <Button className="h-10 self-end sm:mt-5 md:mt-0" type="submit">
                 Submit

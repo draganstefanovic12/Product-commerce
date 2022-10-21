@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import { createContext, ReactNode, useContext, useState, useEffect, useCallback } from "react";
 import { Product } from "../../products/types";
 
 type CartContextProps = {
@@ -14,10 +7,7 @@ type CartContextProps = {
   cart: CartProducts[];
   setCart: React.Dispatch<React.SetStateAction<CartProducts[]>>;
   addToCart: (product: Product | undefined) => void;
-  handleCount: (
-    product: Product | undefined,
-    type: "increment" | "decrement"
-  ) => void;
+  handleCount: (product: Product | undefined, type: "increment" | "decrement") => void;
   removeFromCart: (product: Product | undefined) => void;
 };
 
@@ -42,9 +32,7 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
 
   const addToCart = useCallback(
     (product: Product | undefined) => {
-      const checkCart = cart.find(
-        (currProd) => currProd.product!.name === product!.name
-      );
+      const checkCart = cart.find((currProd) => currProd.product!.name === product!.name);
       //Checking if the product is already in the cart
       if (checkCart) {
         return;
@@ -58,9 +46,7 @@ export const CartContextProvider = ({ children }: ProviderProps) => {
 
   const removeFromCart = useCallback(
     (product: Product | undefined) => {
-      const filteredProd = cart?.filter(
-        (currProd) => currProd.product!.name !== product!.name
-      );
+      const filteredProd = cart?.filter((currProd) => currProd.product!.name !== product!.name);
       setCart(filteredProd);
       localStorage.setItem("commCart", JSON.stringify(filteredProd));
     },

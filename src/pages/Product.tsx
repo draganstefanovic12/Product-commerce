@@ -6,12 +6,7 @@ import { getProduct } from "../api/productApi";
 import { addToWishlist } from "../api/userApi";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  useQuery,
-  UseQueryResult,
-  useMutation,
-  useQueryClient,
-} from "react-query";
+import { useQuery, UseQueryResult, useMutation, useQueryClient } from "react-query";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
@@ -55,8 +50,7 @@ const ProductPage = () => {
 
   const checkWatchlist = user && user.watchlist.find((usr) => usr._id === id);
 
-  const trades =
-    product?.trade === true ? "Accepting trades" : "Not accepting trades";
+  const trades = product?.trade === true ? "Accepting trades" : "Not accepting trades";
 
   return (
     <Container className="md:min-h-screen">
@@ -66,24 +60,16 @@ const ProductPage = () => {
         <div className="flex flex-col w-full  shadow sm:shadow-none bg-white md:bg-inherit relative">
           <div className="flex flex-col p-2 md:p-5 gap-0">
             <h1 className="text-secondary">
-              <Link
-                className="hover:underline pr-1 "
-                to={`/category/${product?.category}/0`}
-              >
+              <Link className="hover:underline pr-1 " to={`/category/${product?.category}/0`}>
                 {product?.category}
               </Link>
               {">"} {product?.name}
             </h1>
-            <h1 className="text-3xl text-[#212121] lato font-extrabold">
-              {product!.name}
-            </h1>
+            <h1 className="text-3xl text-[#212121] lato font-extrabold">{product!.name}</h1>
             <div className="flex shadow rounded w-max p-5 mt-5">
               <h1>
                 Seller:
-                <Link
-                  className="hover:underline pl-1"
-                  to={`/profile/${product?.seller}`}
-                >
+                <Link className="hover:underline pl-1" to={`/profile/${product?.seller}`}>
                   {product!.seller}
                 </Link>
               </h1>
@@ -110,10 +96,7 @@ const ProductPage = () => {
                 </Button>
               )}
               {username && username !== product?.seller && (
-                <Button
-                  className="w-auto h-10"
-                  onClick={() => mutateWishlist.mutate(product?._id)}
-                >
+                <Button className="w-auto h-10" onClick={() => mutateWishlist.mutate(product?._id)}>
                   {checkWatchlist ? "Remove from wishlist" : "Add to wishlist"}
                 </Button>
               )}

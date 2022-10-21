@@ -5,9 +5,7 @@ type ProfileType = {
 };
 
 const ProfileInfoBox = ({ user }: ProfileType) => {
-  const productsSoldCount = user.products.filter(
-    (product) => product.sold
-  ).length;
+  const productsSoldCount = user.products.filter((product) => product.sold).length;
 
   return (
     <ul className="hidden h-screen w-full shadow-sm p-2 md:flex flex-col gap-4">

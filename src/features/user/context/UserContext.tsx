@@ -47,9 +47,7 @@ export const UserContextProvider = ({ children }: ProviderProps) => {
     //getting the unread message number
     const unreadMessages = user?.messages
       .map((msg: UserMessage) =>
-        msg.messages.filter(
-          (msg: Message) => msg.read === false && msg.from !== user?.username
-        )
+        msg.messages.filter((msg: Message) => msg.read === false && msg.from !== user?.username)
       )
       .reduce((f: Message[], s: Message[]) => [...f, ...s], []).length;
     setUnreadMessages(unreadMessages);

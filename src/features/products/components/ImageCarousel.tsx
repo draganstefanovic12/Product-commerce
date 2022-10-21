@@ -11,23 +11,17 @@ const ImageCarousel = ({ product }: CarouselProps) => {
   const [number, setNumber] = useState(0);
 
   const handleNextImage = () => {
-    setNumber((currNum) =>
-      number === product?.images!.length! - 1 ? 0 : currNum + 1
-    );
+    setNumber((currNum) => (number === product?.images!.length! - 1 ? 0 : currNum + 1));
   };
 
   const handlePreviousImage = () => {
-    setNumber((currNum) =>
-      number === 0 ? product?.images!.length! - 1 : currNum - 1
-    );
+    setNumber((currNum) => (number === 0 ? product?.images!.length! - 1 : currNum - 1));
   };
 
   return (
     <div className="relative w-4/4 md:w-2/4 h-128 flex justify-center items-center shadow overflow-hidden">
       <img
-        src={`https://dragpersonalproj.xyz/product-commerce${
-          product?.images![number]
-        }`}
+        src={`https://dragpersonalproj.xyz/product-commerce${product?.images![number]}`}
         alt="img"
         className="h-128 object-cover shadow rounded-br cursor-pointer"
       />

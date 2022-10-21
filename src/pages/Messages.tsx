@@ -54,9 +54,7 @@ const Messages = () => {
         <MessageRooms {...props} />
         <div className="w-full flex-col flex messages-height justify-between">
           {rooms.length === 0 && (
-            <p className="self-center pt-5 text-gray-400">
-              You have no messages.
-            </p>
+            <p className="self-center pt-5 text-gray-400">You have no messages.</p>
           )}
           {rooms.length > 0 && <ReceivedMessages {...props} />}
           {selectedRoom && <SendMessage {...props} />}

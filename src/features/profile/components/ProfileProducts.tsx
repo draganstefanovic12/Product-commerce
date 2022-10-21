@@ -5,10 +5,7 @@ type Props = {
   profileProducts: Selection;
 };
 
-const ProfileProductSelection = ({
-  setProfileProducts,
-  profileProducts,
-}: Props) => {
+const ProfileProductSelection = ({ setProfileProducts, profileProducts }: Props) => {
   const handleSelling = () => {
     setProfileProducts("selling");
   };
@@ -23,12 +20,9 @@ const ProfileProductSelection = ({
 
   const sellingSelected =
     profileProducts === "selling" ? "shadow-inner text-dark" : "text-gray-800";
-  const soldSelected =
-    profileProducts === "sold" ? "shadow-inner text-dark" : "text-gray-800";
+  const soldSelected = profileProducts === "sold" ? "shadow-inner text-dark" : "text-gray-800";
   const watchlistSelected =
-    profileProducts === "watchlist"
-      ? "shadow-inner text-dark"
-      : "text-gray-800";
+    profileProducts === "watchlist" ? "shadow-inner text-dark" : "text-gray-800";
 
   return (
     <div className="flex child:cursor-pointer child:px-10 child-hover:bg-gray-100">

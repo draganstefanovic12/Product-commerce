@@ -22,12 +22,10 @@ const ChangeUsername = () => {
       <Formik
         validationSchema={usernameSchema}
         onSubmit={async (values) => {
-          const response = await changeUsername(values.username).catch(
-            (err) => {
-              setError(err);
-              return;
-            }
-          );
+          const response = await changeUsername(values.username).catch((err) => {
+            setError(err);
+            return;
+          });
           setSuccess("Successfully changed username.");
           localStorage.setItem("commUser", JSON.stringify(response));
           dispatch({ type: "LOGIN", payload: response });
@@ -41,11 +39,7 @@ const ChangeUsername = () => {
             name="username"
             className="input-field w-full bg-gray-100 mb-2"
           />
-          <ErrorMessage
-            component="div"
-            name="username"
-            className="text-red-400"
-          />
+          <ErrorMessage component="div" name="username" className="text-red-400" />
           <p className="text-green-400">{success}</p>
           <p className="text-red-400">{error}</p>
           <Button className="w-24 self-center">Submit</Button>

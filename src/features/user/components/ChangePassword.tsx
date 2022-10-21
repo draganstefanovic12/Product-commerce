@@ -11,13 +11,8 @@ const passwordFields = [
 ];
 
 const passwordSchema = Yup.object({
-  newpw: Yup.string()
-    .required()
-    .min(6, "Password needs to be longer than 6 characters."),
-  confpw: Yup.string().oneOf(
-    [Yup.ref("newpw"), null],
-    "Passwords need to match."
-  ),
+  newpw: Yup.string().required().min(6, "Password needs to be longer than 6 characters."),
+  confpw: Yup.string().oneOf([Yup.ref("newpw"), null], "Passwords need to match."),
 });
 
 const ChangePassword = () => {
@@ -36,17 +31,14 @@ const ChangePassword = () => {
         initialValues={{ oldpw: "", newpw: "", confpw: "" }}
         validationSchema={passwordSchema}
         onSubmit={async (values) => {
-          const res = await changePassword(values.oldpw, values.newpw).catch(
-            (err) => setError(err.response.data)
+          const res = await changePassword(values.oldpw, values.newpw).catch((err) =>
+            setError(err.response.data)
           );
           res.username && setSuccess("Successfully changed passwords.");
         }}
       >
         {() => (
-          <Form
-            onChange={handleChange}
-            className="flex flex-col sm:w-2/4 md:w-1/4"
-          >
+          <Form onChange={handleChange} className="flex flex-col sm:w-2/4 md:w-1/4">
             {passwordFields.map((field, i) => (
               <Field
                 key={i}
@@ -56,11 +48,7 @@ const ChangePassword = () => {
                 className="input-field w-full bg-gray-100 mb-2"
               />
             ))}
-            <ErrorMessage
-              name="confpw"
-              component="div"
-              className="text-red-400"
-            />
+            <ErrorMessage name="confpw" component="div" className="text-red-400" />
             <p className="text-green-400 font-bold">{success}</p>
             <p className="text-red-400">{error}</p>
             <Button type="submit" className="w-24 self-center">

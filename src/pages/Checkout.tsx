@@ -9,8 +9,7 @@ const Checkout = () => {
   const { cart } = useCart();
 
   const totalPrice = cart.reduce(
-    (price, product) =>
-      price + parseInt(product.product!.price) * product.count,
+    (price, product) => price + parseInt(product.product!.price) * product.count,
     0
   );
 
@@ -55,9 +54,7 @@ const Checkout = () => {
             <div>
               <h1 className="text-3xl border-bottom">Details</h1>
               <div className="py-10">
-                <h1 className="border-bottom border-gray-200">
-                  Billing Information
-                </h1>
+                <h1 className="border-bottom border-gray-200">Billing Information</h1>
                 {formFieldsBilling.map((field, i) => (
                   <div key={i} className="flex flex-col w-96">
                     <label>{field.label}</label>
@@ -67,9 +64,7 @@ const Checkout = () => {
               </div>
               <div>
                 <div className="flex flex-col w-96">
-                  <h1 className="border-bottom border-gray-200">
-                    Shipping Information
-                  </h1>
+                  <h1 className="border-bottom border-gray-200">Shipping Information</h1>
                   {formFieldsShipping.map((field, i) => (
                     <div key={i} className="flex flex-col w-96">
                       <label>{field.label}</label>

@@ -58,15 +58,9 @@ const Profile = () => {
       <div className="block md:grid md:grid-cols-profile">
         <ProfileInfoBox user={user} />
         <div className="min-h-screen w-full  md:block md:p-2 py-2 shadow-inner">
-          {profileProducts === "selling" && (
-            <SellingProducts products={user.products} />
-          )}
-          {profileProducts === "sold" && (
-            <SoldProducts products={user.products} />
-          )}
-          {profileProducts === "watchlist" && (
-            <WishlistProducts products={user.watchlist} />
-          )}
+          {profileProducts === "selling" && <SellingProducts products={user.products} />}
+          {profileProducts === "sold" && <SoldProducts products={user.products} />}
+          {profileProducts === "watchlist" && <WishlistProducts products={user.watchlist} />}
         </div>
       </div>
     </Container>

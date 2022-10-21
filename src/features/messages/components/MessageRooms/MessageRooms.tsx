@@ -6,9 +6,7 @@ import { useCallback, useEffect } from "react";
 
 type RoomProps = {
   selectedRoom: MessageRoom | null | undefined;
-  setSelectedRoom: React.Dispatch<
-    React.SetStateAction<MessageRoom | null | undefined>
-  >;
+  setSelectedRoom: React.Dispatch<React.SetStateAction<MessageRoom | null | undefined>>;
   receipent: string | undefined;
   setRooms: React.Dispatch<React.SetStateAction<MessageRoom[]>>;
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
@@ -17,22 +15,16 @@ type RoomProps = {
 
 const MessageRooms = (props: RoomProps) => {
   const { user, setUnreadMessages } = useUser();
-  const { selectedRoom, setSelectedRoom, rooms, setRooms, receipent, socket } =
-    props;
+  const { selectedRoom, setSelectedRoom, rooms, setRooms, receipent, socket } = props;
 
   const handleReadMessages = (room: MessageRoom) => {
     socket.emit("read_message", { user: user?.username, room: room.room });
-    setUnreadMessages(
-      (currUnread) =>
-        currUnread - room.messages.filter((msg) => !msg.read).length
-    );
+    setUnreadMessages((currUnread) => currUnread - room.messages.filter((msg) => !msg.read).length);
     setSelectedRoom(room);
   };
 
   const handleRooms = useCallback(() => {
-    const checker = user?.messages.find(
-      (currRooms: MessageRoom) => currRooms.room === receipent
-    );
+    const checker = user?.messages.find((currRooms: MessageRoom) => currRooms.room === receipent);
     user?.messages &&
       setRooms(
         receipent
@@ -63,16 +55,12 @@ const MessageRooms = (props: RoomProps) => {
           <div className="flex justify-between items-end">
             <span
               className={` text-sm whitespace-nowrap overflow-hidden overflow-ellipsis ${
-                rooms.messages.at(-1)?.read
-                  ? "text-gray-500"
-                  : "text-black font-bold"
+                rooms.messages.at(-1)?.read ? "text-gray-500" : "text-black font-bold"
               }`}
             >
               {rooms.messages.at(-1)?.content}
             </span>
-            <span className="text-secondary">
-              {rooms.messages.at(-1)?.createdAt.slice(16, 21)}
-            </span>
+            <span className="text-secondary">{rooms.messages.at(-1)?.createdAt.slice(16, 21)}</span>
           </div>
         </li>
       ))}

@@ -34,8 +34,7 @@ const ChangeAvatar = () => {
           accept="image/*"
           type="file"
           onChange={(e) => {
-            e.currentTarget.files![0] &&
-              mutateUser.mutate(e.currentTarget.files![0]);
+            e.currentTarget.files![0] && mutateUser.mutate(e.currentTarget.files![0]);
             setSuccess("Please wait.");
           }}
         />
@@ -46,13 +45,7 @@ const ChangeAvatar = () => {
         >
           Remove Avatar
         </Button>
-        <p
-          className={
-            success !== "Please wait." ? "text-green-500 font-bold" : ""
-          }
-        >
-          {success}
-        </p>
+        <p className={success !== "Please wait." ? "text-green-500 font-bold" : ""}>{success}</p>
       </div>
     </div>
   );

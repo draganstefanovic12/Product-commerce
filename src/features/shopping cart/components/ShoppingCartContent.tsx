@@ -20,8 +20,7 @@ const ShoppingCartContent = () => {
   };
 
   const totalPrice = cart.reduce(
-    (price, product) =>
-      price + parseInt(product.product!.price) * product.count,
+    (price, product) => price + parseInt(product.product!.price) * product.count,
     0
   );
 

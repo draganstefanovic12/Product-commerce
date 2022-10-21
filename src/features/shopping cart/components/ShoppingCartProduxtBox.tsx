@@ -31,13 +31,9 @@ const ShoppingCartProductBox = ({ prop, className }: ProductBoxProps) => {
     <div className="flex gap-3 mt-5">
       <div className={`w-full flex gap-2 relative rounded ${className}`}>
         <img
-          src={`https://dragpersonalproj.xyz/product-commerce${
-            prop!.product!.images![0]
-          }`}
+          src={`https://dragpersonalproj.xyz/product-commerce${prop!.product!.images![0]}`}
           alt="product"
-          className={`${
-            className === "shadow" ? "w-24" : "w-28"
-          } object-cover h-28`}
+          className={`${className === "shadow" ? "w-24" : "w-28"} object-cover h-28`}
         />
         <img
           src={remove}
@@ -54,17 +50,11 @@ const ShoppingCartProductBox = ({ prop, className }: ProductBoxProps) => {
       </div>
       {className === "shadow" && (
         <div className="items-center flex flex-col">
-          <Button
-            onClick={handleIncrement}
-            className="w-6 px-0 py-0 shadow bg-white"
-          >
+          <Button onClick={handleIncrement} className="w-6 px-0 py-0 shadow bg-white">
             +
           </Button>
           <p className="self-center">{prop.count}</p>
-          <Button
-            onClick={handleDecrement}
-            className="w-6 px-0 py-0 shadow bg-white"
-          >
+          <Button onClick={handleDecrement} className="w-6 px-0 py-0 shadow bg-white">
             -
           </Button>
         </div>

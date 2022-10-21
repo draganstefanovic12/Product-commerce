@@ -11,9 +11,7 @@ const SellingProducts = ({ products }: ProfileCategoryProps) => {
       </Link>
     ));
 
-  return (
-    <div className="flex md:flex-row gap-3 flex-wrap">{sellingProducts}</div>
-  );
+  return <div className="flex md:flex-row gap-3 flex-wrap">{sellingProducts}</div>;
 };
 
 export default SellingProducts;

@@ -6,9 +6,7 @@ import { DefaultEventsMap } from "socket.io/dist/typed-events";
 
 type ReceiveProps = {
   selectedRoom: MessageRoom | null | undefined;
-  setSelectedRoom: React.Dispatch<
-    React.SetStateAction<MessageRoom | null | undefined>
-  >;
+  setSelectedRoom: React.Dispatch<React.SetStateAction<MessageRoom | null | undefined>>;
   rooms: MessageRoom[];
   setRooms: React.Dispatch<React.SetStateAction<MessageRoom[]>>;
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
@@ -17,8 +15,7 @@ type ReceiveProps = {
 
 const ReceivedMessages = (props: ReceiveProps) => {
   const { user } = useUser();
-  const { rooms, setRooms, selectedRoom, setSelectedRoom, socket, liRef } =
-    props;
+  const { rooms, setRooms, selectedRoom, setSelectedRoom, socket, liRef } = props;
 
   useEffect(() => {
     socket.on("receive_message", async (data) => {
@@ -35,22 +32,13 @@ const ReceivedMessages = (props: ReceiveProps) => {
     });
 
     //updates the current room with new messages
-    setSelectedRoom(
-      rooms.find((currRooms) => currRooms.room === selectedRoom?.room)
-    );
+    setSelectedRoom(rooms.find((currRooms) => currRooms.room === selectedRoom?.room));
 
     //cleanup function for socket io so it doesn't render multiple times
     return () => {
       socket.off("receive_message", setSelectedRoom);
     };
-  }, [
-    rooms,
-    selectedRoom?.room,
-    setRooms,
-    setSelectedRoom,
-    socket,
-    user?.username,
-  ]);
+  }, [rooms, selectedRoom?.room, setRooms, setSelectedRoom, socket, user?.username]);
 
   return (
     <ul className="p-4 flex flex-col gap-1 overflow-auto">

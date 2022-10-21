@@ -1,10 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useReducer,
-} from "react";
+import { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
 
 //Using context to share user username and user token for authorization
 type UserContextProps = {
@@ -22,9 +16,7 @@ type AuthUser = {
   token: string;
 } | null;
 
-type Actions =
-  | { type: "LOGIN"; payload: AuthUser }
-  | { type: "LOGOUT"; payload: null };
+type Actions = { type: "LOGIN"; payload: AuthUser } | { type: "LOGOUT"; payload: null };
 
 const initialState = null as AuthUser;
 
@@ -57,9 +49,5 @@ export const AuthContextProvider = ({ children }: PropsProvider) => {
     }
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
 };
