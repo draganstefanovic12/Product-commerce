@@ -1,20 +1,18 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Nav from "./components/Nav";
-import Login from "./pages/Login";
-import Footer from "./components/Footer";
-import Search from "./pages/Search";
-import Profile from "./pages/Profile";
-import Settings from "./pages/Settings";
-import Messages from "./pages/Messages";
-import MainPage from "./pages/MainPage";
-import Register from "./pages/Register";
-import Checkout from "./pages/Checkout";
-import NotFound from "./pages/NotFound";
-import Categories from "./pages/Categories";
-import SellProduct from "./pages/SellProduct";
-import ProductPage from "./pages/Product";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import ShoppingCartContent from "./features/shopping cart/components/ShoppingCartContent";
+import { AnimatePresence } from "framer-motion";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Login from "../pages/Login";
+import Search from "../pages/Search";
+import Profile from "../pages/Profile";
+import NotFound from "../pages/NotFound";
+import MainPage from "../pages/MainPage";
+import Messages from "../pages/Messages";
+import Register from "../pages/Register";
+import Checkout from "../pages/Checkout";
+import Settings from "../pages/Settings";
+import Categories from "../pages/Categories";
+import ProductPage from "../pages/Product";
+import SellProduct from "../pages/SellProduct";
+import ProtectedRoutes from "../components/ProtectedRoutes";
 
 const routes = [
   { path: "/login", element: <Login /> },
@@ -34,12 +32,12 @@ const protectedRoutes = [
   { path: "/messages/:receipent", element: <Messages /> },
 ];
 
-const BrowserRoutes = () => {
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Nav />
-      <ShoppingCartContent />
-      <Routes>
+    <AnimatePresence>
+      <Routes location={location} key={location.pathname}>
         {routes.map((route, i) => (
           <Route key={i} path={route.path} element={route.element} />
         ))}
@@ -52,9 +50,8 @@ const BrowserRoutes = () => {
         ))}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
-    </Router>
+    </AnimatePresence>
   );
 };
 
-export default BrowserRoutes;
+export default AnimatedRoutes;

@@ -1,14 +1,14 @@
 import { Product } from "../features/products/types";
 import { useQuery } from "react-query";
 import { categoryCovers } from "../features/categories/categoryCovers";
-import { Link, useLocation, useParams } from "react-router-dom";
 import { getCategoryProducts } from "../api/categoryCollectionApi";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner/Spinner";
 import Container from "../components/Container";
+import Pagination from "../components/Pagination/Pagination";
 import ProductCard from "../features/products/components/ProductCard";
 import HelmetPageTitle from "../components/HelmetPageTitle";
-import Pagination from "../components/Pagination/Pagination";
 
 const Categories = () => {
   const [cover, setCover] = useState<string>("");

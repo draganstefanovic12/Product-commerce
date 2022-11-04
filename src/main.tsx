@@ -2,7 +2,7 @@ import "./index.css";
 import "./reset.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import BrowserRoutes from "./routes";
+import BrowserRoutes from "./routes/routes";
 import { AuthContextProvider } from "./features/auth/context/AuthContext";
 import { CartContextProvider } from "./features/shopping cart/context/ShoppingCartContext";
 import { UserContextProvider } from "./features/user/context/UserContext";
